@@ -1,12 +1,16 @@
 package com.example.myhealthblock.api.healthdata;
 
 import java.util.HashMap;
+
+import com.example.myhealthblock.aop.LogExecutionTime;
+import com.example.myhealthblock.aop.LogTarget;
 import com.example.myhealthblock.api.healthdata.specific.*;
 
+@LogExecutionTime(logTarget = LogTarget.ADAPTER)
 public class ApiAdapter implements ApiOutport{
 
-    private final Api api = new RealApi();
-//    private final Api api = new TestApi();
+//    private final Api api = new RealApi();
+    private final Api api = new TestApi();
 
     @Override
     public String requestMedicalHistory(HashMap<String, Object> data) {

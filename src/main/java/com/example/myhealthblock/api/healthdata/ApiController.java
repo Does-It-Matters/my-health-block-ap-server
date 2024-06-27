@@ -1,5 +1,7 @@
 package com.example.myhealthblock.api.healthdata;
 
+import com.example.myhealthblock.aop.LogExecutionTime;
+import com.example.myhealthblock.aop.LogTarget;
 import com.example.myhealthblock.api.healthdata.dto.request.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.*;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.HashMap;
 import java.util.Map;
 
+@LogExecutionTime(logTarget = LogTarget.CONTROLLER)
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api")
