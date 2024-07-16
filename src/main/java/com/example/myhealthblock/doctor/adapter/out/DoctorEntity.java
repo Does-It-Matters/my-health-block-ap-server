@@ -47,11 +47,4 @@ public class DoctorEntity {
 
     @Column
     private LocalDateTime lastEditDate;
-
-    public void deleteData() {
-        field = "";
-        hospital = "";
-        introduction = "";
-        this.lastEditDate = LocalDateTime.now();
-    }
 }

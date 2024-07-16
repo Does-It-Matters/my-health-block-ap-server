@@ -3,7 +3,6 @@ package com.example.myhealthblock.patient.adapter.out;
 import com.example.myhealthblock.question.adapter.out.QuestionEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
@@ -46,11 +45,6 @@ public class PatientEntity {
     public void addQuestion(QuestionEntity question) {
         questions.add(question);
         question.setPatient(this);
-    }
-
-    public void removeQuestion(QuestionEntity question) {
-        questions.remove(question);
-        question.setPatient(null);
     }
 
 }

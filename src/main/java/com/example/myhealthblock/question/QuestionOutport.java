@@ -13,12 +13,12 @@ public interface QuestionOutport {
     public boolean create(PatientEntity patient, String title, Category Category, String symptom, String content, List<BodyPart> bodyParts, PersonalDataDTO personalData);
     public QuestionDTO getQuestion(int id);
     public boolean delete(int id);
-    public QuestionDTO[] getQuestionsWithDetail();
-    public QuestionDTO[] getQuestionsWithDetail(PatientEntity patient);
-    public QuestionDTO[] getQuestionsWithDetail(Category category);
-    public QuestionDTO[] getQuestionsWithDetailByOpinionUserId(String opinionUserId);
     public QuestionTitleDTO[] getQuestions(PatientEntity patient);
     public QuestionTitleDTO[] getQuestions(Category category);
     public QuestionEntityDTO getQuestionEntityDTO(int id);
     public boolean update(Integer questionId, String title, String symptom, String content);
+//    public QuestionDTO[] getQuestionsWithDetail();
+//    public QuestionDTO[] getQuestionsWithDetail(PatientEntity patient);
+//    public QuestionDTO[] getQuestionsWithDetail(Category category);
+//    public QuestionDTO[] getQuestionsWithDetailByOpinionUserId(String opinionUserId);
 }

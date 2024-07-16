@@ -57,12 +57,12 @@ public class QuestionEntity {
         this.id = questionId;
     }
 
-    public void addBodyPartMapping(BodyPartMappingEntity bodyPartMapping) {
-        bodyPartMappings.add(bodyPartMapping);
-        bodyPartMapping.setQuestion(this);
-    }
-    public void removeBodyPartMapping(BodyPartMappingEntity bodyPartMapping) {
-        bodyPartMappings.remove(bodyPartMapping);
-        bodyPartMapping.setQuestion(null);
-    }
+//    public void addBodyPartMapping(BodyPartMappingEntity bodyPartMapping) {
+//        bodyPartMappings.add(bodyPartMapping);
+//        bodyPartMapping.setQuestion(this);
+//    }
+//    public void removeBodyPartMapping(BodyPartMappingEntity bodyPartMapping) {
+//        bodyPartMappings.remove(bodyPartMapping);
+//        bodyPartMapping.setQuestion(null);
+//    }
 }

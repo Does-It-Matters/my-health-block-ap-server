@@ -24,23 +24,6 @@ public class QuestionService {
         return result ? "success" : "fail";
     }
 
-    public QuestionDTO[] getQuestionsWithDetail() {
-        return outport.getQuestionsWithDetail();
-    }
-
-    public QuestionDTO[] getQuestionsWithDetail(String userId) {
-        PatientEntityDTO patientDto = patientInport.getPatientEntityDTO(userId);
-        return outport.getQuestionsWithDetail(patientDto.getEntity());
-    }
-
-    public QuestionDTO[] getQuestionsWithDetail(Category category) {
-        return outport.getQuestionsWithDetail(category);
-    }
-
-    public QuestionDTO[] getQuestionsWithDetailByOpinionUserId(String opinionUserId) {
-        return outport.getQuestionsWithDetailByOpinionUserId(opinionUserId);
-    }
-
     public QuestionDTO getQuestion(Integer questionId) {
         return outport.getQuestion(questionId);
     }
@@ -67,4 +50,22 @@ public class QuestionService {
         boolean result = outport.delete(questionId);
         return result ? "success" : "fail";
     }
+
+//    성능 측정 대상 - 질문 내용들까지 보낼 때와 제목만 보낼 때
+//    public QuestionDTO[] getQuestionsWithDetail() {
+//        return outport.getQuestionsWithDetail();
+//    }
+
+//    public QuestionDTO[] getQuestionsWithDetail(String userId) {
+//        PatientEntityDTO patientDto = patientInport.getPatientEntityDTO(userId);
+//        return outport.getQuestionsWithDetail(patientDto.getEntity());
+//    }
+//
+//    public QuestionDTO[] getQuestionsWithDetail(Category category) {
+//        return outport.getQuestionsWithDetail(category);
+//    }
+//
+//    public QuestionDTO[] getQuestionsWithDetailByOpinionUserId(String opinionUserId) {
+//        return outport.getQuestionsWithDetailByOpinionUserId(opinionUserId);
+//    }
 }
