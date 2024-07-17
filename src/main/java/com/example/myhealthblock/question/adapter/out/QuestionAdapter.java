@@ -54,27 +54,6 @@ public class QuestionAdapter implements QuestionOutport {
     }
 
     @Override
-    public QuestionDTO[] getQuestionsWithDetail() {
-        return getQuestionDTOs(this.questionRepository.findAll());
-    }
-
-    @Override
-    public QuestionDTO[] getQuestionsWithDetail(PatientEntity patient) {
-        return getQuestionDTOs(this.questionRepository.findAllByPatient(patient));
-    }
-
-    @Override
-    public QuestionDTO[] getQuestionsWithDetail(Category category) {
-        return getQuestionDTOs(this.questionRepository.findAllByCategory(category));
-    }
-
-    @Override
-    public QuestionDTO[] getQuestionsWithDetailByOpinionUserId(String opinionUserId) {
-        return getQuestionDTOs(questionRepository.findByOpinionsUserUserId(opinionUserId));
-    }
-
-
-    @Override
     public QuestionTitleDTO[] getQuestions(PatientEntity patient) {
         return getQuestionTitleDTOs(this.questionRepository.findAllByPatient(patient));
     }
@@ -116,6 +95,26 @@ public class QuestionAdapter implements QuestionOutport {
         deleteQuestion(questionEntity);
         return true;
     }
+
+//    @Override
+//    public QuestionDTO[] getQuestionsWithDetail() {
+//        return getQuestionDTOs(this.questionRepository.findAll());
+//    }
+//
+//    @Override
+//    public QuestionDTO[] getQuestionsWithDetail(PatientEntity patient) {
+//        return getQuestionDTOs(this.questionRepository.findAllByPatient(patient));
+//    }
+//
+//    @Override
+//    public QuestionDTO[] getQuestionsWithDetail(Category category) {
+//        return getQuestionDTOs(this.questionRepository.findAllByCategory(category));
+//    }
+//
+//    @Override
+//    public QuestionDTO[] getQuestionsWithDetailByOpinionUserId(String opinionUserId) {
+//        return getQuestionDTOs(questionRepository.findByOpinionsUserUserId(opinionUserId));
+//    }
 
     private void insertPatient(QuestionEntity question, PatientEntity patient) {
         patient.addQuestion(question);

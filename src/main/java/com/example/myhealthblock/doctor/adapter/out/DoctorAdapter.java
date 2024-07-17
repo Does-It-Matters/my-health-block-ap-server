@@ -12,19 +12,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class DoctorAdapter implements DoctorOutport {
     private final DoctorRepository doctorRepository;
+
     @Override
     public boolean create(String id, String name, String field, String hospital, String introduction) {
         DoctorEntity q = new DoctorEntity(id, name, field, hospital, introduction);
         this.doctorRepository.save(q);
 
-        return true;
-    }
-
-    @Override
-    public boolean deleteData(String doctorId) {
-        DoctorEntity doctor = getDoctorEntity(doctorId);
-        doctor.deleteData();
-        this.doctorRepository.save(doctor);
         return true;
     }
 

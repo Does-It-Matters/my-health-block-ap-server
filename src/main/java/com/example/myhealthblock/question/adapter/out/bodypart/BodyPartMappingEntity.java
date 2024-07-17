@@ -33,5 +33,4 @@ public class BodyPartMappingEntity {
     public void setQuestion(QuestionEntity question) {
         this.question = question;
     }
-
 }
