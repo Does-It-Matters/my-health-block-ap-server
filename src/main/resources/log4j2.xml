@@ -13,6 +13,9 @@
         <File name="RepositoryAppender" fileName="logs/repository.log" append="true">
             <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss}, %msg%n"/>
         </File>
+        <File name="RequestAppender" fileName="logs/request.log" append="true">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss}, %msg%n"/>
+        </File>
         <Console name="ConsoleAppender" target="SYSTEM_OUT">
             <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"/>
         </Console>
@@ -29,6 +32,10 @@
         </Logger>
         <Logger name="repository-logger" level="info" additivity="false">
             <AppenderRef ref="RepositoryAppender"/>
+        </Logger>
+        <Logger name="request-logger" level="info" additivity="false">
+            <AppenderRef ref="RequestAppender"/>
+            <AppenderRef ref="ConsoleAppender"/>
         </Logger>
         <Root level="info">
             <AppenderRef ref="ConsoleAppender"/>
