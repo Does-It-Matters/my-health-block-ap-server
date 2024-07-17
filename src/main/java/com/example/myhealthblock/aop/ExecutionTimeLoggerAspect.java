@@ -5,30 +5,17 @@ import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
-import org.slf4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 @Aspect
 @Component
 public class ExecutionTimeLoggerAspect {
 
-    @Autowired
-    @Qualifier("controllerLogger")
-    private Logger controllerLogger;
-
-    @Autowired
-    @Qualifier("serviceLogger")
-    private Logger serviceLogger;
-
-    @Autowired
-    @Qualifier("adapterLogger")
-    private Logger adapterLogger;
-
-    @Autowired
-    @Qualifier("repositoryLogger")
-    private Logger repositoryLogger;
+    private static final Logger controllerLogger = LogManager.getLogger("controller-logger");
+    private static final Logger serviceLogger = LogManager.getLogger("service-logger");
+    private static final Logger adapterLogger = LogManager.getLogger("adapter-logger");
+    private static final Logger repositoryLogger = LogManager.getLogger("repository-logger");
 
     @Around("@within(com.example.myhealthblock.aop.LogExecutionTime) || @annotation(com.example.myhealthblock.aop.LogExecutionTime)")
     public Object logExecutionTime(ProceedingJoinPoint joinPoint) throws Throwable {
