@@ -33,12 +33,20 @@ public class RequestLoggingAspect {
         if (request instanceof ContentCachingRequestWrapper) { // request body는 한번만 읽을 수 있어 캐싱을 적용해는지 확인
             ContentCachingRequestWrapper wrappedRequest = (ContentCachingRequestWrapper) request; // 캐싱 객체를 활용하여 바디 값 읽을 수 있음
 
+            // 사용자 요청 분석 로그
             String requestInfo = getRequestInfo(wrappedRequest); // 요청에 대한 데이터를 문자열로 만들기
-            logger.info(requestInfo); // 로그 남기기
 
-            Object result = joinPoint.proceed();
 
-            logger.info("Method executed successfully.");
+            // 서버 처리 시간 로그
+            long startTime = System.currentTimeMillis();
+            Object result = joinPoint.proceed(); // 요청 수행
+            long endTime = System.currentTimeMillis();
+            String executionTime = String.format("%6s", (endTime - startTime) + "ms");
+
+
+            // 로그 출력
+            long gatewayRequestId = 0; // 현재는 dummy data
+            logger.info("id: {}, {}, {}", gatewayRequestId, executionTime, requestInfo); // 로그 남기기
 
             return result;
         } else {

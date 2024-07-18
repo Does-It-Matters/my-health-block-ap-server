@@ -35,7 +35,7 @@ public class ExecutionTimeLoggerAspect {
         String methodName = signature.getName();
         String className = signature.getDeclaringType().getSimpleName();
 
-        System.out.println(className + "." + methodName + "() 실행 시간: " + executionTime + "ms");
+//        System.out.println(className + "." + methodName + "() 실행 시간: " + executionTime + "ms");
 
         Logger logger = getLogger(logTarget);
         className = String.format("%-25s", className);
