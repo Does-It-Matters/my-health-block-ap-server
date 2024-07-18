@@ -17,7 +17,7 @@ public enum BodyPart {
     HEART("심장"),
     WAIST("허리"),
     EYE("눈"),
-    TEETH("이빨"),
+    TEETH("이"),
     KNEE("무릎"),
     EAR("귀"),
     SKIN("피부"),

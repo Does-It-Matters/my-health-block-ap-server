@@ -122,6 +122,9 @@ public class QuestionAdapter implements QuestionOutport {
     }
 
     private void insertBodyParts(QuestionEntity question, List<BodyPart> bodyParts) {
+        if (bodyParts == null) {
+            return;
+        }
         for (BodyPart bodyPart : bodyParts) {
             bodyMappingRepository.save(new BodyPartMappingEntity(question, bodyPart));
         }
