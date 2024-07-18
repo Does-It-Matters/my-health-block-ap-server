@@ -41,6 +41,8 @@ public class QuestionController {
             list = questionService.getQuestions(userId);
         } else if (category != null){
             list = questionService.getQuestions(category);
+        } else {
+            list = questionService.getQuestions();
         }
         return ResponseEntity.ok(new ResponseQuestionList(list));
     }

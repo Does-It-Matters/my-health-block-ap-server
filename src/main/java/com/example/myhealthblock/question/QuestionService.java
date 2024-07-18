@@ -37,6 +37,10 @@ public class QuestionService {
         return outport.getQuestions(category);
     }
 
+    public QuestionTitleDTO[] getQuestions() {
+        return outport.getQuestions();
+    }
+
     public QuestionEntityDTO getQuestionEntityDTO(int questionId) { // inport interface로 노출할 필요 존재
         return outport.getQuestionEntityDTO(questionId);
     }

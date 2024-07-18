@@ -50,15 +50,19 @@ content-type: application/json
 }
 
 
-### 2. 특정 사용자로 질문 목록 조회
-GET http://localhost:8080/api/v2/question/list?userId=PATIENT_ID
+### 2. 전체 질문 목록 조회
+GET http://localhost:8080/api/v2/question/list
 
 
-### 3. 질문 식별자로 하나의 질문 상세 조회
+# ### 3. 특정 사용자로 질문 목록 조회
+# GET http://localhost:8080/api/v2/question/list?userId=PATIENT_ID
+
+
+### 4. 질문 식별자로 하나의 질문 상세 조회
 GET http://localhost:8080/api/v2/question/1
 
 
-### 4. 질문 수정
+### 5. 질문 수정
 PATCH http://localhost:8080/api/v2/question
 content-type: application/json
 
@@ -70,7 +74,7 @@ content-type: application/json
 }
 
 
-### 5. 질문 삭제
+### 6. 질문 삭제
 DELETE http://localhost:8080/api/v2/question/1
 
 

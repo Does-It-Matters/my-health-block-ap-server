@@ -15,6 +15,7 @@ public interface QuestionOutport {
     public boolean delete(int id);
     public QuestionTitleDTO[] getQuestions(PatientEntity patient);
     public QuestionTitleDTO[] getQuestions(Category category);
+    public QuestionTitleDTO[] getQuestions();
     public QuestionEntityDTO getQuestionEntityDTO(int id);
     public boolean update(Integer questionId, String title, String symptom, String content);
 //    public QuestionDTO[] getQuestionsWithDetail();
