@@ -1,6 +1,5 @@
 package com.example.myhealthblock.user;
 
-import com.example.myhealthblock.user.adapter.out.UserAdapter;
 import com.example.myhealthblock.user.dto.ResultSignIn;
 import com.example.myhealthblock.user.dto.UserEntityDTO;
 import com.example.myhealthblock.user.adapter.in.request.RequestUserSignIn;
@@ -10,8 +9,8 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Service
-public class UserService implements GetUserEntityDTO{
-    private final UserAdapter outport;
+public class UserService implements GetUserEntityDTO, UserSignUp {
+    private final UserOutport outport;
 
     public boolean signUp(RequestUserSignUp dto) {
         User user = outport.getUser(dto.getId());

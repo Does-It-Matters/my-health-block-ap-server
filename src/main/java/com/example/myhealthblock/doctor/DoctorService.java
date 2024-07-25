@@ -1,20 +1,17 @@
 package com.example.myhealthblock.doctor;
 
-import com.example.myhealthblock.doctor.adapter.out.DoctorAdapter;
 import com.example.myhealthblock.doctor.adapter.in.request.RequestDoctorSignUp;
 import com.example.myhealthblock.doctor.dto.DoctorProfileDTO;
-import com.example.myhealthblock.patient.PatientService;
+import com.example.myhealthblock.user.UserSignUp;
 import com.example.myhealthblock.user.adapter.in.request.RequestUserSignUp;
-import com.example.myhealthblock.user.UserService;
 import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Service
 public class DoctorService {
-    private final DoctorAdapter outport;
-    private final UserService userInport;
-    private final PatientService patientInport;
+    private final DoctorOutport outport;
+    private final UserSignUp userInport;
 
     public boolean signUp(RequestDoctorSignUp dto) {
         RequestUserSignUp user = new RequestUserSignUp();
