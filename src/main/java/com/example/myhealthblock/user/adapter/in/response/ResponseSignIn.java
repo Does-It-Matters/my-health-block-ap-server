@@ -1,12 +1,23 @@
 package com.example.myhealthblock.user.adapter.in.response;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class ResponseSignIn {
-    private String result;
+    private String accessToken;
+    private String refreshToken;
     private String role;
-    private String id;
+
+    public ResponseSignIn(String errorMessage) {
+        this.accessToken = null;
+        this.refreshToken = null;
+        this.role = errorMessage;
+    }
+
 }
