@@ -21,8 +21,6 @@ bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
 
-### IntelliJ IDEA ###
-application-jwt.properties
 
 .idea
 *.iws
