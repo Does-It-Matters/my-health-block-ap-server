@@ -5,19 +5,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import lombok.Getter;
+import lombok.Setter;
+
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
 public class ResponseSignIn {
-    private String accessToken;
-    private String refreshToken;
+    private String result;
     private String role;
-
-    public ResponseSignIn(String errorMessage) {
-        this.accessToken = null;
-        this.refreshToken = null;
-        this.role = errorMessage;
-    }
-
+    private String id;
 }

@@ -20,7 +20,17 @@ public class UserService implements GetUserEntityDTO, UserSignUp {
     }
 
 
-    public User signIn(RequestUserSignIn dto) throws Exception {
+    public ResultSignIn signIn(RequestUserSignIn dto) {
+        User user = outport.getUser(dto.getId());
+        ResultSignIn result = new ResultSignIn();
+
+        if (user!=null && user.signIn(dto.getPw()))
+            result.success(user.getRole(), user.getUid());
+
+        return result;
+    }
+
+    public User signInWithJWT(RequestUserSignIn dto) throws Exception {
         User user = outport.getUser(dto.getId());
 
         if (user!=null && user.signIn(dto.getPw()))

@@ -20,11 +20,11 @@ public class ResultSignIn {
         response.put("id", id);
     }
 
-//    public ResponseSignIn getRequestBody() {
-//        ResponseSignIn response = new ResponseSignIn();
-//        response.setResult(this.response.get("result"));
-//        response.setRole(this.response.get("role"));
-//        response.setId(this.response.get("id"));
-//        return response;
-//    }
+    public ResponseSignIn getRequestBody() {
+        ResponseSignIn response = new ResponseSignIn();
+        response.setResult(this.response.get("result"));
+        response.setRole(this.response.get("role"));
+        response.setId(this.response.get("id"));
+        return response;
+    }
 }

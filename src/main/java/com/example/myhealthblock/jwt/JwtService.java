@@ -1,16 +1,19 @@
 package com.example.myhealthblock.jwt;
 import com.example.myhealthblock.user.User;
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cglib.core.internal.Function;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
-
 import java.nio.charset.StandardCharsets;
 import java.security.Key;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+
 @Slf4j
 @Service
 public class JwtService {
@@ -53,4 +56,5 @@ public class JwtService {
                 .signWith(key)//토큰 서명
                 .compact();//JWT문자열 생성
     }
+
 }
