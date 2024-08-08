@@ -30,6 +30,14 @@ public class UserService implements GetUserEntityDTO, UserSignUp {
         return result;
     }
 
+    public User signInWithJWT(RequestUserSignIn dto) throws Exception {
+        User user = outport.getUser(dto.getId());
+
+        if (user!=null && user.signIn(dto.getPw()))
+            return user;
+        throw new Exception("Invalid credentials");
+    }
+
     public String changePw(String userId, String oldPw, String newPw) {
         User user = outport.getUser(userId);
         if(user.changePw(oldPw, newPw)) {
