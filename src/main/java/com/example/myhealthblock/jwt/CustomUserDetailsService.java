@@ -2,6 +2,7 @@ package com.example.myhealthblock.jwt;
 
 import com.example.myhealthblock.user.adapter.out.UserEntity;
 import com.example.myhealthblock.user.adapter.out.UserRepository;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -27,8 +28,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         if (password == null) {
             throw new UsernameNotFoundException("Password not set for user: " + userId);
         }
-
-        return org.springframework.security.core.userdetails.User
+        return User
                 .withUsername(user.getUserId())
                 .password(password)
                 .roles(user.getRole())
