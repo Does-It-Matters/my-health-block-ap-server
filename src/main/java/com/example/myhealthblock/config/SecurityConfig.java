@@ -27,11 +27,16 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/v*/sign-in").permitAll()
-                        .requestMatchers("/api/v2/patient/sign-up").permitAll()
-                        .requestMatchers("/api/v2/doctor/sign-up").permitAll()
-                        .anyRequest().authenticated()
+                        .anyRequest().permitAll()  // 개발용. 모든 요청 허용
                 )
+                //Jwt 검증 적용 버전
+//                .authorizeHttpRequests(auth -> auth
+//                        .requestMatchers("/api/v*/sign-in").permitAll()
+//                        .requestMatchers("/api/v2/patient/sign-up").permitAll()
+//                        .requestMatchers("/api/v2/doctor/sign-up").permitAll()
+//                        .requestMatchers("/api/v2/question/list").permitAll()
+//                        .anyRequest().authenticated()
+//                )
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .httpBasic(httpBasic -> httpBasic.disable())
                 .formLogin(formLogin -> formLogin.disable());
