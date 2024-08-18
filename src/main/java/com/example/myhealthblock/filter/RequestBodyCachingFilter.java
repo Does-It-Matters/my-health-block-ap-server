@@ -1,4 +1,4 @@
-package com.example.myhealthblock.config;
+package com.example.myhealthblock.filter;
 
 import jakarta.servlet.*;
         import jakarta.servlet.http.HttpServletRequest;

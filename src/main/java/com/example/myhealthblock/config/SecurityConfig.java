@@ -1,6 +1,6 @@
 package com.example.myhealthblock.config;
 
-import com.example.myhealthblock.jwt.JwtAuthenticationFilter;
+import com.example.myhealthblock.filter.JwtAuthenticationFilter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

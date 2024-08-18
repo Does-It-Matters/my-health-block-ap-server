@@ -1,5 +1,6 @@
-package com.example.myhealthblock.jwt;
+package com.example.myhealthblock.filter;
 
+import com.example.myhealthblock.jwt.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
