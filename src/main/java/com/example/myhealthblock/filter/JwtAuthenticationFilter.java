@@ -78,24 +78,12 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
      */
     private void processJwtAuthentication(String authHeader, HttpServletRequest request) {
         // "Bearer " 이후의 토큰만 추출
-        final String JWT = authHeader.substring(7);
-        final String USER_ID = jwtService.extractUid(JWT);
+        final String jwt = authHeader.substring(7);
+        final String userId = jwtService.extractUid(jwt);
 
-        if (isTokenValid(USER_ID, JWT)) {
-            authenticateUser(USER_ID, request);
+        if (isTokenValid(userId, jwt)) {
+            authenticateUser(userId, request);
         }
-    }
-
-    /**
-     * <b> 역할: 사용자 인증을 처리하는 메소드 </b>
-     *
-     * @param userUid 사용자 UID
-     * @param request 현재 HTTP 요청
-     */
-    private void authenticateUser(String userUid, HttpServletRequest request) {
-        UserDetails userDetails = this.userDetailsService.loadUserByUsername(userUid);
-        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
-        setAuthenticationContext(authToken, request);
     }
 
     /**
@@ -109,6 +97,18 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         return userUid != null &&
                 SecurityContextHolder.getContext().getAuthentication() == null &&
                 jwtService.isTokenValid(jwt);
+    }
+
+    /**
+     * <b> 역할: 사용자 인증을 처리하는 메소드 </b>
+     *
+     * @param userUid 사용자 UID
+     * @param request 현재 HTTP 요청
+     */
+    private void authenticateUser(String userUid, HttpServletRequest request) {
+        UserDetails userDetails = this.userDetailsService.loadUserByUsername(userUid);
+        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+        setAuthenticationContext(authToken, request);
     }
 
     /**
