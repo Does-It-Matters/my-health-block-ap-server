@@ -10,6 +10,14 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+/**
+ * <b> 역할: 보안 설정하는 클래스 </b>
+ * <br>- JwtAuthenticationFilter 필터 적용
+ * <br>- 세션 관리를 Stateless로 설정
+ * <br>- 특정 엔드포인트에 대한 접근 권한 설정
+ *
+ * @see JwtAuthenticationFilter
+ */
 @Slf4j
 @Configuration
 @EnableWebSecurity
@@ -21,6 +29,16 @@ public class SecurityConfig {
         this.jwtAuthFilter = jwtAuthFilter;
     }
 
+    /**
+     * <b> 역할: 보안 필터 체인을 구성하는 메소드 </b>
+     * <br>- CSRF 비활성화
+     * <br>- Stateless 세션 관리 설정
+     * <br>- JWT 인증 필터 추가
+     *
+     * @param http HttpSecurity 객체
+     * @return SecurityFilterChain 객체
+     * @throws Exception 설정 중 오류 발생 시
+     */
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
