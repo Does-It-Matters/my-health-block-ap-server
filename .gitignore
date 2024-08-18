@@ -1,6 +1,5 @@
 #src/main/java/com/example/myhealthblock/api/healthdata/specific
 src/main/java/com/example/myhealthblock/api/healthdata/specific/EasyCodefClientInfo.java
-src/main/java/com/example/myhealthblock/jwt/JwtAuthenticationFilter.java
 logs/*
 
 HELP.md
