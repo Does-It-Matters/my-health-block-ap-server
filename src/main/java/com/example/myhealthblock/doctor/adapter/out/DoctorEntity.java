@@ -7,6 +7,10 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 
+/**
+ * <b> 역할: 의료진 엔티티 클래스 </b>
+ * <br>- 의료진 엔티티
+ */
 @Getter
 @Setter
 @Entity(name = "Doctor")
