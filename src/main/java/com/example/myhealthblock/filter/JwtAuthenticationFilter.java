@@ -49,18 +49,20 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         final String authHeader = request.getHeader("Authorization");
 
+        // Authorization 헤더에 "Bearer " 토큰이 없으면 다음 필터로 진행
         if ( ! hasBearer(authHeader) ) {
             filterChain.doFilter(request, response);
             return;
         }
 
+        // JWT 인증 처리
         processJwtAuthentication(authHeader, request);
         filterChain.doFilter(request, response);
     }
 
     /**
      * <b> 역할: Authorization 헤더가 "Bearer "로 시작하는지 확인하는 메소드 </b>
-     * 
+     *
      * @param authHeader Authorization 헤더 값
      * @return 헤더가 "Bearer "로 시작하면 true, 그렇지 않으면 false
      */
@@ -75,6 +77,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
      * @param request    현재 HTTP 요청
      */
     private void processJwtAuthentication(String authHeader, HttpServletRequest request) {
+        // "Bearer " 이후의 토큰만 추출
         final String JWT = authHeader.substring(7);
         final String USER_ID = jwtService.extractUid(JWT);
 
