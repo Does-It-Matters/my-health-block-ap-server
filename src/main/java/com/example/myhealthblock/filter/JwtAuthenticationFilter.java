@@ -81,22 +81,21 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         final String JWT = authHeader.substring(7);
         final String USER_ID = jwtService.extractUid(JWT);
 
-        authenticateUserIfTokenValid(USER_ID, JWT, request);
+        if (isTokenValid(USER_ID, JWT)) {
+            authenticateUser(USER_ID, request);
+        }
     }
 
     /**
-     * <b> 역할: JWT가 유효한 경우 사용자 인증을 처리하는 메소드 </b>
+     * <b> 역할: 사용자 인증을 처리하는 메소드 </b>
      *
      * @param userUid 사용자 UID
-     * @param jwt     JWT 토큰
      * @param request 현재 HTTP 요청
      */
-    private void authenticateUserIfTokenValid(String userUid, String jwt, HttpServletRequest request) {
-        if (shouldAuthenticate(userUid, jwt)) {
-            UserDetails userDetails = this.userDetailsService.loadUserByUsername(userUid);
-            UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
-            setAuthenticationContext(authToken, request);
-        }
+    private void authenticateUser(String userUid, HttpServletRequest request) {
+        UserDetails userDetails = this.userDetailsService.loadUserByUsername(userUid);
+        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+        setAuthenticationContext(authToken, request);
     }
 
     /**
@@ -106,7 +105,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
      * @param jwt     JWT 토큰
      * @return jwt 인증 처리가 가능한 상황이면 true, 그렇지 않으면 false
      */
-    private boolean shouldAuthenticate(String userUid, String jwt) {
+    private boolean isTokenValid(String userUid, String jwt) {
         return userUid != null &&
                 SecurityContextHolder.getContext().getAuthentication() == null &&
                 jwtService.isTokenValid(jwt);
