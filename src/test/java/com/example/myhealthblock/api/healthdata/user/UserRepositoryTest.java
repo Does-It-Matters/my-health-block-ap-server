@@ -1,7 +1,7 @@
 package com.example.myhealthblock.api.healthdata.user;
 
-import com.example.myhealthblock.user.adapter.out.UserEntity;
-import com.example.myhealthblock.user.adapter.out.UserRepository;
+import com.example.myhealthblock.user.adapter.out.persistence.UserEntity;
+import com.example.myhealthblock.user.adapter.out.persistence.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;

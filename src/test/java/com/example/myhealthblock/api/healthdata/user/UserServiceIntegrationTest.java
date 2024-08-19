@@ -1,7 +1,7 @@
 package com.example.myhealthblock.api.healthdata.user;
 
-import com.example.myhealthblock.user.UserService;
-import com.example.myhealthblock.user.adapter.in.request.RequestUserSignUp;
+import com.example.myhealthblock.user.application.service.UserService;
+import com.example.myhealthblock.user.adapter.in.web.request.RequestUserSignUp;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

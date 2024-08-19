@@ -1,5 +1,5 @@
 package com.example.myhealthblock.jwt;
-import com.example.myhealthblock.user.User;
+import com.example.myhealthblock.user.domain.model.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtParser;
 import io.jsonwebtoken.Jwts;

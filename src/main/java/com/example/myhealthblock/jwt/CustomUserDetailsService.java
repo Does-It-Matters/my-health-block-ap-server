@@ -1,7 +1,7 @@
 package com.example.myhealthblock.jwt;
 
-import com.example.myhealthblock.user.adapter.out.UserEntity;
-import com.example.myhealthblock.user.adapter.out.UserRepository;
+import com.example.myhealthblock.user.adapter.out.persistence.UserEntity;
+import com.example.myhealthblock.user.adapter.out.persistence.UserRepository;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
