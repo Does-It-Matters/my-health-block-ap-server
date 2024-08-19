@@ -7,6 +7,7 @@ import com.example.myhealthblock.doctor.adapter.in.web.request.DoctorSignUpReque
 import com.example.myhealthblock.doctor.adapter.in.web.response.DoctorDataResponse;
 import com.example.myhealthblock.doctor.adapter.in.web.response.SignUpResultResponse;
 import com.example.myhealthblock.doctor.domain.dto.DoctorProfileDTO;
+import com.example.myhealthblock.exception.UserAlreadyExistsException;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
@@ -30,26 +31,20 @@ public class DoctorController {
     /**
      * <b> 역할: 의료진 회원가입 메소드 </b>
      * <br>- 요청 바디에서 의료진 정보 받아 회원가입
+     * <br>- 중복된 아이디로 회원 가입 시 예외 발생
      *
      * @param body 의료진 회원가입 요청 바디 데이터
      * @return 회원가입 응답
+     * @see UserAlreadyExistsException
      */
     @Operation(summary = "의사 회원가입", description = "아이디와 패스워드, 추가 데이터로 회원가입")
     @PostMapping("/v2/doctor/sign-up")
     public ResponseEntity<SignUpResultResponse> signUp(@RequestBody DoctorSignUpRequest body) {
+        doctorService.signUp(body);
         SignUpResultResponse response = new SignUpResultResponse();
-        try {
-            if (doctorService.signUp(body)){
-                response.setResult("success");
-                return ResponseEntity.ok(response);
-            } else {
-                response.setResult("confilct: A user with this ID already exists.");
-                return ResponseEntity.status(HttpStatus.CONFLICT).body(response);
-            }
-        } catch (Exception e) {
-            response.setResult("error: An unexpected error occurred: " + e.getMessage());
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
-        }
+
+        response.setResult("success");
+        return ResponseEntity.ok(response);
     }
 
     /**
