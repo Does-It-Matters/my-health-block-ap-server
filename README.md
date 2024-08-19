@@ -23,9 +23,13 @@ com.example.myhealthblock
 │   ├── application
 │   │   ├── port
 │   │   │   ├── in
-│   │   │   │   └── Inport.java
+│   │   │   │   ├── Inport.java
+│   │   │   │   └── dto
+│   │   │   │       └── InportDTO.java
 │   │   │   └── out
-│   │   │       └── Outport.java
+│   │   │       ├── Outport.java
+│   │   │       └── dto
+│   │   │           └── OutportDTO.java
 │   │   └── service
 │   │       └── Service.java
 │   └── domain
