@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class RequestOpinionEnroll {
+public class OpinionEnrollRequest {
     String userId;
     String content;
     Integer questionId;

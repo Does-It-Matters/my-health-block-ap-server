@@ -10,6 +10,6 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ResponseQuestion {
+public class QuestionResponse {
     private QuestionDTO question;
 }

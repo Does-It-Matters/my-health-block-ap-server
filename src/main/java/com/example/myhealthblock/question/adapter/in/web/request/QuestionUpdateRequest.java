@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class RequestQuestionUpdate {
+public class QuestionUpdateRequest {
     private Integer questionId;
     private String title;
     private String symptom;

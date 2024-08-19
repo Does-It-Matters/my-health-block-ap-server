@@ -10,6 +10,6 @@
 //@Setter
 //@NoArgsConstructor
 //@AllArgsConstructor
-//public class ResponseQuestions {
+//public class QuestionsResponse {
 //    private QuestionDTO[] questions;
 //}

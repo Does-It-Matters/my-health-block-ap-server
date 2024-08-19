@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ResponseSignIn {
+public class SignInResponse {
     private String result;
     private String role;
     private String id;

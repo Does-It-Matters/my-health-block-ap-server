@@ -11,13 +11,13 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class ResponseDoctorData {
+public class DoctorDataResponse {
     private String name;
     private String field;
     private String hospital;
     private String introduction;
 
-    public ResponseDoctorData(String name, String field, String hospital, String introduction) {
+    public DoctorDataResponse(String name, String field, String hospital, String introduction) {
         this.name = name;
         this.field = field;
         this.hospital = hospital;

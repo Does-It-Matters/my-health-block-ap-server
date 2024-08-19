@@ -9,7 +9,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class RequestDoctorSignUp {
+public class DoctorSignUpRequest {
     String id;
     String pw;
     String role;

@@ -3,7 +3,7 @@ package com.example.myhealthblock.api.healthdata.user;
 import com.example.myhealthblock.user.domain.model.User;
 import com.example.myhealthblock.user.application.port.out.UserOutport;
 import com.example.myhealthblock.user.application.service.UserService;
-import com.example.myhealthblock.user.adapter.in.web.request.RequestUserSignUp;
+import com.example.myhealthblock.user.adapter.in.web.request.UserSignUpRequest;
 import com.example.myhealthblock.user.adapter.out.persistence.UserEntity;
 import com.example.myhealthblock.user.domain.dto.UserEntityDTO;
 import org.junit.jupiter.api.Test;
@@ -20,7 +20,7 @@ public class UserServiceJUnitTest {
         // Given
         UserOutport outport = new FakeUserOutport();
         UserService userService = new UserService(outport);
-        RequestUserSignUp dto = new RequestUserSignUp();
+        UserSignUpRequest dto = new UserSignUpRequest();
         dto.setId("user");
         dto.setPw("password");
         dto.setRole("USER");
@@ -37,7 +37,7 @@ public class UserServiceJUnitTest {
         // Given
         UserOutport outport = new FakeUserOutport();
         UserService userService = new UserService(outport);
-        RequestUserSignUp dto = new RequestUserSignUp();
+        UserSignUpRequest dto = new UserSignUpRequest();
         dto.setId("user");
         dto.setPw("password");
         dto.setRole("PATIENT");

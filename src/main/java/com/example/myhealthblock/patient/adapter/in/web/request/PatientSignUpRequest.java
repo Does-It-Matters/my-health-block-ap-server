@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class RequestPatientSignUp {
+public class PatientSignUpRequest {
     String id;
     String pw;
     String role;

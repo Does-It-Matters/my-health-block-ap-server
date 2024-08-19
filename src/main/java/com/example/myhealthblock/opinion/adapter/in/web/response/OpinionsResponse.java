@@ -1,5 +1,6 @@
 package com.example.myhealthblock.opinion.adapter.in.web.response;
 
+import com.example.myhealthblock.opinion.domain.dto.OpinionDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,6 +10,6 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ResponseResult {
-    private String result;
+public class OpinionsResponse {
+    private OpinionDTO[] opinions;
 }

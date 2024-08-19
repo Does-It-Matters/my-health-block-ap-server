@@ -10,6 +10,6 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ResponseOpinions {
-    private OpinionDTO[] opinions;
+public class EnrollOpinionResponse {
+    private OpinionDTO opinionDTO;
 }

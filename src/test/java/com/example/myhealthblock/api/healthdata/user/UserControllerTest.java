@@ -2,8 +2,8 @@ package com.example.myhealthblock.api.healthdata.user;
 
 import com.example.myhealthblock.user.application.service.UserService;
 import com.example.myhealthblock.user.adapter.in.web.UserController;
-import com.example.myhealthblock.user.adapter.in.web.request.RequestUserSignIn;
-import com.example.myhealthblock.user.adapter.in.web.response.ResponseSignIn;
+import com.example.myhealthblock.user.adapter.in.web.request.UserSignInRequest;
+import com.example.myhealthblock.user.adapter.in.web.response.SignInResponse;
 import com.example.myhealthblock.user.domain.dto.ResultSignIn;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,16 +33,16 @@ public class UserControllerTest {
     @Test
     void testSignIn_Success() throws Exception {
         // Given
-        RequestUserSignIn signInRequest = new RequestUserSignIn();
+        UserSignInRequest signInRequest = new UserSignInRequest();
         signInRequest.setId("user");
         signInRequest.setPw("password");
 
-        ResponseSignIn signInResponse = new ResponseSignIn();
+        SignInResponse signInResponse = new SignInResponse();
         signInResponse.setResult("success");
         signInResponse.setRole("PATIENT");
         signInResponse.setId("user");
 
-        when(userService.signIn(any(RequestUserSignIn.class))).thenReturn(new ResultSignIn());
+        when(userService.signIn(any(UserSignInRequest.class))).thenReturn(new ResultSignIn());
 //        when(userService.signIn(any(RequestUserSignIn.class))).thenReturn(signInResponse);
 
         // When / Then

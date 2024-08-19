@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @LogExecutionTime(logTarget = LogTarget.ADAPTER)
 @RequiredArgsConstructor
 @Service
-public class UserAdapter implements UserOutport {
+public class UserPersistenceAdapter implements UserOutport {
     private final UserRepository userRepository;
 
     @Override

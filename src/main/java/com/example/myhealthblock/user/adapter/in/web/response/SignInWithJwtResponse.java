@@ -9,11 +9,11 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ResponseSignInWithJwt {
+public class SignInWithJwtResponse {
     private String refreshToken;
     private String role;
 
-    public ResponseSignInWithJwt(String errorMessage) {
+    public SignInWithJwtResponse(String errorMessage) {
         this.refreshToken = null;
         this.role = errorMessage;
     }

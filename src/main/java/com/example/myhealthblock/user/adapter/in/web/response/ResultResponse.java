@@ -1,4 +1,4 @@
-package com.example.myhealthblock.patient.adapter.in.web.response;
+package com.example.myhealthblock.user.adapter.in.web.response;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -7,10 +7,10 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class ResponseResult {
+public class ResultResponse {
     private String result;
 
-    public ResponseResult(String result) {
+    public ResultResponse(String result) {
         this.result = result;
     }
 }

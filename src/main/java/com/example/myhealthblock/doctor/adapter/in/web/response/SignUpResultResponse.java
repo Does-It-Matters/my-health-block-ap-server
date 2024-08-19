@@ -11,10 +11,10 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class ResponseResult {
+public class SignUpResultResponse {
     private String result;
 
-    public ResponseResult(String result) {
+    public SignUpResultResponse(String result) {
         this.result = result;
     }
 }

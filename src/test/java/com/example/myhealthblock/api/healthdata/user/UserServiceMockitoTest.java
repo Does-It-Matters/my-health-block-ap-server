@@ -3,7 +3,7 @@ package com.example.myhealthblock.api.healthdata.user;
 import com.example.myhealthblock.user.domain.model.User;
 import com.example.myhealthblock.user.application.port.out.UserOutport;
 import com.example.myhealthblock.user.application.service.UserService;
-import com.example.myhealthblock.user.adapter.in.web.request.RequestUserSignUp;
+import com.example.myhealthblock.user.adapter.in.web.request.UserSignUpRequest;
 
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +17,7 @@ public class UserServiceMockitoTest {
         // Given
         UserOutport outport = mock(UserOutport.class);
         UserService userService = new UserService(outport);
-        RequestUserSignUp dto = new RequestUserSignUp();
+        UserSignUpRequest dto = new UserSignUpRequest();
         dto.setId("user");
         dto.setPw("password");
         dto.setRole("PATIENT");
@@ -38,7 +38,7 @@ public class UserServiceMockitoTest {
         // Given
         UserOutport outport = mock(UserOutport.class);
         UserService userService = new UserService(outport);
-        RequestUserSignUp dto = new RequestUserSignUp();
+        UserSignUpRequest dto = new UserSignUpRequest();
         dto.setId("user");
         dto.setPw("password");
         dto.setRole("PATIENT");

@@ -5,8 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class RequestUserSignUp {
-    private String id;
-    private String pw;
-    private String role;
+public class UserUpdatePwRequest {
+    private String oldPw;
+    private String newPw;
 }

@@ -1,14 +1,14 @@
 package com.example.myhealthblock.doctor.application.service;
 
 import com.example.myhealthblock.doctor.application.port.out.DoctorOutport;
-import com.example.myhealthblock.doctor.adapter.in.web.request.RequestDoctorSignUp;
+import com.example.myhealthblock.doctor.adapter.in.web.request.DoctorSignUpRequest;
 import com.example.myhealthblock.doctor.domain.model.Doctor;
 import com.example.myhealthblock.doctor.domain.dto.DoctorProfileDTO;
 import com.example.myhealthblock.doctor.domain.dto.DoctorSignUpRequestDTO;
 import com.example.myhealthblock.doctor.domain.dto.DoctorSignUpResponseDTO;
 import com.example.myhealthblock.doctor.domain.mapper.DoctorMapper;
 import com.example.myhealthblock.user.application.port.in.UserSignUp;
-import com.example.myhealthblock.user.adapter.in.web.request.RequestUserSignUp;
+import com.example.myhealthblock.user.adapter.in.web.request.UserSignUpRequest;
 import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
 
@@ -24,7 +24,7 @@ public class DoctorService {
     private final DoctorMapper mapper = DoctorMapper.INSTANCE;
 
     public DoctorSignUpResponseDTO signUp(DoctorSignUpRequestDTO dto) {
-        RequestUserSignUp userSignUp = new RequestUserSignUp();
+        UserSignUpRequest userSignUp = new UserSignUpRequest();
         userSignUp.setId(dto.getId());
         userSignUp.setPw(dto.getPw());
         userSignUp.setRole("DOCTOR");
@@ -49,8 +49,8 @@ public class DoctorService {
      * @param dto 의료진 회원가입 요청 데이터
      * @return 회원가입 성공 여부
      */
-    public boolean signUp(RequestDoctorSignUp dto) {
-        RequestUserSignUp user = new RequestUserSignUp();
+    public boolean signUp(DoctorSignUpRequest dto) {
+        UserSignUpRequest user = new UserSignUpRequest();
         user.setId(dto.getId());
         user.setPw(dto.getPw());
         user.setRole(dto.getRole());

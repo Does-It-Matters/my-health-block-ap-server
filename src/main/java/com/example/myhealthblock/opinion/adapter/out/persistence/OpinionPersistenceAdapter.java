@@ -18,8 +18,8 @@ import java.util.List;
 @LogExecutionTime(logTarget = LogTarget.ADAPTER)
 @RequiredArgsConstructor
 @Service
-public class OpinionAdapter implements OpinionOutport {
-    private static final Logger logger = LoggerFactory.getLogger(OpinionAdapter.class);
+public class OpinionPersistenceAdapter implements OpinionOutport {
+    private static final Logger logger = LoggerFactory.getLogger(OpinionPersistenceAdapter.class);
 
     private final OpinionRepository opinionRepository;
 

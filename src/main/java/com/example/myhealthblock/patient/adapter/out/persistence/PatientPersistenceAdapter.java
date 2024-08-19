@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @LogExecutionTime(logTarget = LogTarget.ADAPTER)
 @RequiredArgsConstructor
 @Service
-public class PatientAdapter implements PatientOutport {
+public class PatientPersistenceAdapter implements PatientOutport {
     private final PatientRepository patientRepository;
 
     @Override

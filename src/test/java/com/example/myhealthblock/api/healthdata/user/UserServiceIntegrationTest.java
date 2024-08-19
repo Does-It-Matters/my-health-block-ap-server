@@ -1,7 +1,7 @@
 package com.example.myhealthblock.api.healthdata.user;
 
 import com.example.myhealthblock.user.application.service.UserService;
-import com.example.myhealthblock.user.adapter.in.web.request.RequestUserSignUp;
+import com.example.myhealthblock.user.adapter.in.web.request.UserSignUpRequest;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,7 +16,7 @@ public class UserServiceIntegrationTest {
     @Test
     void testSignUpIntegration() {
         // Given
-        RequestUserSignUp dto = new RequestUserSignUp();
+        UserSignUpRequest dto = new UserSignUpRequest();
         dto.setId("user");
         dto.setPw("password");
         dto.setRole("PATIENT");

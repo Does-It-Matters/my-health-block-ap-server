@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
 @LogExecutionTime(logTarget = LogTarget.ADAPTER)
 @RequiredArgsConstructor
 @Service
-public class QuestionAdapter implements QuestionOutport {
+public class QuestionPersistenceAdapter implements QuestionOutport {
     private final QuestionRepository questionRepository;
     private final PatientRepository patientRepository;
     private final PersonalDataRepository personalDataRepository;

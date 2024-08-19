@@ -8,10 +8,10 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class ResponseQuestionList {
+public class QuestionListResponse {
     private QuestionTitleDTO[] list;
 
-    public ResponseQuestionList(QuestionTitleDTO[] list) {
+    public QuestionListResponse(QuestionTitleDTO[] list) {
         this.list = list;
     }
 }

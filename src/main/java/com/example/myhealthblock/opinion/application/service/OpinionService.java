@@ -1,6 +1,6 @@
 package com.example.myhealthblock.opinion.application.service;
 
-import com.example.myhealthblock.opinion.adapter.in.web.request.RequestOpinionEnroll;
+import com.example.myhealthblock.opinion.adapter.in.web.request.OpinionEnrollRequest;
 import com.example.myhealthblock.opinion.application.port.out.OpinionOutport;
 import com.example.myhealthblock.opinion.domain.dto.OpinionDTO;
 import com.example.myhealthblock.question.application.port.in.GetQuestionEntityDTO;
@@ -17,7 +17,7 @@ public class OpinionService {
     private final GetQuestionEntityDTO questionInport;
     private final GetUserEntityDTO userInport;
 
-    public OpinionDTO enroll(RequestOpinionEnroll dto) {
+    public OpinionDTO enroll(OpinionEnrollRequest dto) {
         QuestionEntityDTO questionDto = questionInport.getQuestionEntityDTO(dto.getQuestionId());
         UserEntityDTO userDto = userInport.getUserEntityDTO(dto.getUserId());
 
