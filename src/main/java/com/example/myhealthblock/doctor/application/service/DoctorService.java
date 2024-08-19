@@ -1,5 +1,6 @@
 package com.example.myhealthblock.doctor.application.service;
 
+import com.example.myhealthblock.doctor.application.port.in.DoctorInport;
 import com.example.myhealthblock.doctor.application.port.out.DoctorOutport;
 import com.example.myhealthblock.doctor.adapter.in.web.request.DoctorSignUpRequest;
 import com.example.myhealthblock.doctor.domain.model.Doctor;
@@ -18,7 +19,7 @@ import lombok.RequiredArgsConstructor;
  */
 @RequiredArgsConstructor
 @Service
-public class DoctorService {
+public class DoctorService implements DoctorInport {
     private final DoctorOutport outport;
     private final UserSignUp userInport;
     private final DoctorMapper mapper = DoctorMapper.INSTANCE;
@@ -49,6 +50,7 @@ public class DoctorService {
      * @param dto 의료진 회원가입 요청 데이터
      * @return 회원가입 성공 여부
      */
+    @Override
     public boolean signUp(DoctorSignUpRequest dto) {
         UserSignUpRequest user = new UserSignUpRequest();
         user.setId(dto.getId());
@@ -67,6 +69,7 @@ public class DoctorService {
      * @param doctorId 의료진 ID
      * @return 의료진 프로필 데이터
      */
+    @Override
     public DoctorProfileDTO getDoctorProfile(String doctorId) {
         return outport.getDoctorProfile(doctorId);
     }
