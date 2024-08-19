@@ -7,6 +7,7 @@ import lombok.Setter;
 @Setter
 public class DoctorSignUpRequestDTO {
     private String id;
+    private String pw;
     private String name;
     private String field;
     private String hospital;

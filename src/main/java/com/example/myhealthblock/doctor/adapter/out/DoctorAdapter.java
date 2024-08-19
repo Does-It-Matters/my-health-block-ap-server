@@ -3,6 +3,7 @@ package com.example.myhealthblock.doctor.adapter.out;
 import com.example.myhealthblock.aop.LogExecutionTime;
 import com.example.myhealthblock.aop.LogTarget;
 import com.example.myhealthblock.doctor.DoctorOutport;
+import com.example.myhealthblock.doctor.domain.Doctor;
 import com.example.myhealthblock.doctor.dto.DoctorProfileDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class DoctorAdapter implements DoctorOutport {
     private final DoctorRepository doctorRepository;
+
+    @Override
+    public boolean create(Doctor doctor) {
+        return false;
+    }
 
     /**
      * <b> 역할: 의료진 데이터 저장하는 메소드 </b>

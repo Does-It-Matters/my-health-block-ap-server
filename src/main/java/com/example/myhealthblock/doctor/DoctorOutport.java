@@ -1,5 +1,6 @@
 package com.example.myhealthblock.doctor;
 
+import com.example.myhealthblock.doctor.domain.Doctor;
 import com.example.myhealthblock.doctor.dto.DoctorProfileDTO;
 import com.example.myhealthblock.user.User;
 
@@ -9,6 +10,7 @@ import com.example.myhealthblock.user.User;
  * <br>- 육각형 아키텍처를 위한 출력 포트
  */
 public interface DoctorOutport {
+    boolean create(Doctor doctor);
 
     /**
      * <b> 역할: 의료진 데이터 저장 메소드 </b>
