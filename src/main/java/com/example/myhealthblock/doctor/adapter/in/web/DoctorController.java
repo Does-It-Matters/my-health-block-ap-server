@@ -2,6 +2,7 @@ package com.example.myhealthblock.doctor.adapter.in.web;
 
 import com.example.myhealthblock.aop.LogExecutionTime;
 import com.example.myhealthblock.aop.LogTarget;
+import com.example.myhealthblock.doctor.application.port.in.dto.DoctorSignUpDTO;
 import com.example.myhealthblock.doctor.application.service.DoctorService;
 import com.example.myhealthblock.doctor.adapter.in.web.request.DoctorSignUpRequest;
 import com.example.myhealthblock.doctor.adapter.in.web.response.DoctorDataResponse;
@@ -40,7 +41,7 @@ public class DoctorController {
     @Operation(summary = "의사 회원가입", description = "아이디와 패스워드, 추가 데이터로 회원가입")
     @PostMapping("/v2/doctor/sign-up")
     public ResponseEntity<SignUpResultResponse> signUp(@RequestBody DoctorSignUpRequest body) {
-        doctorService.signUp(body);
+        doctorService.signUp(DoctorSignUpDTO.from(body));
         SignUpResultResponse response = new SignUpResultResponse();
 
         response.setResult("success");

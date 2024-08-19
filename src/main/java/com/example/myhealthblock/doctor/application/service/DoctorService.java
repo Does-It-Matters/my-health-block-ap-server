@@ -1,8 +1,8 @@
 package com.example.myhealthblock.doctor.application.service;
 
 import com.example.myhealthblock.doctor.application.port.in.DoctorInport;
+import com.example.myhealthblock.doctor.application.port.in.dto.DoctorSignUpDTO;
 import com.example.myhealthblock.doctor.application.port.out.DoctorOutport;
-import com.example.myhealthblock.doctor.adapter.in.web.request.DoctorSignUpRequest;
 import com.example.myhealthblock.doctor.domain.model.Doctor;
 import com.example.myhealthblock.doctor.domain.dto.DoctorProfileDTO;
 import com.example.myhealthblock.doctor.domain.dto.DoctorSignUpRequestDTO;
@@ -51,7 +51,7 @@ public class DoctorService implements DoctorInport {
      * @return 회원가입 성공 여부
      */
     @Override
-    public boolean signUp(DoctorSignUpRequest dto) {
+    public boolean signUp(DoctorSignUpDTO dto) {
         UserSignUpRequest user = new UserSignUpRequest();
         user.setId(dto.getId());
         user.setPw(dto.getPw());
