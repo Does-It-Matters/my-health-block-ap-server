@@ -57,7 +57,9 @@ public class DoctorController {
     @Operation(summary = "의료진 프로필 조회", description = "의료진의 데이터 중 공개용 데이터 조회 <br>{doctorId}는 의료진이 가입한 아이디")
     @GetMapping("/v2/doctor/{doctorId}")
     public ResponseEntity<DoctorDataResponse> get(@PathVariable String doctorId) {
-        DoctorProfileDTO profile = doctorService.getDoctorProfile(doctorId);
-        return ResponseEntity.ok(new DoctorDataResponse(profile.getName(), profile.getField(), profile.getHospital(), profile.getIntroduction()));
+        DoctorProfileDTO profileDTO = doctorService.getDoctorProfile(doctorId);
+
+        DoctorDataResponse response = DoctorDataResponse.from(profileDTO);
+        return ResponseEntity.ok(response);
     }
 }

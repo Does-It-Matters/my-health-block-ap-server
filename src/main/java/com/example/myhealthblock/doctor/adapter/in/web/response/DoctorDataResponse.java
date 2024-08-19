@@ -1,5 +1,7 @@
 package com.example.myhealthblock.doctor.adapter.in.web.response;
 
+import com.example.myhealthblock.doctor.domain.dto.DoctorProfileDTO;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,16 +13,24 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class DoctorDataResponse {
     private String name;
     private String field;
     private String hospital;
     private String introduction;
 
-    public DoctorDataResponse(String name, String field, String hospital, String introduction) {
-        this.name = name;
-        this.field = field;
-        this.hospital = hospital;
-        this.introduction = introduction;
+    /**
+     * <b> 역할: 서비스 계층에서 넘어온 dto를 응답 객체에 매핑하는 메소드 </b>
+     * @param dto 서비스 계층에서 전달된 의료진 프로필 조회 dto
+     * @return 매핑된 응답 객체
+     */
+    public static DoctorDataResponse from(DoctorProfileDTO dto) {
+        return new DoctorDataResponse(
+                dto.getName(),
+                dto.getField(),
+                dto.getHospital(),
+                dto.getIntroduction()
+        );
     }
 }
