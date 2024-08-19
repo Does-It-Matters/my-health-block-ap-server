@@ -4,6 +4,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * <b> 역할: 의료진 프로필 조회에 대한 응답 정보 클래스 </b>
+ * <br>- 의료진 프로필 정보
+ */
 @Getter
 @Setter
 @NoArgsConstructor

@@ -4,6 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * <b> 역할: 의료진 프로필 DTO </b>
+ * <br>- 의료진 프로필 정보
+ */
 @Getter
 @Setter
 @AllArgsConstructor
