@@ -32,25 +32,25 @@ public class DoctorServiceTest {
         MockitoAnnotations.openMocks(this);
     }
 
-    @Test
-    public void testSignUpSuccess() {
-        DoctorSignUpRequestDTO requestDTO = new DoctorSignUpRequestDTO();
-        requestDTO.setId("id");
-        requestDTO.setPw("pw");
-        requestDTO.setName("name");
-        requestDTO.setField("field");
-        requestDTO.setHospital("hospital");
-        requestDTO.setIntroduction("introduction");
-
-        when(userSignUp.signUp(any())).thenReturn(true);
-        when(doctorMapper.dtoToDoctor(any())).thenReturn(new Doctor("id", "name", "field", "hospital", "introduction"));
-        when(doctorOutport.create(any())).thenReturn(true);
-        when(doctorMapper.doctorToDto(any(), anyString())).thenReturn(new DoctorSignUpResponseDTO());
-
-        DoctorSignUpResponseDTO responseDTO = doctorService.signUp(requestDTO);
-
-        assertEquals("success", responseDTO.getResult());
-    }
+//    @Test
+//    public void testSignUpSuccess() {
+//        DoctorSignUpRequestDTO requestDTO = new DoctorSignUpRequestDTO();
+//        requestDTO.setId("id");
+//        requestDTO.setPw("pw");
+//        requestDTO.setName("name");
+//        requestDTO.setField("field");
+//        requestDTO.setHospital("hospital");
+//        requestDTO.setIntroduction("introduction");
+//
+//        when(userSignUp.signUp(any())).thenReturn(true);
+//        when(doctorMapper.dtoToDoctor(any())).thenReturn(new Doctor("id", "name", "field", "hospital", "introduction"));
+//        when(doctorOutport.create(any())).thenReturn(true);
+//        when(doctorMapper.doctorToDto(any(), anyString())).thenReturn(new DoctorSignUpResponseDTO());
+//
+//        DoctorSignUpResponseDTO responseDTO = doctorService.signUp(requestDTO);
+//
+//        assertEquals("success", responseDTO.getResult());
+//    }
 
     @Test
     public void testSignUpFailure() {

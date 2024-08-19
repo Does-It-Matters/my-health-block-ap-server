@@ -23,23 +23,23 @@ public class DoctorService {
     private final UserSignUp userInport;
     private final DoctorMapper mapper = DoctorMapper.INSTANCE;
 
-    public DoctorSignUpResponseDTO signUp(DoctorSignUpRequestDTO dto) {
-        UserSignUpRequest userSignUp = new UserSignUpRequest();
-        userSignUp.setId(dto.getId());
-        userSignUp.setPw(dto.getPw());
-        userSignUp.setRole("DOCTOR");
-
-        if (userInport.signUp(userSignUp)) {
-            Doctor doctor = mapper.dtoToDoctor(dto);
-            outport.create(doctor);
-
-            return mapper.doctorToDto(doctor, "success");
-        } else {
-            DoctorSignUpResponseDTO responseDTO = new DoctorSignUpResponseDTO();
-            responseDTO.setResult("failure");
-            return responseDTO;
-        }
-    }
+//    public DoctorSignUpResponseDTO signUp(DoctorSignUpRequestDTO dto) {
+//        UserSignUpRequest userSignUp = new UserSignUpRequest();
+//        userSignUp.setId(dto.getId());
+//        userSignUp.setPw(dto.getPw());
+//        userSignUp.setRole("DOCTOR");
+//
+//        if (userInport.signUp(userSignUp)) {
+//            Doctor doctor = mapper.dtoToDoctor(dto);
+//            outport.create(doctor);
+//
+//            return mapper.doctorToDto(doctor, "success");
+//        } else {
+//            DoctorSignUpResponseDTO responseDTO = new DoctorSignUpResponseDTO();
+//            responseDTO.setResult("failure");
+//            return responseDTO;
+//        }
+//    }
 
     /**
      * <b> 역할: 의료진 회원가입 메소드 </b>
