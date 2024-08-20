@@ -1,4 +1,4 @@
-package com.example.myhealthblock.api.healthdata.user;
+package com.example.myhealthblock.user;
 
 import com.example.myhealthblock.user.domain.model.User;
 import com.example.myhealthblock.user.application.port.out.UserOutport;

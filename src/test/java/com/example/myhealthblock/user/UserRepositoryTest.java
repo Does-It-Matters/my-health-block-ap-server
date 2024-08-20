@@ -1,4 +1,4 @@
-package com.example.myhealthblock.api.healthdata.user;
+package com.example.myhealthblock.user;
 
 import com.example.myhealthblock.user.adapter.out.persistence.UserEntity;
 import com.example.myhealthblock.user.adapter.out.persistence.UserRepository;

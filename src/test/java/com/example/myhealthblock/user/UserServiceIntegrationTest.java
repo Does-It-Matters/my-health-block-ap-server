@@ -1,4 +1,4 @@
-package com.example.myhealthblock.api.healthdata.user;
+package com.example.myhealthblock.user;
 
 import com.example.myhealthblock.user.application.service.UserService;
 import com.example.myhealthblock.user.adapter.in.web.request.UserSignUpRequest;
