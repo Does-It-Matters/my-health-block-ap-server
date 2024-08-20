@@ -2,16 +2,15 @@ package com.example.myhealthblock.doctor.adapter.in.web;
 
 import com.example.myhealthblock.aop.LogExecutionTime;
 import com.example.myhealthblock.aop.LogTarget;
-import com.example.myhealthblock.doctor.application.port.in.dto.DoctorSignUpDTO;
 import com.example.myhealthblock.doctor.application.service.DoctorService;
 import com.example.myhealthblock.doctor.adapter.in.web.request.DoctorSignUpRequest;
 import com.example.myhealthblock.doctor.adapter.in.web.response.DoctorDataResponse;
 import com.example.myhealthblock.doctor.adapter.in.web.response.SignUpResultResponse;
 import com.example.myhealthblock.doctor.domain.dto.DoctorProfileDTO;
+import com.example.myhealthblock.doctor.application.port.in.dto.DoctorSignUpInportDTO;
 import com.example.myhealthblock.exception.UserAlreadyExistsException;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,7 +40,7 @@ public class DoctorController {
     @Operation(summary = "의사 회원가입", description = "아이디와 패스워드, 추가 데이터로 회원가입")
     @PostMapping("/v2/doctor/sign-up")
     public ResponseEntity<SignUpResultResponse> signUp(@RequestBody DoctorSignUpRequest body) {
-        doctorService.signUp(DoctorSignUpDTO.from(body));
+        doctorService.signUp(body.toInportDTO());
         SignUpResultResponse response = new SignUpResultResponse();
 
         response.setResult("success");

@@ -1,5 +1,6 @@
 package com.example.myhealthblock.doctor.adapter.in.web.request;
 
+import com.example.myhealthblock.doctor.application.port.in.dto.DoctorSignUpInportDTO;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,4 +18,16 @@ public class DoctorSignUpRequest {
     String field;
     String hospital;
     String introduction;
+
+    public DoctorSignUpInportDTO toInportDTO() {
+        return new DoctorSignUpInportDTO(
+                id,
+                pw,
+                role,
+                name,
+                field,
+                hospital,
+                introduction
+        );
+    }
 }

@@ -26,24 +26,6 @@ public class DoctorPersistenceAdapter implements DoctorOutport {
     }
 
     /**
-     * <b> 역할: 의료진 데이터 저장하는 메소드 </b>
-     *
-     * @param id           중복 여부를 확인한 의료진 ID
-     * @param name         의료진 이름
-     * @param field        전문 분야
-     * @param hospital     병원명
-     * @param introduction 자기소개
-     * @return 저장 성공 여부
-     */
-    @Override
-    public boolean create(String id, String name, String field, String hospital, String introduction) {
-        DoctorEntity q = new DoctorEntity(id, name, field, hospital, introduction);
-        this.doctorRepository.save(q);
-
-        return true;
-    }
-
-    /**
      * <b> 역할: 의료진 프로필 조회하는 메소드 </b>
      *
      * @param doctorId 의료진 ID

@@ -2,10 +2,9 @@ package com.example.myhealthblock.doctor.application.service;
 
 import com.example.myhealthblock.doctor.application.port.out.DoctorOutport;
 import com.example.myhealthblock.doctor.domain.dto.DoctorProfileDTO;
-import com.example.myhealthblock.doctor.domain.dto.DoctorSignUpRequestDTO;
-import com.example.myhealthblock.doctor.domain.dto.DoctorSignUpResponseDTO;
+import com.example.myhealthblock.doctor.application.port.in.dto.DoctorSignUpInportDTO;
+import com.example.myhealthblock.doctor.application.port.out.dto.DoctorSignUpOutportDTO;
 import com.example.myhealthblock.doctor.domain.mapper.DoctorMapper;
-import com.example.myhealthblock.doctor.domain.model.Doctor;
 import com.example.myhealthblock.user.application.port.in.UserSignUp;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -54,13 +53,13 @@ public class DoctorServiceTest {
 
     @Test
     public void testSignUpFailure() {
-        DoctorSignUpRequestDTO requestDTO = new DoctorSignUpRequestDTO();
+        DoctorSignUpInportDTO requestDTO = new DoctorSignUpInportDTO();
         requestDTO.setId("id");
         requestDTO.setPw("pw");
 
         when(userSignUp.signUp(any())).thenReturn(false);
 
-        DoctorSignUpResponseDTO responseDTO = doctorService.signUp(requestDTO);
+        DoctorSignUpOutportDTO responseDTO = doctorService.signUp(requestDTO);
 
         assertEquals("failure", responseDTO.getResult());
     }

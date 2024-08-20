@@ -1,11 +1,11 @@
-package com.example.myhealthblock.doctor.domain.dto;
+package com.example.myhealthblock.doctor.application.port.out.dto;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class DoctorSignUpResponseDTO {
+public class DoctorSignUpOutportDTO {
     private String id;
     private String name;
     private String field;
