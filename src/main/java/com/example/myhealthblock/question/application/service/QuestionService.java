@@ -1,14 +1,13 @@
 package com.example.myhealthblock.question.application.service;
 
-import com.example.myhealthblock.patient.application.port.in.GetPatientEntityDTO;
-import com.example.myhealthblock.patient.domain.dto.PatientEntityDTO;
 import com.example.myhealthblock.question.application.port.in.QuestionInport;
+import com.example.myhealthblock.question.application.port.in.dto.QuestionEnrollInportRequest;
+import com.example.myhealthblock.question.application.port.out.dto.QuestionEnrollOutportRequest;
 import com.example.myhealthblock.question.common.Category;
 import com.example.myhealthblock.question.application.port.out.QuestionOutport;
 import com.example.myhealthblock.question.domain.dto.QuestionDTO;
-import com.example.myhealthblock.question.adapter.in.web.request.QuestionEnrollRequest;
-import com.example.myhealthblock.question.domain.dto.QuestionEntityDTO;
 import com.example.myhealthblock.question.domain.dto.QuestionTitleDTO;
+import com.example.myhealthblock.question.domain.mapper.QuestionMapper;
 import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
 
@@ -16,12 +15,12 @@ import lombok.RequiredArgsConstructor;
 @Service
 public class QuestionService implements QuestionInport {
     private final QuestionOutport outport;
-    private final GetPatientEntityDTO patientInport;
+    private final QuestionMapper mapper = QuestionMapper.INSTANCE;
 
     @Override
-    public String enroll(QuestionEnrollRequest dto) {
-        PatientEntityDTO patientDto = patientInport.getPatientEntityDTO(dto.getUserId());
-        boolean result = outport.create(patientDto.getEntity(), dto.getTitle(), dto.getCategory(), dto.getSymptom(), dto.getContent(), dto.getBodyParts(), dto.getPersonalData());
+    public String enroll(QuestionEnrollInportRequest dto) {
+        QuestionEnrollOutportRequest request = mapper.INSTANCE.inportRequestToOutportRequest(dto);
+        boolean result = outport.create(request);
 
         return result ? "success" : "fail";
     }
@@ -32,9 +31,8 @@ public class QuestionService implements QuestionInport {
     }
 
     @Override
-    public QuestionTitleDTO[] getQuestions(String userId) {
-        PatientEntityDTO patientDto = patientInport.getPatientEntityDTO(userId);
-        return outport.getQuestions(patientDto.getEntity());
+    public QuestionTitleDTO[] getQuestions(int userId) {
+        return outport.getQuestions(userId);
     }
 
     @Override
@@ -48,11 +46,6 @@ public class QuestionService implements QuestionInport {
     }
 
     @Override
-    public QuestionEntityDTO getQuestionEntityDTO(int questionId) {
-        return outport.getQuestionEntityDTO(questionId);
-    }
-
-    @Override
     public String update(Integer questionId, String title, String symptom, String content) {
         boolean result = outport.update(questionId, title, symptom, content);
         return result ? "success" : "fail";
@@ -63,22 +56,4 @@ public class QuestionService implements QuestionInport {
         boolean result = outport.delete(questionId);
         return result ? "success" : "fail";
     }
-
-//    성능 측정 대상 - 질문 내용들까지 보낼 때와 제목만 보낼 때
-//    public QuestionDTO[] getQuestionsWithDetail() {
-//        return outport.getQuestionsWithDetail();
-//    }
-
-//    public QuestionDTO[] getQuestionsWithDetail(String userId) {
-//        PatientEntityDTO patientDto = patientInport.getPatientEntityDTO(userId);
-//        return outport.getQuestionsWithDetail(patientDto.getEntity());
-//    }
-//
-//    public QuestionDTO[] getQuestionsWithDetail(Category category) {
-//        return outport.getQuestionsWithDetail(category);
-//    }
-//
-//    public QuestionDTO[] getQuestionsWithDetailByOpinionUserId(String opinionUserId) {
-//        return outport.getQuestionsWithDetailByOpinionUserId(opinionUserId);
-//    }
 }

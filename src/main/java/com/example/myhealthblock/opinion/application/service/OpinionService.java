@@ -1,6 +1,5 @@
 package com.example.myhealthblock.opinion.application.service;
 
-import com.example.myhealthblock.doctor.domain.mapper.DoctorMapper;
 import com.example.myhealthblock.opinion.application.port.in.OpinionInport;
 import com.example.myhealthblock.opinion.application.port.in.dto.OpinionEnrollInportRequest;
 import com.example.myhealthblock.opinion.application.port.out.OpinionOutport;
@@ -8,8 +7,6 @@ import com.example.myhealthblock.opinion.application.port.in.dto.OpinionInportDT
 import com.example.myhealthblock.opinion.application.port.out.dto.OpinionEnrollOutportRequest;
 import com.example.myhealthblock.opinion.application.port.out.dto.OpinionOutportDTO;
 import com.example.myhealthblock.opinion.domain.mapper.OpinionMapper;
-import com.example.myhealthblock.question.application.port.in.GetQuestionEntityDTO;
-import com.example.myhealthblock.user.application.port.in.GetUserEntityDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,8 +14,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class OpinionService implements OpinionInport {
     private final OpinionOutport outport;
-    private final GetQuestionEntityDTO questionInport;
-    private final GetUserEntityDTO userInport;
     private final OpinionMapper mapper = OpinionMapper.INSTANCE;
 
     @Override

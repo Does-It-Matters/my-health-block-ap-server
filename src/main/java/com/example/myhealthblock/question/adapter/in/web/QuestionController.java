@@ -4,7 +4,6 @@ import com.example.myhealthblock.aop.LogExecutionTime;
 import com.example.myhealthblock.aop.LogTarget;
 import com.example.myhealthblock.question.application.port.in.QuestionInport;
 import com.example.myhealthblock.question.common.Category;
-import com.example.myhealthblock.question.application.service.QuestionService;
 import com.example.myhealthblock.question.adapter.in.web.request.QuestionEnrollRequest;
 import com.example.myhealthblock.question.adapter.in.web.request.QuestionUpdateRequest;
 import com.example.myhealthblock.question.adapter.in.web.response.QuestionListResponse;
@@ -30,13 +29,14 @@ public class QuestionController {
     @PostMapping("/v2/question/enroll")
     public ResponseEntity<ResultResponse> enroll(@RequestBody QuestionEnrollRequest body) {
         ResultResponse response = new ResultResponse();
-        response.setResult(questionInport.enroll(body));
+        String result = questionInport.enroll(body.toInportDTO());
+        response.setResult(result);
         return ResponseEntity.ok(response);
     }
 
     @Operation(summary = "질문 목록 조회", description = "질문 식별자와 제목으로 목록 조회 <br>catetory는 게시판 카테고리<br>userId는 회원가입 아이디")
     @GetMapping("/v2/question/list")
-    public ResponseEntity<QuestionListResponse> getTitles(@RequestParam(required = false) Category category, @RequestParam(required = false) String userId) {
+    public ResponseEntity<QuestionListResponse> getTitles(@RequestParam(required = false) Category category, @RequestParam(required = false) Integer userId) {
         QuestionTitleDTO[] list = null;
         if (userId != null) {
             list = questionInport.getQuestions(userId);
@@ -65,24 +65,4 @@ public class QuestionController {
     public ResponseEntity<ResultResponse> delete(@PathVariable Integer questionId) {
         return ResponseEntity.ok(new ResultResponse(questionInport.delete(questionId)));
     }
-
-//    @Operation(summary = "질문들 조회", description = "질문들 내용까지 함께 조회")
-//    @GetMapping("/v1/question")
-//    public ResponseEntity<ResponseQuestions> getQuestions(@RequestParam(required = false) Category category, @RequestParam(required = false) String userId, @RequestParam(required = false) String opinionUserId) {
-//        ResponseQuestions response  = new ResponseQuestions();
-//        QuestionDTO[] list = null;
-//        if (userId != null) {
-//            list = questionService.getQuestionsWithDetail(userId);
-//        } else if (category == Category.ENTIRE){
-//            list = questionService.getQuestionsWithDetail();
-//        } else if (category != null){
-//            list = questionService.getQuestionsWithDetail(category);
-//        } else if (opinionUserId != null) {
-//            list = questionService.getQuestionsWithDetailByOpinionUserId(opinionUserId);
-//        } else {
-//            list = questionService.getQuestionsWithDetail();
-//        }
-//        response.setQuestions(list);
-//        return ResponseEntity.ok(response);
-//    }
 }
