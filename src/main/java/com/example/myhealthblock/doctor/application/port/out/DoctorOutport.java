@@ -1,6 +1,6 @@
 package com.example.myhealthblock.doctor.application.port.out;
 
-import com.example.myhealthblock.doctor.domain.model.Doctor;
+import com.example.myhealthblock.doctor.application.port.out.dto.DoctorSignUpOutportRequest;
 import com.example.myhealthblock.doctor.application.port.out.dto.DoctorProfileOutportResponse;
 
 /**
@@ -16,7 +16,7 @@ public interface DoctorOutport {
      * @param doctor 영속성 계층에 전달할 도메인 객체
      * @return 성공하면 true, 실패하면 false
      */
-    boolean create(Doctor doctor);
+    boolean create(DoctorSignUpOutportRequest doctor);
 
     /**
      * <b> 역할: 의료진 프로필 조회 메소드 </b>

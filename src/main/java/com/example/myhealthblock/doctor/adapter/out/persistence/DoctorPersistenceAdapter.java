@@ -3,7 +3,7 @@ package com.example.myhealthblock.doctor.adapter.out.persistence;
 import com.example.myhealthblock.aop.LogExecutionTime;
 import com.example.myhealthblock.aop.LogTarget;
 import com.example.myhealthblock.doctor.application.port.out.DoctorOutport;
-import com.example.myhealthblock.doctor.domain.model.Doctor;
+import com.example.myhealthblock.doctor.application.port.out.dto.DoctorSignUpOutportRequest;
 import com.example.myhealthblock.doctor.application.port.out.dto.DoctorProfileOutportResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -27,7 +27,7 @@ public class DoctorPersistenceAdapter implements DoctorOutport {
      * @return 저장 성공 여부
      */
     @Override
-    public boolean create(Doctor doctor) {
+    public boolean create(DoctorSignUpOutportRequest doctor) {
         DoctorEntity q = new DoctorEntity(doctor.getId(), doctor.getName(), doctor.getField(), doctor.getHospital(), doctor.getIntroduction());
         this.doctorRepository.save(q);
 
