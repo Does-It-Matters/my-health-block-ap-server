@@ -3,9 +3,8 @@ package com.example.myhealthblock.opinion.adapter.out.persistence;
 import com.example.myhealthblock.aop.LogExecutionTime;
 import com.example.myhealthblock.aop.LogTarget;
 import com.example.myhealthblock.opinion.application.port.out.OpinionOutport;
-import com.example.myhealthblock.opinion.domain.dto.OpinionDTO;
-import com.example.myhealthblock.question.adapter.out.persistence.question.QuestionEntity;
-import com.example.myhealthblock.user.adapter.out.persistence.UserEntity;
+import com.example.myhealthblock.opinion.application.port.out.dto.OpinionEnrollOutportRequest;
+import com.example.myhealthblock.opinion.application.port.out.dto.OpinionOutportDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,24 +23,24 @@ public class OpinionPersistenceAdapter implements OpinionOutport {
     private final OpinionRepository opinionRepository;
 
     @Override
-    public OpinionDTO create(QuestionEntity question, UserEntity user, String content) {
+    public OpinionOutportDTO create(OpinionEnrollOutportRequest dto) {
         OpinionEntity opinion = new OpinionEntity();
-        opinion.setContent(content);
-        opinion.setUser(user);
-        opinion.setQuestion(question);
+        opinion.setContent(dto.getContent());
+        opinion.setUserId(dto.getUserId());
+        opinion.setQuestionId(dto.getQuestionId());
         opinionRepository.save(opinion);
         return mapToDTO(opinion);
     }
 
     @Override
-    public OpinionDTO[] getOpinions(UserEntity user) {
-        List<OpinionEntity> opinions = opinionRepository.findByUser(user);
+    public OpinionOutportDTO[] getOpinionsByUserId(int userId) {
+        List<OpinionEntity> opinions = opinionRepository.findByUserId(userId);
         return getOpinionDTOs(opinions);
     }
 
     @Override
-    public OpinionDTO[] getOpinions(QuestionEntity question) {
-        List<OpinionEntity> opinions = opinionRepository.findByQuestion(question);
+    public OpinionOutportDTO[] getOpinionsByQuestionId(int questionId) {
+        List<OpinionEntity> opinions = opinionRepository.findByQuestionId(questionId);
         return getOpinionDTOs(opinions);
     }
 
@@ -62,19 +61,19 @@ public class OpinionPersistenceAdapter implements OpinionOutport {
         }
     }
 
-    private OpinionDTO[] getOpinionDTOs(List<OpinionEntity> opinions) {
+    private OpinionOutportDTO[] getOpinionDTOs(List<OpinionEntity> opinions) {
         return opinions.stream()
                 .map(this::mapToDTO)
-                .toArray(OpinionDTO[]::new);
+                .toArray(OpinionOutportDTO[]::new);
     }
 
-    private OpinionDTO mapToDTO(OpinionEntity opinion) {
+    private OpinionOutportDTO mapToDTO(OpinionEntity opinion) {
         int id = opinion.getId();
-        String userId = opinion.getUser().getUserId();
+        int userId = opinion.getUserId();
         String content = opinion.getContent();
         Date createDate = opinion.getCreateDate();
         Date lastModifiedDate = opinion.getLastModifiedDate();
 
-        return new OpinionDTO(id, userId, content, createDate, lastModifiedDate);
+        return new OpinionOutportDTO(id, userId, content, createDate, lastModifiedDate);
     }
 }

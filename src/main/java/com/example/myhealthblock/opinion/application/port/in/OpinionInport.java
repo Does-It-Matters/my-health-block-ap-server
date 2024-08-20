@@ -1,11 +1,11 @@
 package com.example.myhealthblock.opinion.application.port.in;
 
-import com.example.myhealthblock.opinion.adapter.in.web.request.OpinionEnrollRequest;
-import com.example.myhealthblock.opinion.domain.dto.OpinionDTO;
+import com.example.myhealthblock.opinion.application.port.in.dto.OpinionEnrollInportRequest;
+import com.example.myhealthblock.opinion.application.port.in.dto.OpinionInportDTO;
 
 public interface OpinionInport {
-    OpinionDTO enroll(OpinionEnrollRequest dto);
-    OpinionDTO[] getOpinions(String userId);
-    OpinionDTO[] getOpinions(Integer questionId);
+    OpinionInportDTO enroll(OpinionEnrollInportRequest dto);
+    OpinionInportDTO[] getOpinionsByUserId(int userId);
+    OpinionInportDTO[] getOpinionsByQuestionId(int questionId);
     String delete(Integer opinionId);
 }
