@@ -3,6 +3,8 @@
 1. 사용자 계정 관리
 2. 질의응답 관리
 
+<br> 깃허브 위키 작성 중  
+
 ## 설계: 육각형 아키텍처
 ```
 com.example.myhealthblock
@@ -25,11 +27,13 @@ com.example.myhealthblock
 │   │   │   ├── in
 │   │   │   │   ├── Inport.java
 │   │   │   │   └── dto
-│   │   │   │       └── InportDTO.java
+│   │   │   │       ├── InportRequest.java
+│   │   │   │       └── InportResponse.java
 │   │   │   └── out
 │   │   │       ├── Outport.java
 │   │   │       └── dto
-│   │   │           └── OutportDTO.java
+│   │   │           ├── OutportRequest.java
+│   │   │           └── OutportResponse.java
 │   │   └── service
 │   │       └── Service.java
 │   └── domain

@@ -1,13 +1,10 @@
 package com.example.myhealthblock.patient.adapter.out.persistence;
 
-import com.example.myhealthblock.question.adapter.out.persistence.question.QuestionEntity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Getter
 @Setter
@@ -33,18 +30,9 @@ public class PatientEntity {
     @Column
     private String urgentData;
 
-    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<QuestionEntity> questions = new ArrayList<>();
-
     @Column
     private LocalDateTime createDate;
 
     @Column
     private LocalDateTime lastEditDate;
-
-    public void addQuestion(QuestionEntity question) {
-        questions.add(question);
-        question.setPatient(this);
-    }
-
 }

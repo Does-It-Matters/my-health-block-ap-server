@@ -1,13 +1,13 @@
-package com.example.myhealthblock.user.domain.dto;
+package com.example.myhealthblock.user.application.port.in.dto;
 
 import com.example.myhealthblock.user.adapter.in.web.response.SignInResponse;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class ResultSignIn {
+public class UserSignInInportResponse {
     private Map<String, String> response;
-    public ResultSignIn () {
+    public UserSignInInportResponse() {
         response = new HashMap<String, String>();
         response.put("result", "fail");
         response.put("role", "");

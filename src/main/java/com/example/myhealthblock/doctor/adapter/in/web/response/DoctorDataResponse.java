@@ -1,6 +1,6 @@
 package com.example.myhealthblock.doctor.adapter.in.web.response;
 
-import com.example.myhealthblock.doctor.domain.dto.DoctorProfileDTO;
+import com.example.myhealthblock.doctor.application.port.in.dto.DoctorProfileInportResponse;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,7 +25,7 @@ public class DoctorDataResponse {
      * @param dto 서비스 계층에서 전달된 의료진 프로필 조회 dto
      * @return 매핑된 응답 객체
      */
-    public static DoctorDataResponse from(DoctorProfileDTO dto) {
+    public static DoctorDataResponse from(DoctorProfileInportResponse dto) {
         return new DoctorDataResponse(
                 dto.getName(),
                 dto.getField(),

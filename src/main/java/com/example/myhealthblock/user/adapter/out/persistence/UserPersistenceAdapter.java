@@ -4,7 +4,6 @@ import com.example.myhealthblock.aop.LogExecutionTime;
 import com.example.myhealthblock.aop.LogTarget;
 import com.example.myhealthblock.user.domain.model.User;
 import com.example.myhealthblock.user.application.port.out.UserOutport;
-import com.example.myhealthblock.user.domain.dto.UserEntityDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -27,11 +26,6 @@ public class UserPersistenceAdapter implements UserOutport {
         UserEntity entity = getUserEntity(id);
 
         return (entity != null) ? new User(entity.getId(), entity.getUserId(), entity.getPw(), entity.getRole()) : null;
-    }
-
-    @Override
-    public UserEntityDTO getUserEntityDTO(String id) {
-        return new UserEntityDTO(getUserEntity(id));
     }
 
     @Override

@@ -1,21 +1,22 @@
 package com.example.myhealthblock.user.application.service;
 
+import com.example.myhealthblock.user.adapter.in.web.request.UserSignUpRequest;
+import com.example.myhealthblock.user.application.port.in.UserInport;
+import com.example.myhealthblock.user.application.port.in.dto.UserSignInInportRequest;
+import com.example.myhealthblock.user.application.port.in.dto.UserUpdatePwInportRequest;
 import com.example.myhealthblock.user.domain.model.User;
 import com.example.myhealthblock.user.application.port.out.UserOutport;
-import com.example.myhealthblock.user.application.port.in.GetUserEntityDTO;
-import com.example.myhealthblock.user.application.port.in.UserSignUp;
-import com.example.myhealthblock.user.domain.dto.ResultSignIn;
-import com.example.myhealthblock.user.domain.dto.UserEntityDTO;
+import com.example.myhealthblock.user.application.port.in.dto.UserSignInInportResponse;
 import com.example.myhealthblock.user.adapter.in.web.request.UserSignInRequest;
-import com.example.myhealthblock.user.adapter.in.web.request.UserSignUpRequest;
 import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Service
-public class UserService implements GetUserEntityDTO, UserSignUp {
+public class UserService implements UserInport {
     private final UserOutport outport;
 
+    @Override
     public boolean signUp(UserSignUpRequest dto) {
         User user = outport.getUser(dto.getId());
         if (user == null)
@@ -24,9 +25,9 @@ public class UserService implements GetUserEntityDTO, UserSignUp {
     }
 
 
-    public ResultSignIn signIn(UserSignInRequest dto) {
+    public UserSignInInportResponse signIn(UserSignInInportRequest dto) {
         User user = outport.getUser(dto.getId());
-        ResultSignIn result = new ResultSignIn();
+        UserSignInInportResponse result = new UserSignInInportResponse();
 
         if (user!=null && user.signIn(dto.getPw()))
             result.success(user.getRole(), user.getUid());
@@ -42,17 +43,12 @@ public class UserService implements GetUserEntityDTO, UserSignUp {
         throw new Exception("Invalid credentials");
     }
 
-    public String changePw(String userId, String oldPw, String newPw) {
+    public String changePw(String userId, UserUpdatePwInportRequest dto) {
         User user = outport.getUser(userId);
-        if(user.changePw(oldPw, newPw)) {
+        if(user.changePw(dto.getOldPw(), dto.getNewPw())) {
             outport.updatePw(user.getUid(), user.getPw());
             return "success";
         }
         return "fail";
-    }
-
-    @Override
-    public UserEntityDTO getUserEntityDTO(String userId) {
-        return outport.getUserEntityDTO(userId);
     }
 }

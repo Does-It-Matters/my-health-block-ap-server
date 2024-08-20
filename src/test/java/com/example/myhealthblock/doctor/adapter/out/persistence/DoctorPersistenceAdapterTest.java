@@ -1,6 +1,6 @@
 package com.example.myhealthblock.doctor.adapter.out.persistence;
 
-import com.example.myhealthblock.doctor.domain.dto.DoctorProfileDTO;
+import com.example.myhealthblock.doctor.application.port.out.dto.DoctorProfileOutportResponse;
 import com.example.myhealthblock.doctor.domain.model.Doctor;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -38,7 +38,7 @@ public class DoctorPersistenceAdapterTest {
         DoctorEntity entity = new DoctorEntity("id", "name", "field", "hospital", "introduction");
         when(doctorRepository.findByUserId("id")).thenReturn(entity);
 
-        DoctorProfileDTO profileDTO = adapter.getDoctorProfile("id");
+        DoctorProfileOutportResponse profileDTO = adapter.getDoctorProfile("id");
 
         assertEquals("name", profileDTO.getName());
         assertEquals("field", profileDTO.getField());

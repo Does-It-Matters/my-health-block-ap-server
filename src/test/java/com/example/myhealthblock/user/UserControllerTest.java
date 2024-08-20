@@ -1,10 +1,11 @@
 package com.example.myhealthblock.user;
 
+import com.example.myhealthblock.user.application.port.in.dto.UserSignInInportRequest;
 import com.example.myhealthblock.user.application.service.UserService;
 import com.example.myhealthblock.user.adapter.in.web.UserController;
 import com.example.myhealthblock.user.adapter.in.web.request.UserSignInRequest;
 import com.example.myhealthblock.user.adapter.in.web.response.SignInResponse;
-import com.example.myhealthblock.user.domain.dto.ResultSignIn;
+import com.example.myhealthblock.user.application.port.in.dto.UserSignInInportResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -42,7 +43,7 @@ public class UserControllerTest {
         signInResponse.setRole("PATIENT");
         signInResponse.setId("user");
 
-        when(userService.signIn(any(UserSignInRequest.class))).thenReturn(new ResultSignIn());
+        when(userService.signIn(any(UserSignInInportRequest.class))).thenReturn(new UserSignInInportResponse());
 //        when(userService.signIn(any(RequestUserSignIn.class))).thenReturn(signInResponse);
 
         // When / Then
