@@ -6,7 +6,7 @@ import com.example.myhealthblock.question.common.Category;
 import com.example.myhealthblock.question.application.port.in.GetQuestionEntityDTO;
 import com.example.myhealthblock.question.application.port.out.QuestionOutport;
 import com.example.myhealthblock.question.domain.dto.QuestionDTO;
-import com.example.myhealthblock.question.adapter.in.web.request.RequestQuestionEnroll;
+import com.example.myhealthblock.question.adapter.in.web.request.QuestionEnrollRequest;
 import com.example.myhealthblock.question.domain.dto.QuestionEntityDTO;
 import com.example.myhealthblock.question.domain.dto.QuestionTitleDTO;
 import org.springframework.stereotype.Service;
@@ -18,7 +18,7 @@ public class QuestionService implements GetQuestionEntityDTO {
     private final QuestionOutport outport;
     private final GetPatientEntityDTO patientInport;
 
-    public String enroll(RequestQuestionEnroll dto) {
+    public String enroll(QuestionEnrollRequest dto) {
         PatientEntityDTO patientDto = patientInport.getPatientEntityDTO(dto.getUserId());
         boolean result = outport.create(patientDto.getEntity(), dto.getTitle(), dto.getCategory(), dto.getSymptom(), dto.getContent(), dto.getBodyParts(), dto.getPersonalData());
 

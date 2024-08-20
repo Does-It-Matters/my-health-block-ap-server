@@ -5,11 +5,11 @@ import com.example.myhealthblock.aop.LogTarget;
 import com.example.myhealthblock.jwt.JwtService;
 import com.example.myhealthblock.user.domain.model.User;
 import com.example.myhealthblock.user.application.service.UserService;
-import com.example.myhealthblock.user.adapter.in.web.request.RequestUserSignIn;
-import com.example.myhealthblock.user.adapter.in.web.request.RequestUserUpdatePw;
-import com.example.myhealthblock.user.adapter.in.web.response.ResponseResult;
-import com.example.myhealthblock.user.adapter.in.web.response.ResponseSignIn;
-import com.example.myhealthblock.user.adapter.in.web.response.ResponseSignInWithJwt;
+import com.example.myhealthblock.user.adapter.in.web.request.UserSignInRequest;
+import com.example.myhealthblock.user.adapter.in.web.request.UserUpdatePwRequest;
+import com.example.myhealthblock.user.adapter.in.web.response.ResultResponse;
+import com.example.myhealthblock.user.adapter.in.web.response.SignInResponse;
+import com.example.myhealthblock.user.adapter.in.web.response.SignInWithJwtResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpHeaders;
@@ -32,7 +32,7 @@ public class UserController {
 
     @Operation(summary = "로그인", description = "로그인 후 특정 역할 반환")
     @PostMapping("/v2/sign-in")
-    public ResponseEntity<ResponseSignIn> signIn(@RequestBody RequestUserSignIn body) {
+    public ResponseEntity<SignInResponse> signIn(@RequestBody UserSignInRequest body) {
 //        try {
 //            ResponseSignIn response = userService.signIn(body);
 //            return ResponseEntity.ok(response); // 성공 시 HTTP 200 OK
@@ -44,7 +44,7 @@ public class UserController {
 
     @Operation(summary = "로그인", description = "로그인 후 JWT 토큰 발급")
     @PostMapping("/v3/sign-in")
-    public ResponseEntity<ResponseSignInWithJwt> signInWithJWT(@RequestBody RequestUserSignIn body) {
+    public ResponseEntity<SignInWithJwtResponse> signInWithJWT(@RequestBody UserSignInRequest body) {
         try {
             User user = userService.signInWithJWT(body);
             Map<String, String> tokens = jwtService.generateTokens(user);
@@ -52,22 +52,22 @@ public class UserController {
             HttpHeaders headers = new HttpHeaders();
             headers.add("Authorization", "Bearer " + tokens.get("accessToken"));
 
-            ResponseSignInWithJwt response = new ResponseSignInWithJwt(tokens.get("refreshToken"), user.getRole());
+            SignInWithJwtResponse response = new SignInWithJwtResponse(tokens.get("refreshToken"), user.getRole());
             return ResponseEntity.ok().headers(headers).body(response);
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new ResponseSignInWithJwt("Invalid credentials"));
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new SignInWithJwtResponse("Invalid credentials"));
         }
     }
 
     @Operation(summary = "비밀번호 수정", description = "비밀번호 수정 <br>userId는 회원가입 아이디")
     @PutMapping("/v2/user/{userId}/pw")
-    public ResponseEntity<ResponseResult> updatePw(@PathVariable String userId, @RequestBody RequestUserUpdatePw body) {
+    public ResponseEntity<ResultResponse> updatePw(@PathVariable String userId, @RequestBody UserUpdatePwRequest body) {
 //        boolean pwChanged = userService.changePw(userId, body.getOldPw(), body.getNewPw());
 //        if (pwChanged) {
 //            return ResponseEntity.ok(new ResponseResult("Password successfully updated."));
 //        } else {
 //            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseResult("Failed to update password."));
 //        }
-        return  ResponseEntity.ok(new ResponseResult(userService.changePw(userId, body.getOldPw(), body.getNewPw())));
+        return  ResponseEntity.ok(new ResultResponse(userService.changePw(userId, body.getOldPw(), body.getNewPw())));
     }
 }

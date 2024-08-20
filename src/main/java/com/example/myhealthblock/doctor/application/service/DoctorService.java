@@ -1,14 +1,15 @@
 package com.example.myhealthblock.doctor.application.service;
 
+import com.example.myhealthblock.doctor.application.port.in.DoctorInport;
+import com.example.myhealthblock.doctor.application.port.in.dto.DoctorSignUpDTO;
 import com.example.myhealthblock.doctor.application.port.out.DoctorOutport;
-import com.example.myhealthblock.doctor.adapter.in.web.request.RequestDoctorSignUp;
 import com.example.myhealthblock.doctor.domain.model.Doctor;
 import com.example.myhealthblock.doctor.domain.dto.DoctorProfileDTO;
 import com.example.myhealthblock.doctor.domain.dto.DoctorSignUpRequestDTO;
 import com.example.myhealthblock.doctor.domain.dto.DoctorSignUpResponseDTO;
 import com.example.myhealthblock.doctor.domain.mapper.DoctorMapper;
 import com.example.myhealthblock.user.application.port.in.UserSignUp;
-import com.example.myhealthblock.user.adapter.in.web.request.RequestUserSignUp;
+import com.example.myhealthblock.user.adapter.in.web.request.UserSignUpRequest;
 import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
 
@@ -18,28 +19,28 @@ import lombok.RequiredArgsConstructor;
  */
 @RequiredArgsConstructor
 @Service
-public class DoctorService {
+public class DoctorService implements DoctorInport {
     private final DoctorOutport outport;
     private final UserSignUp userInport;
     private final DoctorMapper mapper = DoctorMapper.INSTANCE;
 
-    public DoctorSignUpResponseDTO signUp(DoctorSignUpRequestDTO dto) {
-        RequestUserSignUp userSignUp = new RequestUserSignUp();
-        userSignUp.setId(dto.getId());
-        userSignUp.setPw(dto.getPw());
-        userSignUp.setRole("DOCTOR");
-
-        if (userInport.signUp(userSignUp)) {
-            Doctor doctor = mapper.dtoToDoctor(dto);
-            outport.create(doctor);
-
-            return mapper.doctorToDto(doctor, "success");
-        } else {
-            DoctorSignUpResponseDTO responseDTO = new DoctorSignUpResponseDTO();
-            responseDTO.setResult("failure");
-            return responseDTO;
-        }
-    }
+//    public DoctorSignUpResponseDTO signUp(DoctorSignUpRequestDTO dto) {
+//        UserSignUpRequest userSignUp = new UserSignUpRequest();
+//        userSignUp.setId(dto.getId());
+//        userSignUp.setPw(dto.getPw());
+//        userSignUp.setRole("DOCTOR");
+//
+//        if (userInport.signUp(userSignUp)) {
+//            Doctor doctor = mapper.dtoToDoctor(dto);
+//            outport.create(doctor);
+//
+//            return mapper.doctorToDto(doctor, "success");
+//        } else {
+//            DoctorSignUpResponseDTO responseDTO = new DoctorSignUpResponseDTO();
+//            responseDTO.setResult("failure");
+//            return responseDTO;
+//        }
+//    }
 
     /**
      * <b> 역할: 의료진 회원가입 메소드 </b>
@@ -49,8 +50,9 @@ public class DoctorService {
      * @param dto 의료진 회원가입 요청 데이터
      * @return 회원가입 성공 여부
      */
-    public boolean signUp(RequestDoctorSignUp dto) {
-        RequestUserSignUp user = new RequestUserSignUp();
+    @Override
+    public boolean signUp(DoctorSignUpDTO dto) {
+        UserSignUpRequest user = new UserSignUpRequest();
         user.setId(dto.getId());
         user.setPw(dto.getPw());
         user.setRole(dto.getRole());
@@ -67,6 +69,7 @@ public class DoctorService {
      * @param doctorId 의료진 ID
      * @return 의료진 프로필 데이터
      */
+    @Override
     public DoctorProfileDTO getDoctorProfile(String doctorId) {
         return outport.getDoctorProfile(doctorId);
     }

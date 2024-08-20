@@ -4,7 +4,7 @@ import com.example.myhealthblock.aop.LogExecutionTime;
 import com.example.myhealthblock.aop.LogTarget;
 import com.example.myhealthblock.patient.application.service.PatientService;
 import com.example.myhealthblock.patient.adapter.in.web.request.*;
-import com.example.myhealthblock.patient.adapter.in.web.response.ResponseResult;
+import com.example.myhealthblock.patient.adapter.in.web.response.ResultResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -22,8 +22,8 @@ public class PatientController {
 
     @Operation(summary = "환자 회원가입", description = "아이디, 패스워드 등록")
     @PostMapping("/v2/patient/sign-up")
-    public ResponseEntity<ResponseResult> signUp(@RequestBody RequestPatientSignUp body){
-        ResponseResult response = new ResponseResult();
+    public ResponseEntity<ResultResponse> signUp(@RequestBody PatientSignUpRequest body){
+        ResultResponse response = new ResultResponse();
         try {
             if (patientService.signUp(body)) {
                 response.setResult("success");

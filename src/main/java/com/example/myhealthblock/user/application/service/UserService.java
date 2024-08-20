@@ -6,8 +6,8 @@ import com.example.myhealthblock.user.application.port.in.GetUserEntityDTO;
 import com.example.myhealthblock.user.application.port.in.UserSignUp;
 import com.example.myhealthblock.user.domain.dto.ResultSignIn;
 import com.example.myhealthblock.user.domain.dto.UserEntityDTO;
-import com.example.myhealthblock.user.adapter.in.web.request.RequestUserSignIn;
-import com.example.myhealthblock.user.adapter.in.web.request.RequestUserSignUp;
+import com.example.myhealthblock.user.adapter.in.web.request.UserSignInRequest;
+import com.example.myhealthblock.user.adapter.in.web.request.UserSignUpRequest;
 import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
 
@@ -16,7 +16,7 @@ import lombok.RequiredArgsConstructor;
 public class UserService implements GetUserEntityDTO, UserSignUp {
     private final UserOutport outport;
 
-    public boolean signUp(RequestUserSignUp dto) {
+    public boolean signUp(UserSignUpRequest dto) {
         User user = outport.getUser(dto.getId());
         if (user == null)
             return outport.create(dto.getId(), dto.getPw(), dto.getRole());
@@ -24,7 +24,7 @@ public class UserService implements GetUserEntityDTO, UserSignUp {
     }
 
 
-    public ResultSignIn signIn(RequestUserSignIn dto) {
+    public ResultSignIn signIn(UserSignInRequest dto) {
         User user = outport.getUser(dto.getId());
         ResultSignIn result = new ResultSignIn();
 
@@ -34,7 +34,7 @@ public class UserService implements GetUserEntityDTO, UserSignUp {
         return result;
     }
 
-    public User signInWithJWT(RequestUserSignIn dto) throws Exception {
+    public User signInWithJWT(UserSignInRequest dto) throws Exception {
         User user = outport.getUser(dto.getId());
 
         if (user!=null && user.signIn(dto.getPw()))
