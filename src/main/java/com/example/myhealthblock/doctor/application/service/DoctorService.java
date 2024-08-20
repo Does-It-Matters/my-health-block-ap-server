@@ -32,6 +32,7 @@ public class DoctorService implements DoctorInport {
      * @param dto 의료진 회원가입 요청 데이터
      * @return 회원가입 성공 여부
      */
+    @Override
     public DoctorSignUpOutportDTO signUp(DoctorSignUpInportDTO dto) {
         UserSignUpRequest userSignUpDTO = new UserSignUpRequest();
         userSignUpDTO.setId(dto.getId());
