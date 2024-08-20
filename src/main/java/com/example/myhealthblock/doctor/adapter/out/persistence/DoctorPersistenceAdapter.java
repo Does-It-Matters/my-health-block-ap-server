@@ -4,7 +4,7 @@ import com.example.myhealthblock.aop.LogExecutionTime;
 import com.example.myhealthblock.aop.LogTarget;
 import com.example.myhealthblock.doctor.application.port.out.DoctorOutport;
 import com.example.myhealthblock.doctor.domain.model.Doctor;
-import com.example.myhealthblock.doctor.domain.dto.DoctorProfileDTO;
+import com.example.myhealthblock.doctor.application.port.out.dto.DoctorProfileOutportResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -41,10 +41,10 @@ public class DoctorPersistenceAdapter implements DoctorOutport {
      * @return 의료진 프로필 정보
      */
     @Override
-    public DoctorProfileDTO getDoctorProfile(String doctorId) {
+    public DoctorProfileOutportResponse getDoctorProfile(String doctorId) {
         DoctorEntity doctor = getDoctorEntity(doctorId);
 
-        return new DoctorProfileDTO(doctor.getName(), doctor.getField(), doctor.getHospital(), doctor.getIntroduction());
+        return new DoctorProfileOutportResponse(doctor.getName(), doctor.getField(), doctor.getHospital(), doctor.getIntroduction());
     }
 
     /**

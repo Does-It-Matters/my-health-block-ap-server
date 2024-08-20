@@ -6,7 +6,7 @@ import com.example.myhealthblock.doctor.application.port.in.DoctorInport;
 import com.example.myhealthblock.doctor.adapter.in.web.request.DoctorSignUpRequest;
 import com.example.myhealthblock.doctor.adapter.in.web.response.DoctorDataResponse;
 import com.example.myhealthblock.doctor.adapter.in.web.response.SignUpResultResponse;
-import com.example.myhealthblock.doctor.domain.dto.DoctorProfileDTO;
+import com.example.myhealthblock.doctor.application.port.in.dto.DoctorProfileInportResponse;
 import com.example.myhealthblock.exception.UserAlreadyExistsException;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -56,7 +56,7 @@ public class DoctorController {
     @Operation(summary = "의료진 프로필 조회", description = "의료진의 데이터 중 공개용 데이터 조회 <br>{doctorId}는 의료진이 가입한 아이디")
     @GetMapping("/v2/doctor/{doctorId}")
     public ResponseEntity<DoctorDataResponse> get(@PathVariable String doctorId) {
-        DoctorProfileDTO profileDTO = doctorInport.getDoctorProfile(doctorId);
+        DoctorProfileInportResponse profileDTO = doctorInport.getDoctorProfile(doctorId);
 
         DoctorDataResponse response = DoctorDataResponse.from(profileDTO);
         return ResponseEntity.ok(response);

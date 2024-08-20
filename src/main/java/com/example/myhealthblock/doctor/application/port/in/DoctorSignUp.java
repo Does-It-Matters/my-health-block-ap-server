@@ -1,8 +1,8 @@
 package com.example.myhealthblock.doctor.application.port.in;
 
-import com.example.myhealthblock.doctor.application.port.in.dto.DoctorSignUpInportDTO;
-import com.example.myhealthblock.doctor.application.port.out.dto.DoctorSignUpOutportDTO;
+import com.example.myhealthblock.doctor.application.port.in.dto.DoctorSignUpInportRequest;
+import com.example.myhealthblock.doctor.application.port.in.dto.DoctorSignUpInportResponse;
 
 public interface DoctorSignUp {
-    DoctorSignUpOutportDTO signUp(DoctorSignUpInportDTO dto);
+    DoctorSignUpInportResponse signUp(DoctorSignUpInportRequest dto);
 }

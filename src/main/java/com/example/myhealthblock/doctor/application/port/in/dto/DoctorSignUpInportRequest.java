@@ -13,7 +13,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class DoctorSignUpInportDTO {
+public class DoctorSignUpInportRequest {
     private String id;
     private String pw;
     private String role;

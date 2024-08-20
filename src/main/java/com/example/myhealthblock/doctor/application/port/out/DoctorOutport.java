@@ -1,7 +1,7 @@
 package com.example.myhealthblock.doctor.application.port.out;
 
 import com.example.myhealthblock.doctor.domain.model.Doctor;
-import com.example.myhealthblock.doctor.domain.dto.DoctorProfileDTO;
+import com.example.myhealthblock.doctor.application.port.out.dto.DoctorProfileOutportResponse;
 
 /**
  * <b> 역할: 의료진 데이터에 대한 출력 포트 인터페이스 </b>
@@ -24,5 +24,5 @@ public interface DoctorOutport {
      * @param doctorId 의료진 ID
      * @return 의료진 프로필 정보
      */
-    public DoctorProfileDTO getDoctorProfile(String doctorId);
+    public DoctorProfileOutportResponse getDoctorProfile(String doctorId);
 }

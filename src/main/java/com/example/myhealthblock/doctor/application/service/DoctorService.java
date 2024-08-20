@@ -1,11 +1,12 @@
 package com.example.myhealthblock.doctor.application.service;
 
 import com.example.myhealthblock.doctor.application.port.in.DoctorInport;
+import com.example.myhealthblock.doctor.application.port.in.dto.DoctorProfileInportResponse;
 import com.example.myhealthblock.doctor.application.port.out.DoctorOutport;
+import com.example.myhealthblock.doctor.application.port.out.dto.DoctorProfileOutportResponse;
 import com.example.myhealthblock.doctor.domain.model.Doctor;
-import com.example.myhealthblock.doctor.domain.dto.DoctorProfileDTO;
-import com.example.myhealthblock.doctor.application.port.in.dto.DoctorSignUpInportDTO;
-import com.example.myhealthblock.doctor.application.port.out.dto.DoctorSignUpOutportDTO;
+import com.example.myhealthblock.doctor.application.port.in.dto.DoctorSignUpInportRequest;
+import com.example.myhealthblock.doctor.application.port.in.dto.DoctorSignUpInportResponse;
 import com.example.myhealthblock.doctor.domain.mapper.DoctorMapper;
 import com.example.myhealthblock.exception.UserAlreadyExistsException;
 import com.example.myhealthblock.user.application.port.in.UserSignUp;
@@ -33,7 +34,7 @@ public class DoctorService implements DoctorInport {
      * @return 회원가입 성공 여부
      */
     @Override
-    public DoctorSignUpOutportDTO signUp(DoctorSignUpInportDTO dto) {
+    public DoctorSignUpInportResponse signUp(DoctorSignUpInportRequest dto) {
         UserSignUpRequest userSignUpDTO = new UserSignUpRequest();
         userSignUpDTO.setId(dto.getId());
         userSignUpDTO.setPw(dto.getPw());
@@ -43,10 +44,10 @@ public class DoctorService implements DoctorInport {
             throw new UserAlreadyExistsException("A user with this ID already exists.");
         }
 
-        Doctor doctor = mapper.dtoToDoctor(dto);
+        Doctor doctor = mapper.doctorSignUpInportRequestToDoctor(dto);
         outport.create(doctor);
 
-        return mapper.doctorToDto(doctor, "success");
+        return mapper.doctorToDoctorSignUpInportResponse(doctor, "success");
     }
 
     /**
@@ -57,7 +58,10 @@ public class DoctorService implements DoctorInport {
      * @return 의료진 프로필 데이터
      */
     @Override
-    public DoctorProfileDTO getDoctorProfile(String doctorId) {
-        return outport.getDoctorProfile(doctorId);
+    public DoctorProfileInportResponse getDoctorProfile(String doctorId) {
+        DoctorProfileOutportResponse outportResponse = outport.getDoctorProfile(doctorId);
+
+        return mapper.outportResponseToInportResponse(outportResponse);
+
     }
 }

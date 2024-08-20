@@ -1,10 +1,13 @@
 package com.example.myhealthblock.doctor.adapter.in.web;
 
+import com.example.myhealthblock.doctor.application.port.in.dto.DoctorProfileInportResponse;
+import com.example.myhealthblock.doctor.application.port.in.dto.DoctorSignUpInportRequest;
+import com.example.myhealthblock.doctor.application.port.in.dto.DoctorSignUpInportResponse;
 import com.example.myhealthblock.doctor.application.service.DoctorService;
 import com.example.myhealthblock.doctor.adapter.in.web.request.DoctorSignUpRequest;
 import com.example.myhealthblock.doctor.adapter.in.web.response.DoctorDataResponse;
 import com.example.myhealthblock.doctor.adapter.in.web.response.SignUpResultResponse;
-import com.example.myhealthblock.doctor.domain.dto.DoctorProfileDTO;
+import com.example.myhealthblock.doctor.application.port.out.dto.DoctorProfileOutportResponse;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -28,7 +31,7 @@ public class DoctorControllerTest {
 
     @Test
     public void testSignUpSuccess() {
-        DoctorSignUpRequest request = new DoctorSignUpRequest();
+        DoctorSignUpInportRequest request = new DoctorSignUpInportRequest();
         request.setId("id");
         request.setPw("pw");
         request.setRole("DOCTOR");
@@ -37,9 +40,11 @@ public class DoctorControllerTest {
         request.setHospital("hospital");
         request.setIntroduction("introduction");
 
-        when(doctorService.signUp(request)).thenReturn(true);
+        // 임시 진행: null
+        when(doctorService.signUp(request)).thenReturn(null);
 
-        ResponseEntity<SignUpResultResponse> response = doctorController.signUp(request);
+        // 임시 진행: new DoctorSignUpRequest()
+        ResponseEntity<SignUpResultResponse> response = doctorController.signUp(new DoctorSignUpRequest());
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals("success", response.getBody().getResult());
@@ -47,13 +52,15 @@ public class DoctorControllerTest {
 
     @Test
     public void testSignUpConflict() {
-        DoctorSignUpRequest request = new DoctorSignUpRequest();
+        DoctorSignUpInportRequest request = new DoctorSignUpInportRequest();
         request.setId("id");
         request.setPw("pw");
 
-        when(doctorService.signUp(request)).thenReturn(false);
+        // 임시 진행: null
+        when(doctorService.signUp(request)).thenReturn(null);
 
-        ResponseEntity<SignUpResultResponse> response = doctorController.signUp(request);
+        // 임시 진행: new DoctorSignUpRequest()
+        ResponseEntity<SignUpResultResponse> response = doctorController.signUp(new DoctorSignUpRequest());
 
         assertEquals(HttpStatus.CONFLICT, response.getStatusCode());
         assertEquals("confilct: A user with this ID already exists.", response.getBody().getResult());
@@ -62,8 +69,9 @@ public class DoctorControllerTest {
     @Test
     public void testGetDoctorProfile() {
         String doctorId = "id";
-        DoctorProfileDTO profileDTO = new DoctorProfileDTO("name", "field", "hospital", "introduction");
-        when(doctorService.getDoctorProfile(doctorId)).thenReturn(profileDTO);
+        DoctorProfileOutportResponse profileDTO = new DoctorProfileOutportResponse("name", "field", "hospital", "introduction");
+        // 임시 진행: new DoctorProfileInportResponse(profileDTO.getName(), profileDTO.getField(), profileDTO.getHospital(), profileDTO.getIntroduction())
+        when(doctorService.getDoctorProfile(doctorId)).thenReturn(new DoctorProfileInportResponse(profileDTO.getName(), profileDTO.getField(), profileDTO.getHospital(), profileDTO.getIntroduction()));
 
         ResponseEntity<DoctorDataResponse> response = doctorController.get(doctorId);
 

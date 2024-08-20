@@ -1,8 +1,10 @@
 package com.example.myhealthblock.doctor.domain.mapper;
 
+import com.example.myhealthblock.doctor.application.port.in.dto.DoctorProfileInportResponse;
+import com.example.myhealthblock.doctor.application.port.out.dto.DoctorProfileOutportResponse;
 import com.example.myhealthblock.doctor.domain.model.Doctor;
-import com.example.myhealthblock.doctor.application.port.in.dto.DoctorSignUpInportDTO;
-import com.example.myhealthblock.doctor.application.port.out.dto.DoctorSignUpOutportDTO;
+import com.example.myhealthblock.doctor.application.port.in.dto.DoctorSignUpInportRequest;
+import com.example.myhealthblock.doctor.application.port.in.dto.DoctorSignUpInportResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
@@ -11,8 +13,10 @@ import org.mapstruct.factory.Mappers;
 public interface DoctorMapper {
     DoctorMapper INSTANCE = Mappers.getMapper(DoctorMapper.class);
 
-    Doctor dtoToDoctor(DoctorSignUpInportDTO dto);
+    Doctor doctorSignUpInportRequestToDoctor(DoctorSignUpInportRequest dto);
 
     @Mapping(source = "result", target = "result")
-    DoctorSignUpOutportDTO doctorToDto(Doctor doctor, String result);
+    DoctorSignUpInportResponse doctorToDoctorSignUpInportResponse(Doctor doctor, String result);
+
+    DoctorProfileInportResponse outportResponseToInportResponse(DoctorProfileOutportResponse dto);
 }
