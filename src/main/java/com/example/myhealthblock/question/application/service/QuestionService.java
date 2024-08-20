@@ -2,8 +2,8 @@ package com.example.myhealthblock.question.application.service;
 
 import com.example.myhealthblock.patient.application.port.in.GetPatientEntityDTO;
 import com.example.myhealthblock.patient.domain.dto.PatientEntityDTO;
+import com.example.myhealthblock.question.application.port.in.QuestionInport;
 import com.example.myhealthblock.question.common.Category;
-import com.example.myhealthblock.question.application.port.in.GetQuestionEntityDTO;
 import com.example.myhealthblock.question.application.port.out.QuestionOutport;
 import com.example.myhealthblock.question.domain.dto.QuestionDTO;
 import com.example.myhealthblock.question.adapter.in.web.request.QuestionEnrollRequest;
@@ -14,10 +14,11 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Service
-public class QuestionService implements GetQuestionEntityDTO {
+public class QuestionService implements QuestionInport {
     private final QuestionOutport outport;
     private final GetPatientEntityDTO patientInport;
 
+    @Override
     public String enroll(QuestionEnrollRequest dto) {
         PatientEntityDTO patientDto = patientInport.getPatientEntityDTO(dto.getUserId());
         boolean result = outport.create(patientDto.getEntity(), dto.getTitle(), dto.getCategory(), dto.getSymptom(), dto.getContent(), dto.getBodyParts(), dto.getPersonalData());
@@ -25,19 +26,23 @@ public class QuestionService implements GetQuestionEntityDTO {
         return result ? "success" : "fail";
     }
 
+    @Override
     public QuestionDTO getQuestion(Integer questionId) {
         return outport.getQuestion(questionId);
     }
 
+    @Override
     public QuestionTitleDTO[] getQuestions(String userId) {
         PatientEntityDTO patientDto = patientInport.getPatientEntityDTO(userId);
         return outport.getQuestions(patientDto.getEntity());
     }
 
+    @Override
     public QuestionTitleDTO[] getQuestions(Category category) {
         return outport.getQuestions(category);
     }
 
+    @Override
     public QuestionTitleDTO[] getQuestions() {
         return outport.getQuestions();
     }
@@ -47,11 +52,13 @@ public class QuestionService implements GetQuestionEntityDTO {
         return outport.getQuestionEntityDTO(questionId);
     }
 
+    @Override
     public String update(Integer questionId, String title, String symptom, String content) {
         boolean result = outport.update(questionId, title, symptom, content);
         return result ? "success" : "fail";
     }
 
+    @Override
     public String delete(Integer questionId) {
         boolean result = outport.delete(questionId);
         return result ? "success" : "fail";

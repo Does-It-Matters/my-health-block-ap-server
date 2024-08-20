@@ -1,9 +1,8 @@
 package com.example.myhealthblock.user.application.service;
 
+import com.example.myhealthblock.user.application.port.in.UserInport;
 import com.example.myhealthblock.user.domain.model.User;
 import com.example.myhealthblock.user.application.port.out.UserOutport;
-import com.example.myhealthblock.user.application.port.in.GetUserEntityDTO;
-import com.example.myhealthblock.user.application.port.in.UserSignUp;
 import com.example.myhealthblock.user.domain.dto.ResultSignIn;
 import com.example.myhealthblock.user.domain.dto.UserEntityDTO;
 import com.example.myhealthblock.user.adapter.in.web.request.UserSignInRequest;
@@ -13,9 +12,10 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @Service
-public class UserService implements GetUserEntityDTO, UserSignUp {
+public class UserService implements UserInport {
     private final UserOutport outport;
 
+    @Override
     public boolean signUp(UserSignUpRequest dto) {
         User user = outport.getUser(dto.getId());
         if (user == null)

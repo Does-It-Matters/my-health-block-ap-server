@@ -3,8 +3,8 @@ package com.example.myhealthblock.user.adapter.in.web;
 import com.example.myhealthblock.aop.LogExecutionTime;
 import com.example.myhealthblock.aop.LogTarget;
 import com.example.myhealthblock.jwt.JwtService;
+import com.example.myhealthblock.user.application.port.in.UserInport;
 import com.example.myhealthblock.user.domain.model.User;
-import com.example.myhealthblock.user.application.service.UserService;
 import com.example.myhealthblock.user.adapter.in.web.request.UserSignInRequest;
 import com.example.myhealthblock.user.adapter.in.web.request.UserUpdatePwRequest;
 import com.example.myhealthblock.user.adapter.in.web.response.ResultResponse;
@@ -27,7 +27,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api")
 public class UserController {
-    private final UserService userService;
+    private final UserInport userInport;
     private final JwtService jwtService;
 
     @Operation(summary = "로그인", description = "로그인 후 특정 역할 반환")
@@ -39,14 +39,14 @@ public class UserController {
 //        } catch (AuthenticationException e) {
 //            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new ResponseSignIn("Invalid credentials")); // 실패 시 HTTP 401 Unauthorized
 //        }
-        return ResponseEntity.ok(userService.signIn(body).getRequestBody());
+        return ResponseEntity.ok(userInport.signIn(body).getRequestBody());
     }
 
     @Operation(summary = "로그인", description = "로그인 후 JWT 토큰 발급")
     @PostMapping("/v3/sign-in")
     public ResponseEntity<SignInWithJwtResponse> signInWithJWT(@RequestBody UserSignInRequest body) {
         try {
-            User user = userService.signInWithJWT(body);
+            User user = userInport.signInWithJWT(body);
             Map<String, String> tokens = jwtService.generateTokens(user);
 
             HttpHeaders headers = new HttpHeaders();
@@ -68,6 +68,6 @@ public class UserController {
 //        } else {
 //            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseResult("Failed to update password."));
 //        }
-        return  ResponseEntity.ok(new ResultResponse(userService.changePw(userId, body.getOldPw(), body.getNewPw())));
+        return  ResponseEntity.ok(new ResultResponse(userInport.changePw(userId, body.getOldPw(), body.getNewPw())));
     }
 }
