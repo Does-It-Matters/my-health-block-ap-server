@@ -4,8 +4,6 @@ import com.example.myhealthblock.user.domain.model.User;
 import com.example.myhealthblock.user.application.port.out.UserOutport;
 import com.example.myhealthblock.user.application.service.UserService;
 import com.example.myhealthblock.user.adapter.in.web.request.UserSignUpRequest;
-import com.example.myhealthblock.user.adapter.out.persistence.UserEntity;
-import com.example.myhealthblock.user.domain.dto.UserEntityDTO;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
@@ -65,12 +63,6 @@ public class UserServiceJUnitTest {
         @Override
         public User getUser(String id) {
             return users.get(id);
-        }
-
-        @Override
-        public UserEntityDTO getUserEntityDTO(String userId) {
-            User user = users.get(userId);
-            return user != null ? new UserEntityDTO(new UserEntity(userId, user.getPw(), user.getRole())) : null;
         }
 
         @Override

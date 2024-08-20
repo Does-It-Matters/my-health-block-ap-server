@@ -2,16 +2,14 @@ package com.example.myhealthblock.doctor.adapter.in.web;
 
 import com.example.myhealthblock.aop.LogExecutionTime;
 import com.example.myhealthblock.aop.LogTarget;
-import com.example.myhealthblock.doctor.application.port.in.dto.DoctorSignUpDTO;
-import com.example.myhealthblock.doctor.application.service.DoctorService;
+import com.example.myhealthblock.doctor.application.port.in.DoctorInport;
 import com.example.myhealthblock.doctor.adapter.in.web.request.DoctorSignUpRequest;
 import com.example.myhealthblock.doctor.adapter.in.web.response.DoctorDataResponse;
 import com.example.myhealthblock.doctor.adapter.in.web.response.SignUpResultResponse;
-import com.example.myhealthblock.doctor.domain.dto.DoctorProfileDTO;
+import com.example.myhealthblock.doctor.application.port.in.dto.DoctorProfileInportResponse;
 import com.example.myhealthblock.exception.UserAlreadyExistsException;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,7 +25,7 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequestMapping("/api")
 public class DoctorController {
-    private final DoctorService doctorService;
+    private final DoctorInport doctorInport;
 
     /**
      * <b> 역할: 의료진 회원가입 메소드 </b>
@@ -41,7 +39,7 @@ public class DoctorController {
     @Operation(summary = "의사 회원가입", description = "아이디와 패스워드, 추가 데이터로 회원가입")
     @PostMapping("/v2/doctor/sign-up")
     public ResponseEntity<SignUpResultResponse> signUp(@RequestBody DoctorSignUpRequest body) {
-        doctorService.signUp(DoctorSignUpDTO.from(body));
+        doctorInport.signUp(body.toInportDTO());
         SignUpResultResponse response = new SignUpResultResponse();
 
         response.setResult("success");
@@ -58,7 +56,7 @@ public class DoctorController {
     @Operation(summary = "의료진 프로필 조회", description = "의료진의 데이터 중 공개용 데이터 조회 <br>{doctorId}는 의료진이 가입한 아이디")
     @GetMapping("/v2/doctor/{doctorId}")
     public ResponseEntity<DoctorDataResponse> get(@PathVariable String doctorId) {
-        DoctorProfileDTO profileDTO = doctorService.getDoctorProfile(doctorId);
+        DoctorProfileInportResponse profileDTO = doctorInport.getDoctorProfile(doctorId);
 
         DoctorDataResponse response = DoctorDataResponse.from(profileDTO);
         return ResponseEntity.ok(response);

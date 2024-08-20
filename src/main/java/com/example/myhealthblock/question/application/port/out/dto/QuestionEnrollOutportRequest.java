@@ -1,9 +1,11 @@
-package com.example.myhealthblock.question.domain.dto;
+package com.example.myhealthblock.question.application.port.out.dto;
 
 import com.example.myhealthblock.question.adapter.out.persistence.bodypart.BodyPart;
 import com.example.myhealthblock.question.common.Category;
+import com.example.myhealthblock.question.domain.dto.PersonalDataDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
@@ -11,13 +13,13 @@ import java.util.List;
 @Getter
 @Setter
 @AllArgsConstructor
-public class QuestionDTO {
-    Integer id;
-    int uid;
-    String title;
+@NoArgsConstructor
+public class QuestionEnrollOutportRequest {
+    int userId;
+    List<BodyPart> bodyParts;
     Category category;
+    String title;
     String symptom;
     String content;
-    List<BodyPart> bodyParts;
     PersonalDataDTO personalData;
 }

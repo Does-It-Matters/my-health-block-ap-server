@@ -2,8 +2,7 @@ package com.example.myhealthblock.question.adapter.out.persistence.question;
 
 import com.example.myhealthblock.aop.LogExecutionTime;
 import com.example.myhealthblock.aop.LogTarget;
-import com.example.myhealthblock.patient.adapter.out.persistence.PatientEntity;
-import com.example.myhealthblock.patient.adapter.out.persistence.PatientRepository;
+import com.example.myhealthblock.question.application.port.out.dto.QuestionEnrollOutportRequest;
 import com.example.myhealthblock.question.common.Category;
 import com.example.myhealthblock.question.application.port.out.QuestionOutport;
 import com.example.myhealthblock.question.adapter.out.persistence.bodypart.BodyMappingRepository;
@@ -14,7 +13,6 @@ import com.example.myhealthblock.question.domain.dto.QuestionDTO;
 import com.example.myhealthblock.question.adapter.out.persistence.personaldata.PersonalDataEntity;
 import com.example.myhealthblock.question.adapter.out.persistence.personaldata.PersonalDataRepository;
 
-import com.example.myhealthblock.question.domain.dto.QuestionEntityDTO;
 import com.example.myhealthblock.question.domain.dto.QuestionTitleDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -27,103 +25,18 @@ import java.util.stream.Collectors;
 @Service
 public class QuestionPersistenceAdapter implements QuestionOutport {
     private final QuestionRepository questionRepository;
-    private final PatientRepository patientRepository;
     private final PersonalDataRepository personalDataRepository;
     private final BodyMappingRepository bodyMappingRepository;
 
     @Override
-    public boolean create(PatientEntity patient, String title, Category category, String symptom, String content, List<BodyPart> bodyParts, PersonalDataDTO personalData) {
-        QuestionEntity question = new QuestionEntity(patient, title, category, symptom, content);
+    public boolean create(QuestionEnrollOutportRequest dto) {
+        QuestionEntity question = new QuestionEntity(dto.getUserId(), dto.getTitle(), dto.getCategory(), dto.getSymptom(), dto.getContent());
         questionRepository.save(question);
 
-        insertPatient(question, patient);
-        insertBodyParts(question, bodyParts);
-        insertPersonalData(question, personalData);
+        insertBodyParts(question, dto.getBodyParts());
+        insertPersonalData(question, dto.getPersonalData());
 
         return true;
-    }
-
-    @Override
-    public QuestionDTO getQuestion(int id) {
-        QuestionEntity questionEntity = getQuestionEntity(id);
-        if (questionEntity == null) {
-            return null;
-        }
-
-        return getQuestionDTO(questionEntity);
-    }
-
-    @Override
-    public QuestionTitleDTO[] getQuestions(PatientEntity patient) {
-        return getQuestionTitleDTOs(this.questionRepository.findAllByPatient(patient));
-    }
-
-    @Override
-    public QuestionTitleDTO[] getQuestions(Category category) {
-        return getQuestionTitleDTOs(this.questionRepository.findAllByCategory(category));
-    }
-
-    @Override
-    public QuestionTitleDTO[] getQuestions() {
-        return getQuestionTitleDTOs(this.questionRepository.findAll());
-    }
-
-    @Override
-    public QuestionEntityDTO getQuestionEntityDTO(int id) {
-        return new QuestionEntityDTO(getQuestionEntity(id));
-    }
-
-    @Override
-    public boolean update(Integer questionId, String title, String symptom, String content) {
-        QuestionEntity question = getQuestionEntity(questionId);
-        question.setTitle(title);
-        question.setSymptom(symptom);
-        question.setContent(content);
-        questionRepository.save(question);
-
-        return true;
-    }
-
-    @Override
-    public boolean delete(int id) {
-        QuestionEntity questionEntity = getQuestionEntity(id);
-
-        PersonalDataEntity personalData = personalDataRepository.findByQuestion(questionEntity);
-        if (personalData != null) {
-            personalDataRepository.delete(personalData);
-        }
-
-        if (questionEntity == null) {
-            return false;
-        }
-
-        deleteQuestion(questionEntity);
-        return true;
-    }
-
-//    @Override
-//    public QuestionDTO[] getQuestionsWithDetail() {
-//        return getQuestionDTOs(this.questionRepository.findAll());
-//    }
-//
-//    @Override
-//    public QuestionDTO[] getQuestionsWithDetail(PatientEntity patient) {
-//        return getQuestionDTOs(this.questionRepository.findAllByPatient(patient));
-//    }
-//
-//    @Override
-//    public QuestionDTO[] getQuestionsWithDetail(Category category) {
-//        return getQuestionDTOs(this.questionRepository.findAllByCategory(category));
-//    }
-//
-//    @Override
-//    public QuestionDTO[] getQuestionsWithDetailByOpinionUserId(String opinionUserId) {
-//        return getQuestionDTOs(questionRepository.findByOpinionsUserUserId(opinionUserId));
-//    }
-
-    private void insertPatient(QuestionEntity question, PatientEntity patient) {
-        patient.addQuestion(question);
-        patientRepository.save(patient);
     }
 
     private void insertBodyParts(QuestionEntity question, List<BodyPart> bodyParts) {
@@ -152,6 +65,60 @@ public class QuestionPersistenceAdapter implements QuestionOutport {
         return personalDataEntity;
     }
 
+    @Override
+    public QuestionDTO getQuestion(int id) {
+        QuestionEntity questionEntity = getQuestionEntity(id);
+        if (questionEntity == null) {
+            return null;
+        }
+
+        return getQuestionDTO(questionEntity);
+    }
+
+    @Override
+    public QuestionTitleDTO[] getQuestions(int userId) {
+        return getQuestionTitleDTOs(this.questionRepository.findAllByUserId(userId));
+    }
+
+    @Override
+    public QuestionTitleDTO[] getQuestions(Category category) {
+        return getQuestionTitleDTOs(this.questionRepository.findAllByCategory(category));
+    }
+
+    @Override
+    public QuestionTitleDTO[] getQuestions() {
+        return getQuestionTitleDTOs(this.questionRepository.findAll());
+    }
+
+    @Override
+    public boolean update(Integer questionId, String title, String symptom, String content) {
+        QuestionEntity question = getQuestionEntity(questionId);
+        question.setTitle(title);
+        question.setSymptom(symptom);
+        question.setContent(content);
+        questionRepository.save(question);
+
+        return true;
+    }
+
+    @Override
+    public boolean delete(int id) {
+        QuestionEntity questionEntity = getQuestionEntity(id);
+        PersonalDataEntity personalData = personalDataRepository.findByQuestion(questionEntity);
+
+        if (personalData != null) {
+            personalDataRepository.delete(personalData);
+        }
+
+        if (questionEntity == null) {
+            return false;
+        }
+
+        deleteQuestion(questionEntity);
+        return true;
+    }
+
+
     private QuestionEntity getQuestionEntity(int id) {
         return this.questionRepository.findById(id).orElse(null);
     }
@@ -162,19 +129,13 @@ public class QuestionPersistenceAdapter implements QuestionOutport {
                 .toArray(QuestionTitleDTO[]::new);
     }
 
-    private QuestionDTO[] getQuestionDTOs(List<QuestionEntity> questionEntities) {
-        return questionEntities.stream()
-                .map(this::getQuestionDTO)
-                .toArray(QuestionDTO[]::new);
-    }
-
     private QuestionDTO getQuestionDTO(QuestionEntity questionEntity) {
         PersonalDataDTO personalData = getPersonalDataDTO(personalDataRepository.findByQuestion(questionEntity));
         List<BodyPart> bodyParts = getBodyParts(questionEntity);
 
         return new QuestionDTO(
                 questionEntity.getId(),
-                questionEntity.getPatient().getUserId(),
+                questionEntity.getUserId(),
                 questionEntity.getTitle(),
                 questionEntity.getCategory(),
                 questionEntity.getSymptom(),

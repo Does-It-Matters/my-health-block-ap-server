@@ -1,4 +1,4 @@
-package com.example.myhealthblock.opinion.domain.dto;
+package com.example.myhealthblock.opinion.application.port.in.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,9 +11,9 @@ import java.util.Date;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class OpinionDTO {
+public class OpinionInportDTO {
     private Integer id;
-    private String userId;
+    private int userId;
     private String content;
     private Date createDate;
     private Date lastModifiedDate;

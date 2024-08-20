@@ -1,6 +1,5 @@
 package com.example.myhealthblock.question.adapter.out.persistence.question;
 
-import com.example.myhealthblock.patient.adapter.out.persistence.PatientEntity;
 import com.example.myhealthblock.opinion.adapter.out.persistence.OpinionEntity;
 import com.example.myhealthblock.question.common.Category;
 import com.example.myhealthblock.question.adapter.out.persistence.bodypart.BodyPartMappingEntity;
@@ -19,8 +18,8 @@ import java.util.List;
 @Entity(name = "Question")
 @NoArgsConstructor
 public class QuestionEntity {
-    public QuestionEntity(PatientEntity patient, String title, Category category, String symptom, String content){
-        this.patient = patient;
+    public QuestionEntity(int userId, String title, Category category, String symptom, String content){
+        this.userId = userId;
         this.title = title;
         this.category = category;
         this.symptom = symptom;
@@ -32,9 +31,7 @@ public class QuestionEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "patient_id")
-    private PatientEntity patient;
+    private Integer userId;
 
     private String title;
 
@@ -52,17 +49,4 @@ public class QuestionEntity {
 
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OpinionEntity> opinions = new ArrayList<>();
-
-    public QuestionEntity(int questionId) {
-        this.id = questionId;
-    }
-
-//    public void addBodyPartMapping(BodyPartMappingEntity bodyPartMapping) {
-//        bodyPartMappings.add(bodyPartMapping);
-//        bodyPartMapping.setQuestion(this);
-//    }
-//    public void removeBodyPartMapping(BodyPartMappingEntity bodyPartMapping) {
-//        bodyPartMappings.remove(bodyPartMapping);
-//        bodyPartMapping.setQuestion(null);
-//    }
 }

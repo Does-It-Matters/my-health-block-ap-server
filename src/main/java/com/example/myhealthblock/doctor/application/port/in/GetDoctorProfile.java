@@ -1,8 +1,8 @@
 package com.example.myhealthblock.doctor.application.port.in;
 
 
-import com.example.myhealthblock.doctor.domain.dto.DoctorProfileDTO;
+import com.example.myhealthblock.doctor.application.port.in.dto.DoctorProfileInportResponse;
 
 public interface GetDoctorProfile {
-    DoctorProfileDTO getDoctorProfile(String doctorId);
+    DoctorProfileInportResponse getDoctorProfile(String doctorId);
 }

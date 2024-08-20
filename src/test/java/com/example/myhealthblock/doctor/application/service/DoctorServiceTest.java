@@ -1,11 +1,11 @@
 package com.example.myhealthblock.doctor.application.service;
 
+import com.example.myhealthblock.doctor.application.port.in.dto.DoctorProfileInportResponse;
 import com.example.myhealthblock.doctor.application.port.out.DoctorOutport;
-import com.example.myhealthblock.doctor.domain.dto.DoctorProfileDTO;
-import com.example.myhealthblock.doctor.domain.dto.DoctorSignUpRequestDTO;
-import com.example.myhealthblock.doctor.domain.dto.DoctorSignUpResponseDTO;
+import com.example.myhealthblock.doctor.application.port.out.dto.DoctorProfileOutportResponse;
+import com.example.myhealthblock.doctor.application.port.in.dto.DoctorSignUpInportRequest;
+import com.example.myhealthblock.doctor.application.port.in.dto.DoctorSignUpInportResponse;
 import com.example.myhealthblock.doctor.domain.mapper.DoctorMapper;
-import com.example.myhealthblock.doctor.domain.model.Doctor;
 import com.example.myhealthblock.user.application.port.in.UserSignUp;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -54,23 +54,23 @@ public class DoctorServiceTest {
 
     @Test
     public void testSignUpFailure() {
-        DoctorSignUpRequestDTO requestDTO = new DoctorSignUpRequestDTO();
+        DoctorSignUpInportRequest requestDTO = new DoctorSignUpInportRequest();
         requestDTO.setId("id");
         requestDTO.setPw("pw");
 
         when(userSignUp.signUp(any())).thenReturn(false);
 
-        DoctorSignUpResponseDTO responseDTO = doctorService.signUp(requestDTO);
+        DoctorSignUpInportResponse responseDTO = doctorService.signUp(requestDTO);
 
         assertEquals("failure", responseDTO.getResult());
     }
 
     @Test
     public void testGetDoctorProfile() {
-        DoctorProfileDTO profileDTO = new DoctorProfileDTO("name", "field", "hospital", "introduction");
+        DoctorProfileOutportResponse profileDTO = new DoctorProfileOutportResponse("name", "field", "hospital", "introduction");
         when(doctorOutport.getDoctorProfile("id")).thenReturn(profileDTO);
 
-        DoctorProfileDTO result = doctorService.getDoctorProfile("id");
+        DoctorProfileInportResponse result = doctorService.getDoctorProfile("id");
 
         assertEquals("name", result.getName());
         assertEquals("field", result.getField());
