@@ -1,6 +1,5 @@
 package com.example.myhealthblock.question.adapter.out.persistence.question;
 
-import com.example.myhealthblock.patient.adapter.out.persistence.PatientEntity;
 import com.example.myhealthblock.opinion.adapter.out.persistence.OpinionEntity;
 import com.example.myhealthblock.question.common.Category;
 import com.example.myhealthblock.question.adapter.out.persistence.bodypart.BodyPartMappingEntity;
