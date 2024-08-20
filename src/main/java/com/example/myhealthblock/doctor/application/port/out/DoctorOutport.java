@@ -9,6 +9,13 @@ import com.example.myhealthblock.doctor.domain.dto.DoctorProfileDTO;
  * <br>- 육각형 아키텍처를 위한 출력 포트
  */
 public interface DoctorOutport {
+
+    /**
+     * <b> 역할: 영속성 계층에 의료진 정보를 저장하는 메소드 </b>
+     *
+     * @param doctor 영속성 계층에 전달할 도메인 객체
+     * @return 성공하면 true, 실패하면 false
+     */
     boolean create(Doctor doctor);
 
     /**

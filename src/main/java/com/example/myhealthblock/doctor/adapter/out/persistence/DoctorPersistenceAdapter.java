@@ -20,9 +20,18 @@ import org.springframework.stereotype.Service;
 public class DoctorPersistenceAdapter implements DoctorOutport {
     private final DoctorRepository doctorRepository;
 
+    /**
+     * <b> 역할: 의료진 데이터 저장하는 메소드 </b>
+     *
+     * @param doctor 저장할 의료진 정보
+     * @return 저장 성공 여부
+     */
     @Override
     public boolean create(Doctor doctor) {
-        return false;
+        DoctorEntity q = new DoctorEntity(doctor.getId(), doctor.getName(), doctor.getField(), doctor.getHospital(), doctor.getIntroduction());
+        this.doctorRepository.save(q);
+
+        return true;
     }
 
     /**
