@@ -1,4 +1,4 @@
-package com.example.myhealthblock.patient.domain.mapper;
-
-public interface PatientMapper {
-}
+//package com.example.myhealthblock.patient.domain.mapper;
+//
+//public interface PatientMapper {
+//}
