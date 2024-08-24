@@ -6,7 +6,6 @@
 //import com.example.myhealthblock.question.common.Category;
 //import com.example.myhealthblock.question.application.port.out.QuestionOutport;
 //import com.example.myhealthblock.question.adapter.out.persistence.bodypart.BodyMappingRepository;
-//import com.example.myhealthblock.question.adapter.out.persistence.bodypart.BodyPart;
 //import com.example.myhealthblock.question.adapter.out.persistence.bodypart.BodyPartMappingEntity;
 //import com.example.myhealthblock.question.domain.dto.PersonalDataDTO;
 //import com.example.myhealthblock.question.domain.dto.QuestionDTO;

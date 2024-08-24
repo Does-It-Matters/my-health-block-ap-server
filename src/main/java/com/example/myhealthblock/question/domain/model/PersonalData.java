@@ -1,16 +1,12 @@
-package com.example.myhealthblock.question.domain.dto;
+package com.example.myhealthblock.question.domain.model;
 
 import com.example.myhealthblock.question.common.Gender;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
-public class PersonalDataDTO {
+public class PersonalData {
     int age;
     Gender gender;
     String disease;

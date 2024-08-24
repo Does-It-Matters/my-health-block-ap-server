@@ -1,6 +1,5 @@
 //package com.example.myhealthblock.question.application.port.out.dto;
 //
-//import com.example.myhealthblock.question.adapter.out.persistence.bodypart.BodyPart;
 //import com.example.myhealthblock.question.common.Category;
 //import com.example.myhealthblock.question.domain.dto.PersonalDataDTO;
 //import lombok.AllArgsConstructor;
