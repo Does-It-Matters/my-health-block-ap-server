@@ -86,7 +86,7 @@ public class DoctorService implements DoctorInport {
      * </p>
      */
     private DoctorSignUpInportResponse getInputPortResponse(Doctor doctor) {
-        return mapper.doctorToDoctorSignUpInportResponse(doctor, "success");
+        return mapper.doctorToDoctorSignUpInportResponse(doctor);
     }
 
     /**

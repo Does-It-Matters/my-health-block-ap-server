@@ -11,5 +11,4 @@ public class DoctorSignUpInportResponse {
     private String field;
     private String hospital;
     private String introduction;
-    private String result;
 }
