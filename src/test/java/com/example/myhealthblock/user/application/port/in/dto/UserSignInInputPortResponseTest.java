@@ -19,7 +19,6 @@ public class UserSignInInputPortResponseTest {
     @DisplayName("기본 생성자 테스트")
     public void testNoArgsConstructor() {
         UserSignInInputPortResponse dto = new UserSignInInputPortResponse();
-        assertNull(dto.getResult(), "Result 필드는 null이어야 합니다.");
         assertNull(dto.getRole(), "Role 필드는 null이어야 합니다.");
         assertNull(dto.getId(), "ID 필드는 null이어야 합니다.");
     }
@@ -33,8 +32,7 @@ public class UserSignInInputPortResponseTest {
     @Test
     @DisplayName("모든 필드를 초기화하는 생성자 테스트")
     public void testAllArgsConstructor() {
-        UserSignInInputPortResponse dto = new UserSignInInputPortResponse("SUCCESS", "DOCTOR", "user123");
-        assertEquals("SUCCESS", dto.getResult(), "Result 필드가 초기화된 값과 일치해야 합니다.");
+        UserSignInInputPortResponse dto = new UserSignInInputPortResponse("DOCTOR", "user123");
         assertEquals("DOCTOR", dto.getRole(), "Role 필드가 초기화된 값과 일치해야 합니다.");
         assertEquals("user123", dto.getId(), "ID 필드가 초기화된 값과 일치해야 합니다.");
     }
@@ -49,11 +47,9 @@ public class UserSignInInputPortResponseTest {
     @DisplayName("Getter 및 Setter 테스트")
     public void testSettersAndGetters() {
         UserSignInInputPortResponse dto = new UserSignInInputPortResponse();
-        dto.setResult("SUCCESS");
         dto.setRole("DOCTOR");
         dto.setId("user123");
 
-        assertEquals("SUCCESS", dto.getResult(), "Getter를 통해 얻은 Result 필드 값이 설정한 값과 일치해야 합니다.");
         assertEquals("DOCTOR", dto.getRole(), "Getter를 통해 얻은 Role 필드 값이 설정한 값과 일치해야 합니다.");
         assertEquals("user123", dto.getId(), "Getter를 통해 얻은 ID 필드 값이 설정한 값과 일치해야 합니다.");
     }

@@ -14,7 +14,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserSignInInputPortResponse {
-    private String result;
     private String role;
     private String id;
 }
