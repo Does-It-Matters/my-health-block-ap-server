@@ -8,11 +8,12 @@ import com.example.myhealthblock.question.common.Category;
 import com.example.myhealthblock.question.domain.dto.QuestionDTO;
 import com.example.myhealthblock.question.domain.dto.QuestionTitleDTO;
 import com.example.myhealthblock.question.domain.mapper.QuestionMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
 @Service
+@RequiredArgsConstructor
 public class QuestionService implements QuestionInport {
     private final QuestionOutputPort outputPort;
     private final QuestionMapper mapper = QuestionMapper.INSTANCE;
