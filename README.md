@@ -25,15 +25,15 @@ com.example.myhealthblock
 │   ├── application
 │   │   ├── port
 │   │   │   ├── in
-│   │   │   │   ├── Inport.java
+│   │   │   │   ├── InputPort.java
 │   │   │   │   └── dto
-│   │   │   │       ├── InportRequest.java
-│   │   │   │       └── InportResponse.java
+│   │   │   │       ├── InputPortRequest.java
+│   │   │   │       └── InputPortResponse.java
 │   │   │   └── out
-│   │   │       ├── Outport.java
+│   │   │       ├── OutputPort.java
 │   │   │       └── dto
-│   │   │           ├── OutportRequest.java
-│   │   │           └── OutportResponse.java
+│   │   │           ├── OutputPortRequest.java
+│   │   │           └── OutputPortResponse.java
 │   │   └── service
 │   │       └── Service.java
 │   └── domain
