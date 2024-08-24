@@ -3,7 +3,7 @@ package com.example.myhealthblock.question.application.service;
 import com.example.myhealthblock.question.application.port.in.QuestionInport;
 import com.example.myhealthblock.question.application.port.in.dto.QuestionEnrollInportRequest;
 import com.example.myhealthblock.question.application.port.out.QuestionOutputPort;
-import com.example.myhealthblock.question.application.port.out.dto.QuestionEnrollOutportRequest;
+import com.example.myhealthblock.question.application.port.out.dto.QuestionEnrollOutputPortRequest;
 import com.example.myhealthblock.question.common.Category;
 import com.example.myhealthblock.question.domain.dto.QuestionDTO;
 import com.example.myhealthblock.question.domain.dto.QuestionTitleDTO;
@@ -19,7 +19,7 @@ public class QuestionService implements QuestionInport {
 
     @Override
     public String enroll(QuestionEnrollInportRequest dto) {
-        QuestionEnrollOutportRequest request = mapper.INSTANCE.inportRequestToOutportRequest(dto);
+        QuestionEnrollOutputPortRequest request = mapper.INSTANCE.inportRequestToOutportRequest(dto);
         boolean result = outputPort.create(request);
 
         return result ? "success" : "fail";
