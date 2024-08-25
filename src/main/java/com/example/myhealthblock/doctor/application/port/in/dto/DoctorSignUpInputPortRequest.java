@@ -7,9 +7,12 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-public class DoctorProfileInportResponse {
+@AllArgsConstructor
+public class DoctorSignUpInputPortRequest {
+    private String id;
+    private String pw;
+    private String role;
     private String name;
     private String field;
     private String hospital;

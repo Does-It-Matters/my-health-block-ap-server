@@ -1,6 +1,6 @@
 ### Patient Domain =====================================================
 ### 1. 환자 회원가입
-POST http://localhost:8080/api/v2/patient/sign-up
+POST http://localhost:8080/api/v3/patient/sign-up
 content-type: application/json
 
 {
@@ -12,7 +12,7 @@ content-type: application/json
 
 ### Doctor Domain =====================================================
 ### 1. 의사 회원가입
-POST http://localhost:8080/api/v2/doctor/sign-up
+POST http://localhost:8080/api/v3/doctor/sign-up
 content-type: application/json
 
 {
@@ -26,18 +26,12 @@ content-type: application/json
 }
 
 
+### 2. 의료진 프로필 조회
+GET http://localhost:8080/api/v3/doctor/DOCTOR_ID
+
+
 ### User Domain =====================================================
 ### 1. 로그인
-POST http://localhost:8080/api/v2/sign-in
-content-type: application/json
-
-{
-    "id": "PATIENT_ID",
-    "pw": "pw"
-}
-
-
-### 1.1. 로그인 JWT 토큰 발급 버전
 POST http://localhost:8080/api/v3/sign-in
 content-type: application/json
 
@@ -48,26 +42,12 @@ content-type: application/json
 
 
 ### Question Domain =====================================================
-### 1.1. 게시물 등록(token 사용 버전, Authorization에 access token 입력)
-POST http://localhost:8080/api/v2/question/enroll
-content-type: application/json
-Authorization: Bearer ~~
-
-{
-    "userId" : "PATIENT_ID",
-    "title" : "title",
-    "symptom" : "symptom",
-    "content" : "content"
-}
-
-
-### Question Domain =====================================================
 ### 1. 게시물 등록
-POST http://localhost:8080/api/v2/question/enroll
+POST http://localhost:8080/api/v3/question/enroll
 content-type: application/json
 
 {
-    "userId" : "PATIENT_ID",
+    "userId" : 1,
     "title" : "title",
     "symptom" : "symptom",
     "content" : "content"
@@ -75,19 +55,19 @@ content-type: application/json
 
 
 ### 2. 전체 질문 목록 조회
-GET http://localhost:8080/api/v2/question/list
+GET http://localhost:8080/api/v3/question/list
 
 
-# ### 3. 특정 사용자로 질문 목록 조회
-# GET http://localhost:8080/api/v2/question/list?userId=PATIENT_ID
+### 3. 특정 사용자로 질문 목록 조회
+GET http://localhost:8080/api/v3/question/list?userId=1
 
 
 ### 4. 질문 식별자로 하나의 질문 상세 조회
-GET http://localhost:8080/api/v2/question/1
+GET http://localhost:8080/api/v3/question/1
 
 
 ### 5. 질문 수정
-PATCH http://localhost:8080/api/v2/question
+PATCH http://localhost:8080/api/v3/question
 content-type: application/json
 
 {
@@ -99,29 +79,29 @@ content-type: application/json
 
 
 ### 6. 질문 삭제
-DELETE http://localhost:8080/api/v2/question/1
+DELETE http://localhost:8080/api/v3/question/1
 
 
 ### Opinion Domain =====================================================
 ### 1. 의견 등록
-POST http://localhost:8080/api/v2/opinion/enroll
+POST http://localhost:8080/api/v3/opinion/enroll
 content-type: application/json
 
 {
-    "userId" : "DOCTOR_ID",
+    "userId" : 1,
     "content" : "물을 많이 마시면 좋을 것 같습니다.",
-    "questionId" : 1
+    "questionId" : 2
 }
 
 
 ### 2. 특정 질문 의견들 조회
-GET http://localhost:8080/api/v2/opinions?userId=DOCTOR_ID
+GET http://localhost:8080/api/v3/opinions?userId=1
 
 
 ### 3. 특정 사용자 의견들 조회(내가 작성한 의견 조회)
-GET http://localhost:8080/api/v2/opinions?questionId=1
+GET http://localhost:8080/api/v3/opinions?questionId=2
 
 
 ### 4. 의견 삭제
-DELETE http://localhost:8080/api/v2/opinion/1
+DELETE http://localhost:8080/api/v3/opinion/1
 
