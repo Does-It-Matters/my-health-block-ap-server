@@ -4,8 +4,10 @@ import com.example.myhealthblock.opinion.application.port.in.dto.OpinionEnrollIn
 import com.example.myhealthblock.opinion.application.port.in.dto.OpinionInputPortDTO;
 import com.example.myhealthblock.opinion.application.port.out.dto.OpinionEnrollOutputPortRequest;
 import com.example.myhealthblock.opinion.application.port.out.dto.OpinionOutputPortDTO;
+import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
+@Mapper
 public interface OpinionMapper {
     OpinionMapper INSTANCE = Mappers.getMapper(OpinionMapper.class);
 
