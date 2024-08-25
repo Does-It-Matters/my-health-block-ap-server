@@ -3,8 +3,8 @@ package com.example.myhealthblock.doctor.adapter.out.persistence;
 import com.example.myhealthblock.aop.LogExecutionTime;
 import com.example.myhealthblock.aop.LogTarget;
 import com.example.myhealthblock.doctor.application.port.out.DoctorOutputPort;
-import com.example.myhealthblock.doctor.application.port.out.dto.DoctorSignUpOutportRequest;
-import com.example.myhealthblock.doctor.application.port.out.dto.DoctorProfileOutportResponse;
+import com.example.myhealthblock.doctor.application.port.out.dto.DoctorSignUpOutputPortRequest;
+import com.example.myhealthblock.doctor.application.port.out.dto.DoctorProfileOutputPortResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +27,7 @@ public class DoctorPersistenceAdapter implements DoctorOutputPort {
      * @return 저장 성공 여부
      */
     @Override
-    public boolean create(DoctorSignUpOutportRequest doctor) {
+    public boolean create(DoctorSignUpOutputPortRequest doctor) {
         DoctorEntity q = new DoctorEntity(doctor.getId(), doctor.getName(), doctor.getField(), doctor.getHospital(), doctor.getIntroduction());
         this.doctorRepository.save(q);
 
@@ -41,10 +41,10 @@ public class DoctorPersistenceAdapter implements DoctorOutputPort {
      * @return 의료진 프로필 정보
      */
     @Override
-    public DoctorProfileOutportResponse getDoctorProfile(String doctorId) {
+    public DoctorProfileOutputPortResponse getDoctorProfile(String doctorId) {
         DoctorEntity doctor = getDoctorEntity(doctorId);
 
-        return new DoctorProfileOutportResponse(doctor.getName(), doctor.getField(), doctor.getHospital(), doctor.getIntroduction());
+        return new DoctorProfileOutputPortResponse(doctor.getName(), doctor.getField(), doctor.getHospital(), doctor.getIntroduction());
     }
 
     /**

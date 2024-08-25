@@ -3,7 +3,7 @@ package com.example.myhealthblock.doctor.application.service;
 import com.example.myhealthblock.doctor.application.port.in.DoctorInputPort;
 import com.example.myhealthblock.doctor.application.port.in.dto.DoctorProfileInputPortResponse;
 import com.example.myhealthblock.doctor.application.port.out.DoctorOutputPort;
-import com.example.myhealthblock.doctor.application.port.out.dto.DoctorProfileOutportResponse;
+import com.example.myhealthblock.doctor.application.port.out.dto.DoctorProfileOutputPortResponse;
 import com.example.myhealthblock.doctor.domain.model.Doctor;
 import com.example.myhealthblock.doctor.application.port.in.dto.DoctorSignUpInputPortRequest;
 import com.example.myhealthblock.doctor.application.port.in.dto.DoctorSignUpInputPortResponse;
@@ -118,7 +118,7 @@ public class DoctorService implements DoctorInputPort {
      */
     @Override
     public DoctorProfileInputPortResponse getDoctorProfile(String doctorId) {
-        DoctorProfileOutportResponse outportResponse = outputPort.getDoctorProfile(doctorId);
+        DoctorProfileOutputPortResponse outportResponse = outputPort.getDoctorProfile(doctorId);
         return mapper.toInputResponse(outportResponse);
     }
 }

@@ -1,7 +1,7 @@
 package com.example.myhealthblock.doctor.application.port.out;
 
-import com.example.myhealthblock.doctor.application.port.out.dto.DoctorSignUpOutportRequest;
-import com.example.myhealthblock.doctor.application.port.out.dto.DoctorProfileOutportResponse;
+import com.example.myhealthblock.doctor.application.port.out.dto.DoctorSignUpOutputPortRequest;
+import com.example.myhealthblock.doctor.application.port.out.dto.DoctorProfileOutputPortResponse;
 
 /**
  * <b> 역할: 의료진 데이터에 대한 출력 포트 인터페이스 </b>
@@ -16,7 +16,7 @@ public interface DoctorOutputPort {
      * @param doctor 영속성 계층에 전달할 도메인 객체
      * @return 성공하면 true, 실패하면 false
      */
-    boolean create(DoctorSignUpOutportRequest doctor);
+    boolean create(DoctorSignUpOutputPortRequest doctor);
 
     /**
      * <b> 역할: 의료진 프로필 조회 메소드 </b>
@@ -24,5 +24,5 @@ public interface DoctorOutputPort {
      * @param doctorId 의료진 ID
      * @return 의료진 프로필 정보
      */
-    public DoctorProfileOutportResponse getDoctorProfile(String doctorId);
+    public DoctorProfileOutputPortResponse getDoctorProfile(String doctorId);
 }

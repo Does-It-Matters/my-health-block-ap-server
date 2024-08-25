@@ -1,8 +1,8 @@
 package com.example.myhealthblock.doctor.domain.mapper;
 
 import com.example.myhealthblock.doctor.application.port.in.dto.DoctorProfileInputPortResponse;
-import com.example.myhealthblock.doctor.application.port.out.dto.DoctorProfileOutportResponse;
-import com.example.myhealthblock.doctor.application.port.out.dto.DoctorSignUpOutportRequest;
+import com.example.myhealthblock.doctor.application.port.out.dto.DoctorProfileOutputPortResponse;
+import com.example.myhealthblock.doctor.application.port.out.dto.DoctorSignUpOutputPortRequest;
 import com.example.myhealthblock.doctor.domain.model.Doctor;
 import com.example.myhealthblock.doctor.application.port.in.dto.DoctorSignUpInputPortRequest;
 import com.example.myhealthblock.doctor.application.port.in.dto.DoctorSignUpInputPortResponse;
@@ -24,7 +24,7 @@ public interface DoctorMapper {
 
     DoctorSignUpInputPortResponse toSignUpResponse(Doctor doctor);
 
-    DoctorProfileInputPortResponse toInputResponse(DoctorProfileOutportResponse dto);
+    DoctorProfileInputPortResponse toInputResponse(DoctorProfileOutputPortResponse dto);
 
-    DoctorSignUpOutportRequest toSignUpOutputPortRequest(Doctor doctor);
+    DoctorSignUpOutputPortRequest toSignUpOutputPortRequest(Doctor doctor);
 }
