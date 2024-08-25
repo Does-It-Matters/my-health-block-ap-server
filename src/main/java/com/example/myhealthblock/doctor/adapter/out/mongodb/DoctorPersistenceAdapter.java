@@ -1,4 +1,4 @@
-package com.example.myhealthblock.doctor.adapter.out.jpa;
+package com.example.myhealthblock.doctor.adapter.out.mongodb;
 
 import com.example.myhealthblock.aop.LogExecutionTime;
 import com.example.myhealthblock.aop.LogTarget;
@@ -6,15 +6,17 @@ import com.example.myhealthblock.doctor.application.port.out.DoctorOutputPort;
 import com.example.myhealthblock.doctor.application.port.out.dto.DoctorSignUpOutputPortRequest;
 import com.example.myhealthblock.doctor.application.port.out.dto.DoctorProfileOutputPortResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 /**
  * <b> 역할: 의료진 데이터 처리하는 어댑터 클래스 </b>
- * <br>- DoctorRepository를 통해 데이터베이스와 상호작용
+ * <br>- DoctorRepository를 통해 MongoDB와 상호작용
  *
  * @see DoctorRepository
  */
 @LogExecutionTime(logTarget = LogTarget.ADAPTER)
 @RequiredArgsConstructor
+@Service
 public class DoctorPersistenceAdapter implements DoctorOutputPort {
     private final DoctorRepository doctorRepository;
 
@@ -26,8 +28,14 @@ public class DoctorPersistenceAdapter implements DoctorOutputPort {
      */
     @Override
     public boolean create(DoctorSignUpOutputPortRequest doctor) {
-        DoctorEntity q = new DoctorEntity(doctor.getId(), doctor.getName(), doctor.getField(), doctor.getHospital(), doctor.getIntroduction());
-        this.doctorRepository.save(q);
+        DoctorDocument doc = new DoctorDocument(
+                doctor.getId(),
+                doctor.getName(),
+                doctor.getField(),
+                doctor.getHospital(),
+                doctor.getIntroduction()
+        );
+        this.doctorRepository.save(doc);
 
         return true;
     }
@@ -40,18 +48,23 @@ public class DoctorPersistenceAdapter implements DoctorOutputPort {
      */
     @Override
     public DoctorProfileOutputPortResponse getDoctorProfile(String doctorId) {
-        DoctorEntity doctor = getDoctorEntity(doctorId);
+        DoctorDocument doctor = getDoctorDocument(doctorId);
 
-        return new DoctorProfileOutputPortResponse(doctor.getName(), doctor.getField(), doctor.getHospital(), doctor.getIntroduction());
+        return new DoctorProfileOutputPortResponse(
+                doctor.getName(),
+                doctor.getField(),
+                doctor.getHospital(),
+                doctor.getIntroduction()
+        );
     }
 
     /**
-     * <b> 역할: 의료진 ID로 DoctorEntity를 조회하는 메소드 </b>
+     * <b> 역할: 의료진 ID로 DoctorDocument를 조회하는 메소드 </b>
      *
      * @param doctorId 의료진 ID
-     * @return 조회된 DoctorEntity
+     * @return 조회된 DoctorDocument
      */
-    private DoctorEntity getDoctorEntity(String doctorId) {
+    private DoctorDocument getDoctorDocument(String doctorId) {
         return this.doctorRepository.findByUserId(doctorId);
     }
 }
