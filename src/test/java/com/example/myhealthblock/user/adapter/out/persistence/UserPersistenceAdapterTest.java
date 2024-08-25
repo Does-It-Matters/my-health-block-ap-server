@@ -1,5 +1,8 @@
 package com.example.myhealthblock.user.adapter.out.persistence;
 
+import com.example.myhealthblock.user.adapter.out.jpa.UserEntity;
+import com.example.myhealthblock.user.adapter.out.jpa.UserPersistenceAdapter;
+import com.example.myhealthblock.user.adapter.out.jpa.UserRepository;
 import com.example.myhealthblock.user.domain.model.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

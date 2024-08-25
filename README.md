@@ -18,9 +18,17 @@ com.example.myhealthblock
 │   │   │       └── response 
 │   │   │           └── Response.java
 │   │   └── out
-│   │       └── persistence
+│   │       ├── jpa
+│   │       │   ├── Entity.java
+│   │       │   ├── Repository.java
+│   │       │   └── PersistenceAdapter.java
+│   │       ├── mongodb
+│   │       │   ├── Document.java
+│   │       │   ├── Repository.java
+│   │       │   └── PersistenceAdapter.java
+│   │       └── mybatis
 │   │           ├── Entity.java
-│   │           ├── Repository.java
+│   │           ├── Mapper.java
 │   │           └── PersistenceAdapter.java
 │   ├── application
 │   │   ├── port
