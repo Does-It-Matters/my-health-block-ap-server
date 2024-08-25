@@ -1,11 +1,11 @@
 package com.example.myhealthblock.doctor.domain.mapper;
 
-import com.example.myhealthblock.doctor.application.port.in.dto.DoctorProfileInportResponse;
-import com.example.myhealthblock.doctor.application.port.out.dto.DoctorProfileOutportResponse;
-import com.example.myhealthblock.doctor.application.port.out.dto.DoctorSignUpOutportRequest;
+import com.example.myhealthblock.doctor.application.port.in.dto.DoctorProfileInputPortResponse;
+import com.example.myhealthblock.doctor.application.port.out.dto.DoctorProfileOutputPortResponse;
+import com.example.myhealthblock.doctor.application.port.out.dto.DoctorSignUpOutputPortRequest;
 import com.example.myhealthblock.doctor.domain.model.Doctor;
-import com.example.myhealthblock.doctor.application.port.in.dto.DoctorSignUpInportRequest;
-import com.example.myhealthblock.doctor.application.port.in.dto.DoctorSignUpInportResponse;
+import com.example.myhealthblock.doctor.application.port.in.dto.DoctorSignUpInputPortRequest;
+import com.example.myhealthblock.doctor.application.port.in.dto.DoctorSignUpInputPortResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
@@ -20,11 +20,11 @@ public interface DoctorMapper {
     @Mapping(source = "field", target = "field")
     @Mapping(source = "hospital", target = "hospital")
     @Mapping(source = "introduction", target = "introduction")
-    Doctor doctorSignUpInportRequestToDoctor(DoctorSignUpInportRequest dto);
+    Doctor toDoctor(DoctorSignUpInputPortRequest dto);
 
-    DoctorSignUpInportResponse doctorToDoctorSignUpInportResponse(Doctor doctor);
+    DoctorSignUpInputPortResponse toSignUpResponse(Doctor doctor);
 
-    DoctorProfileInportResponse outportResponseToInportResponse(DoctorProfileOutportResponse dto);
+    DoctorProfileInputPortResponse toInputResponse(DoctorProfileOutputPortResponse dto);
 
-    DoctorSignUpOutportRequest doctorToDoctorSignUpOutportRequest(Doctor doctor);
+    DoctorSignUpOutputPortRequest toSignUpOutputPortRequest(Doctor doctor);
 }
