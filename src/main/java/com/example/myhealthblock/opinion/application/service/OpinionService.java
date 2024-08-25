@@ -18,21 +18,21 @@ public class OpinionService implements OpinionInputPort {
 
     @Override
     public OpinionInputPortDTO enroll(OpinionEnrollInputPortRequest dto) {
-        OpinionEnrollOutputPortRequest request = OpinionMapper.INSTANCE.opinionEnrollOutportRequestToOpinionEnrollOutportResponse(dto);
+        OpinionEnrollOutputPortRequest request = OpinionMapper.INSTANCE.toEnrollOutputPortRequest(dto);
         OpinionOutputPortDTO response = outputPort.create(request);
-        return mapper.INSTANCE.opinionEnrollOutportResponseToOpinionEnrollInportResponse(response);
+        return mapper.INSTANCE.toEnrollInput(response);
     }
 
     @Override
     public OpinionInputPortDTO[] getOpinionsByUserId(int userId) {
         OpinionOutputPortDTO[] outputPortDTOs = outputPort.getOpinionsByUserId(userId);
-        return mapper.INSTANCE.opinionOutportArrayToInportArray(outputPortDTOs);
+        return mapper.INSTANCE.toEnrollInputArray(outputPortDTOs);
     }
 
     @Override
     public OpinionInputPortDTO[] getOpinionsByQuestionId(int questionId) {
         OpinionOutputPortDTO[] outputPortDTOs = outputPort.getOpinionsByQuestionId(questionId);
-        return mapper.INSTANCE.opinionOutportArrayToInportArray(outputPortDTOs);
+        return mapper.INSTANCE.toEnrollInputArray(outputPortDTOs);
     }
 
     @Override

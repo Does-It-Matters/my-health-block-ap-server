@@ -11,7 +11,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class DoctorProfileOutportResponse {
+public class DoctorProfileOutputPortResponse {
     private String name;
     private String field;
     private String hospital;
