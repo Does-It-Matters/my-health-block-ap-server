@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -71,8 +72,8 @@ public class OpinionPersistenceAdapter implements OpinionOutputPort {
         int id = opinion.getId();
         int userId = opinion.getUserId();
         String content = opinion.getContent();
-        Date createDate = opinion.getCreateDate();
-        Date lastModifiedDate = opinion.getLastModifiedDate();
+        LocalDateTime createDate = opinion.getCreateDate();
+        LocalDateTime lastModifiedDate = opinion.getLastModifiedDate();
 
         return new OpinionOutputPortDTO(id, userId, content, createDate, lastModifiedDate);
     }

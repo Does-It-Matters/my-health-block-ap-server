@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -15,6 +15,6 @@ public class OpinionOutputPortDTO {
     private Integer id;
     private int userId;
     private String content;
-    private Date createDate;
-    private Date lastModifiedDate;
+    private LocalDateTime createDate;
+    private LocalDateTime lastModifiedDate;
 }
