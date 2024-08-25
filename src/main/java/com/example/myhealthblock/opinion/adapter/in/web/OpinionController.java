@@ -33,7 +33,7 @@ public class OpinionController {
      * @return 의견 등록 응답
      */
     @Operation(summary = "의견 등록", description = "유저가 의견 등록")
-    @PostMapping("/v2/opinion/enroll")
+    @PostMapping("/v3/opinion/enroll")
     public ResponseEntity<EnrollOpinionResponse> enroll(@RequestBody OpinionEnrollRequest body) {
         OpinionInputPortDTO dto = opinionInputPort.enroll(body.toInputPortDTO());
         return ResponseEntity.ok(new EnrollOpinionResponse(dto));
@@ -47,7 +47,7 @@ public class OpinionController {
      * @return 여러 의견
      */
     @Operation(summary = "의견들 조회", description = "유저가 의견들 조회 <br>questionId는 질문 식별자로, 입력 시 특정 질문에 대한 의견들 조회 <br>userId는 회원가입 시 등록한 아이디로, 입력 시 본인이 등록한 의견들 조회<br>둘 중 하나만 입력")
-    @GetMapping("/v2/opinions")
+    @GetMapping("/v3/opinions")
     public ResponseEntity<OpinionsResponse> getOpinions(@RequestParam(required = false) Integer questionId, @RequestParam(required = false) Integer userId) {
         OpinionInputPortDTO[] list = getOpinionDTOs(questionId, userId);
         return ResponseEntity.ok(new OpinionsResponse(list));
@@ -79,7 +79,7 @@ public class OpinionController {
      * @return 회원가입 응답
      */
     @Operation(summary = "의견 삭제", description = "유저가 의견 삭제 <br>{opinionId}는 식별자")
-    @DeleteMapping("/v2/opinion/{opinionId}")
+    @DeleteMapping("/v3/opinion/{opinionId}")
     public ResponseEntity<ResultResponse> delete(@PathVariable Integer opinionId) {
         String result = opinionInputPort.delete(opinionId);
         return ResponseEntity.ok(new ResultResponse(result));
