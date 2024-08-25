@@ -1,12 +1,12 @@
 package com.example.myhealthblock.doctor.application.service;
 
-import com.example.myhealthblock.doctor.application.port.in.DoctorInport;
-import com.example.myhealthblock.doctor.application.port.in.dto.DoctorProfileInportResponse;
-import com.example.myhealthblock.doctor.application.port.out.DoctorOutport;
+import com.example.myhealthblock.doctor.application.port.in.DoctorInputPort;
+import com.example.myhealthblock.doctor.application.port.in.dto.DoctorProfileInputPortResponse;
+import com.example.myhealthblock.doctor.application.port.out.DoctorOutputPort;
 import com.example.myhealthblock.doctor.application.port.out.dto.DoctorProfileOutportResponse;
 import com.example.myhealthblock.doctor.domain.model.Doctor;
-import com.example.myhealthblock.doctor.application.port.in.dto.DoctorSignUpInportRequest;
-import com.example.myhealthblock.doctor.application.port.in.dto.DoctorSignUpInportResponse;
+import com.example.myhealthblock.doctor.application.port.in.dto.DoctorSignUpInputPortRequest;
+import com.example.myhealthblock.doctor.application.port.in.dto.DoctorSignUpInputPortResponse;
 import com.example.myhealthblock.doctor.domain.mapper.DoctorMapper;
 import com.example.myhealthblock.exception.UserAlreadyExistsException;
 import com.example.myhealthblock.user.application.port.in.UserSignUp;
@@ -22,8 +22,8 @@ import lombok.RequiredArgsConstructor;
  */
 @RequiredArgsConstructor
 @Service
-public class DoctorService implements DoctorInport {
-    private final DoctorOutport outputPort;
+public class DoctorService implements DoctorInputPort {
+    private final DoctorOutputPort outputPort;
     private final UserSignUp userInputPort;
     private final DoctorMapper mapper = DoctorMapper.INSTANCE;
 
@@ -39,7 +39,7 @@ public class DoctorService implements DoctorInport {
      * </p>
      */
     @Override
-    public DoctorSignUpInportResponse signUp(DoctorSignUpInportRequest dto) {
+    public DoctorSignUpInputPortResponse signUp(DoctorSignUpInputPortRequest dto) {
         requestUserSignUp(dto);
         Doctor doctor = saveDoctorDetail(dto);
         return getInputPortResponse(doctor);
@@ -54,7 +54,7 @@ public class DoctorService implements DoctorInport {
      * @param dto 의료진 회원가입 요청 데이터
      * </p>
      */
-    private void requestUserSignUp(DoctorSignUpInportRequest dto) {
+    private void requestUserSignUp(DoctorSignUpInputPortRequest dto) {
         UserSignUpInputPortRequest userSignUpDTO = getUserSignUpDTO(dto);
         if (!userInputPort.signUp(userSignUpDTO)) {
             throw new UserAlreadyExistsException("A user with this ID already exists.");
@@ -70,7 +70,7 @@ public class DoctorService implements DoctorInport {
      * @return 의료진 도메인 모델
      * </p>
      */
-    private Doctor saveDoctorDetail(DoctorSignUpInportRequest dto) {
+    private Doctor saveDoctorDetail(DoctorSignUpInputPortRequest dto) {
         Doctor doctor = mapper.doctorSignUpInportRequestToDoctor(dto);
         outputPort.create(mapper.doctorToDoctorSignUpOutportRequest(doctor));
         return doctor;
@@ -85,7 +85,7 @@ public class DoctorService implements DoctorInport {
      * @return 응답 dto
      * </p>
      */
-    private DoctorSignUpInportResponse getInputPortResponse(Doctor doctor) {
+    private DoctorSignUpInputPortResponse getInputPortResponse(Doctor doctor) {
         return mapper.doctorToDoctorSignUpInportResponse(doctor);
     }
 
@@ -98,7 +98,7 @@ public class DoctorService implements DoctorInport {
      * @return 매핑 dto
      * </p>
      */
-    private UserSignUpInputPortRequest getUserSignUpDTO(DoctorSignUpInportRequest dto) {
+    private UserSignUpInputPortRequest getUserSignUpDTO(DoctorSignUpInputPortRequest dto) {
         UserSignUpInputPortRequest userSignUpDTO = new UserSignUpInputPortRequest();
         userSignUpDTO.setId(dto.getId());
         userSignUpDTO.setPw(dto.getPw());
@@ -117,7 +117,7 @@ public class DoctorService implements DoctorInport {
      * </p>
      */
     @Override
-    public DoctorProfileInportResponse getDoctorProfile(String doctorId) {
+    public DoctorProfileInputPortResponse getDoctorProfile(String doctorId) {
         DoctorProfileOutportResponse outportResponse = outputPort.getDoctorProfile(doctorId);
         return mapper.outportResponseToInportResponse(outportResponse);
     }

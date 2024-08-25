@@ -1,25 +1,24 @@
 package com.example.myhealthblock.question.application.service;
 
-import com.example.myhealthblock.question.application.port.in.QuestionInport;
-import com.example.myhealthblock.question.application.port.in.dto.QuestionEnrollInportRequest;
+import com.example.myhealthblock.question.application.port.in.QuestionInputPort;
+import com.example.myhealthblock.question.application.port.in.dto.QuestionEnrollInputPortRequest;
 import com.example.myhealthblock.question.application.port.out.QuestionOutputPort;
 import com.example.myhealthblock.question.application.port.out.dto.QuestionEnrollOutputPortRequest;
 import com.example.myhealthblock.question.common.Category;
 import com.example.myhealthblock.question.domain.dto.QuestionDTO;
 import com.example.myhealthblock.question.domain.dto.QuestionTitleDTO;
 import com.example.myhealthblock.question.domain.mapper.QuestionMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class QuestionService implements QuestionInport {
+public class QuestionService implements QuestionInputPort {
     private final QuestionOutputPort outputPort;
     private final QuestionMapper mapper = QuestionMapper.INSTANCE;
 
     @Override
-    public String enroll(QuestionEnrollInportRequest dto) {
+    public String enroll(QuestionEnrollInputPortRequest dto) {
         QuestionEnrollOutputPortRequest request = mapper.INSTANCE.inportRequestToOutportRequest(dto);
         boolean result = outputPort.create(request);
 

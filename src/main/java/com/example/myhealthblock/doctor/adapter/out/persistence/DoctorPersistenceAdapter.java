@@ -2,7 +2,7 @@ package com.example.myhealthblock.doctor.adapter.out.persistence;
 
 import com.example.myhealthblock.aop.LogExecutionTime;
 import com.example.myhealthblock.aop.LogTarget;
-import com.example.myhealthblock.doctor.application.port.out.DoctorOutport;
+import com.example.myhealthblock.doctor.application.port.out.DoctorOutputPort;
 import com.example.myhealthblock.doctor.application.port.out.dto.DoctorSignUpOutportRequest;
 import com.example.myhealthblock.doctor.application.port.out.dto.DoctorProfileOutportResponse;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 @LogExecutionTime(logTarget = LogTarget.ADAPTER)
 @RequiredArgsConstructor
 @Service
-public class DoctorPersistenceAdapter implements DoctorOutport {
+public class DoctorPersistenceAdapter implements DoctorOutputPort {
     private final DoctorRepository doctorRepository;
 
     /**

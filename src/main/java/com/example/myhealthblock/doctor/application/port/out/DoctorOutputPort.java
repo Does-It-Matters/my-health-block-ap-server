@@ -8,7 +8,7 @@ import com.example.myhealthblock.doctor.application.port.out.dto.DoctorProfileOu
  * <br>- 의료진 회원 관리
  * <br>- 육각형 아키텍처를 위한 출력 포트
  */
-public interface DoctorOutport {
+public interface DoctorOutputPort {
 
     /**
      * <b> 역할: 영속성 계층에 의료진 정보를 저장하는 메소드 </b>

@@ -14,7 +14,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class QuestionEnrollInportRequest {
+public class QuestionEnrollInputPortRequest {
     int userId;
     List<BodyPart> bodyParts;
     Category category;

@@ -1,8 +1,8 @@
 package com.example.myhealthblock.doctor.adapter.in.web;
 
 import com.example.myhealthblock.doctor.adapter.in.web.request.DoctorSignUpRequest;
-import com.example.myhealthblock.doctor.application.port.in.DoctorInport;
-import com.example.myhealthblock.doctor.application.port.in.dto.DoctorProfileInportResponse;
+import com.example.myhealthblock.doctor.application.port.in.DoctorInputPort;
+import com.example.myhealthblock.doctor.application.port.in.dto.DoctorProfileInputPortResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -28,13 +28,13 @@ class DoctorControllerIntegrationTest {
     private MockMvc mockMvc;
 
     @Autowired
-    private DoctorInport doctorInport;
+    private DoctorInputPort doctorInputPort;
 
     @Autowired
     private ObjectMapper objectMapper;
 
     private DoctorSignUpRequest signUpRequest;
-    private DoctorProfileInportResponse profileResponse;
+    private DoctorProfileInputPortResponse profileResponse;
 
     @BeforeEach
     void setUp() {
@@ -63,7 +63,7 @@ class DoctorControllerIntegrationTest {
     @Test
     @DisplayName("중복 아이디 가입으로, 의료진 회원가입 실패")
     void signUp_fail() throws Exception {
-        doctorInport.signUp(signUpRequest.toInportDTO());
+        doctorInputPort.signUp(signUpRequest.toInportDTO());
 
         // When & Then
         mockMvc.perform(post("/api/v3/doctor/sign-up")
@@ -76,7 +76,7 @@ class DoctorControllerIntegrationTest {
     @DisplayName("의료진 프로필 조회 성공")
     void getDoctorProfile_success() throws Exception {
         // 사전 작업: 의료진 프로필을 반환하도록 설정
-        doctorInport.signUp(signUpRequest.toInportDTO());
+        doctorInputPort.signUp(signUpRequest.toInportDTO());
 
         // When & Then
         mockMvc.perform(get("/api/v3/doctor/{doctorId}", "doctor123")

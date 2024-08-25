@@ -1,12 +1,12 @@
 package com.example.myhealthblock.question.application.port.in;
 
-import com.example.myhealthblock.question.application.port.in.dto.QuestionEnrollInportRequest;
+import com.example.myhealthblock.question.application.port.in.dto.QuestionEnrollInputPortRequest;
 import com.example.myhealthblock.question.common.Category;
 import com.example.myhealthblock.question.domain.dto.QuestionDTO;
 import com.example.myhealthblock.question.domain.dto.QuestionTitleDTO;
 
-public interface QuestionInport {
-    String enroll(QuestionEnrollInportRequest dto);
+public interface QuestionInputPort {
+    String enroll(QuestionEnrollInputPortRequest dto);
     QuestionDTO getQuestion(Integer questionId);
     QuestionTitleDTO[] getQuestions(int userId);
     QuestionTitleDTO[] getQuestions(Category category);
