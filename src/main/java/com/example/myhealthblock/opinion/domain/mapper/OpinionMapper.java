@@ -1,15 +1,17 @@
-//package com.example.myhealthblock.opinion.domain.mapper;
-//
-//import com.example.myhealthblock.opinion.application.port.in.dto.OpinionEnrollInportRequest;
-//import com.example.myhealthblock.opinion.application.port.in.dto.OpinionInportDTO;
-//import com.example.myhealthblock.opinion.application.port.out.dto.OpinionEnrollOutportRequest;
-//import com.example.myhealthblock.opinion.application.port.out.dto.OpinionOutportDTO;
-//import org.mapstruct.factory.Mappers;
-//
-//public interface OpinionMapper {
-//    OpinionMapper INSTANCE = Mappers.getMapper(OpinionMapper.class);
-//
-//    OpinionInportDTO opinionEnrollOutportResponseToOpinionEnrollInportResponse(OpinionOutportDTO outportResponse);
-//    OpinionInportDTO[] opinionOutportArrayToInportArray(OpinionOutportDTO[] outportDTOs);
-//    OpinionEnrollOutportRequest opinionEnrollOutportRequestToOpinionEnrollOutportResponse(OpinionEnrollInportRequest outportResponse);
-//}
+package com.example.myhealthblock.opinion.domain.mapper;
+
+import com.example.myhealthblock.opinion.application.port.in.dto.OpinionEnrollInputPortRequest;
+import com.example.myhealthblock.opinion.application.port.in.dto.OpinionInputPortDTO;
+import com.example.myhealthblock.opinion.application.port.out.dto.OpinionEnrollOutputPortRequest;
+import com.example.myhealthblock.opinion.application.port.out.dto.OpinionOutputPortDTO;
+import org.mapstruct.Mapper;
+import org.mapstruct.factory.Mappers;
+
+@Mapper
+public interface OpinionMapper {
+    OpinionMapper INSTANCE = Mappers.getMapper(OpinionMapper.class);
+
+    OpinionInputPortDTO opinionEnrollOutportResponseToOpinionEnrollInportResponse(OpinionOutputPortDTO outportResponse);
+    OpinionInputPortDTO[] opinionOutportArrayToInportArray(OpinionOutputPortDTO[] outportDTOs);
+    OpinionEnrollOutputPortRequest opinionEnrollOutportRequestToOpinionEnrollOutportResponse(OpinionEnrollInputPortRequest outportResponse);
+}

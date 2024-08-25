@@ -12,25 +12,15 @@ import com.example.myhealthblock.user.application.port.in.dto.UserSignInInputPor
  * - 사용자 생성(회원가입), 로그인, 비밀번호 변경 등의 기능 정의 <br>
  * </p>
  */
-public interface UserInputPort {
-
-    /**
-     * <b> 역할: 사용자 생성 요청 메소드 </b>
-     * <p>
-     * </p>
-     *
-     * @param dto  사용자 생성에 필요한 정보를 가진 dto
-     * @return 사용자가 성공적으로 생성되면 {@code true}, 그렇지 않으면 {@code false}
-     */
-    boolean signUp(UserSignUpInputPortRequest dto);
+public interface UserInputPort extends UserSignUp {
 
     /**
      * <b> 역할: 사용자 로그인 요청 메소드 </b>
      * <p>
-     * </p>
      *
      * @param dto  로그인에 필요한 정보를 가진 dto
      * @return 사용자가 로그인 결롸에 따른 dto
+     * </p>
      */
     UserSignInInputPortResponse signIn(UserSignInInputPortRequest dto);
 
@@ -39,10 +29,10 @@ public interface UserInputPort {
     /**
      * <b> 역할: 비밀번호 변경 요청 메소드 </b>
      * <p>
-     * </p>
      *
      * @param dto  비밀번호 변경에 필요한 정보를 가진 dto
      * @return 성공하면 {@code "success"}, 실패하면 {@code "fail"}
+     * </p>
      */
     String changePw(String userId, UserUpdatePwInputPortRequest dto);
 }
