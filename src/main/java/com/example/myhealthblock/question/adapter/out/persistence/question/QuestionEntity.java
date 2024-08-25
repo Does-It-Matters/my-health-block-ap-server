@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import java.util.List;
 @Setter
 @Entity(name = "Question")
 @NoArgsConstructor
+@EntityListeners(AuditingEntityListener.class)
 public class QuestionEntity {
     public QuestionEntity(int userId, String title, Category category, String symptom, String content){
         this.userId = userId;

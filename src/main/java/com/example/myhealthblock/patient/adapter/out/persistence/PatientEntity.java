@@ -3,12 +3,16 @@ package com.example.myhealthblock.patient.adapter.out.persistence;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 
 @Getter
 @Setter
 @Entity(name = "Patient")
+@EntityListeners(AuditingEntityListener.class)
 public class PatientEntity {
     public PatientEntity(String userId){
         this();
@@ -30,9 +34,9 @@ public class PatientEntity {
     @Column
     private String urgentData;
 
-    @Column
+    @CreatedDate
     private LocalDateTime createDate;
 
-    @Column
+    @LastModifiedDate
     private LocalDateTime lastEditDate;
 }
