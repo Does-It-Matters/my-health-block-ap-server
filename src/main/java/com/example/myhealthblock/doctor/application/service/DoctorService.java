@@ -71,8 +71,8 @@ public class DoctorService implements DoctorInputPort {
      * </p>
      */
     private Doctor saveDoctorDetail(DoctorSignUpInputPortRequest dto) {
-        Doctor doctor = mapper.doctorSignUpInportRequestToDoctor(dto);
-        outputPort.create(mapper.doctorToDoctorSignUpOutportRequest(doctor));
+        Doctor doctor = mapper.toDoctor(dto);
+        outputPort.create(mapper.toSignUpOutputPortRequest(doctor));
         return doctor;
     }
 
@@ -86,7 +86,7 @@ public class DoctorService implements DoctorInputPort {
      * </p>
      */
     private DoctorSignUpInputPortResponse getInputPortResponse(Doctor doctor) {
-        return mapper.doctorToDoctorSignUpInportResponse(doctor);
+        return mapper.toSignUpResponse(doctor);
     }
 
     /**
@@ -119,6 +119,6 @@ public class DoctorService implements DoctorInputPort {
     @Override
     public DoctorProfileInputPortResponse getDoctorProfile(String doctorId) {
         DoctorProfileOutportResponse outportResponse = outputPort.getDoctorProfile(doctorId);
-        return mapper.outportResponseToInportResponse(outportResponse);
+        return mapper.toInputResponse(outportResponse);
     }
 }

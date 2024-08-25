@@ -20,11 +20,11 @@ public interface DoctorMapper {
     @Mapping(source = "field", target = "field")
     @Mapping(source = "hospital", target = "hospital")
     @Mapping(source = "introduction", target = "introduction")
-    Doctor doctorSignUpInportRequestToDoctor(DoctorSignUpInputPortRequest dto);
+    Doctor toDoctor(DoctorSignUpInputPortRequest dto);
 
-    DoctorSignUpInputPortResponse doctorToDoctorSignUpInportResponse(Doctor doctor);
+    DoctorSignUpInputPortResponse toSignUpResponse(Doctor doctor);
 
-    DoctorProfileInputPortResponse outportResponseToInportResponse(DoctorProfileOutportResponse dto);
+    DoctorProfileInputPortResponse toInputResponse(DoctorProfileOutportResponse dto);
 
-    DoctorSignUpOutportRequest doctorToDoctorSignUpOutportRequest(Doctor doctor);
+    DoctorSignUpOutportRequest toSignUpOutputPortRequest(Doctor doctor);
 }

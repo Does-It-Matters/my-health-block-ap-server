@@ -9,5 +9,5 @@ import org.mapstruct.factory.Mappers;
 public interface QuestionMapper {
     QuestionMapper INSTANCE = Mappers.getMapper(QuestionMapper.class);
 
-    QuestionEnrollOutputPortRequest inportRequestToOutportRequest(QuestionEnrollInputPortRequest inportRequest);
+    QuestionEnrollOutputPortRequest toOutputPortRequest(QuestionEnrollInputPortRequest inportRequest);
 }

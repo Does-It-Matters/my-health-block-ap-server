@@ -11,7 +11,7 @@ import org.mapstruct.factory.Mappers;
 public interface OpinionMapper {
     OpinionMapper INSTANCE = Mappers.getMapper(OpinionMapper.class);
 
-    OpinionInputPortDTO opinionEnrollOutportResponseToOpinionEnrollInportResponse(OpinionOutputPortDTO outportResponse);
-    OpinionInputPortDTO[] opinionOutportArrayToInportArray(OpinionOutputPortDTO[] outportDTOs);
-    OpinionEnrollOutputPortRequest opinionEnrollOutportRequestToOpinionEnrollOutportResponse(OpinionEnrollInputPortRequest outportResponse);
+    OpinionInputPortDTO toEnrollInput(OpinionOutputPortDTO outportResponse);
+    OpinionInputPortDTO[] toEnrollInputArray(OpinionOutputPortDTO[] outportDTOs);
+    OpinionEnrollOutputPortRequest toEnrollOutputPortRequest(OpinionEnrollInputPortRequest outportResponse);
 }
