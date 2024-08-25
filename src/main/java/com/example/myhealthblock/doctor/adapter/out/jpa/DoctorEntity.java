@@ -1,4 +1,4 @@
-package com.example.myhealthblock.doctor.adapter.out.persistence;
+package com.example.myhealthblock.doctor.adapter.out.jpa;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -27,8 +27,6 @@ public class DoctorEntity {
         this.field = field;
         this.hospital = hospital;
         this.introduction = introduction;
-        createDate = LocalDateTime.now();
-        lastEditDate = LocalDateTime.now();
     }
 
     @Id
