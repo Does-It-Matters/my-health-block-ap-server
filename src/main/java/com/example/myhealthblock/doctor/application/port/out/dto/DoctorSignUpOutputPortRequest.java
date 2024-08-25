@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class DoctorSignUpOutportRequest {
+public class DoctorSignUpOutputPortRequest {
     private String id;
     private String name;
     private String field;

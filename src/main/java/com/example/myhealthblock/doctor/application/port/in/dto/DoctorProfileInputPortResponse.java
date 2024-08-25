@@ -1,12 +1,15 @@
 package com.example.myhealthblock.doctor.application.port.in.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class DoctorSignUpInportResponse {
-    private String id;
+@AllArgsConstructor
+@NoArgsConstructor
+public class DoctorProfileInputPortResponse {
     private String name;
     private String field;
     private String hospital;
