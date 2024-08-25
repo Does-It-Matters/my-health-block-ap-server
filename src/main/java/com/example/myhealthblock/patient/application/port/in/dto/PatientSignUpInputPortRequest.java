@@ -1,4 +1,4 @@
-package com.example.myhealthblock.opinion.adapter.in.web.response;
+package com.example.myhealthblock.patient.application.port.in.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,6 +9,8 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ResultResponse {
-    private String result;
+public class PatientSignUpInputPortRequest {
+    String id;
+    String pw;
+    String role;
 }

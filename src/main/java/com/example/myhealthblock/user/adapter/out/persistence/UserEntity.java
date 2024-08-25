@@ -9,6 +9,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 /**
  * <b> 역할: 사용자 엔티티 클래스 </b>
@@ -21,6 +22,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 @Setter
 @Entity(name = "AppUser")
 @NoArgsConstructor
+@EntityListeners(AuditingEntityListener.class)
 public class UserEntity {
 
     @Id

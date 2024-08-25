@@ -1,4 +1,4 @@
-package com.example.myhealthblock.question.application.port.in.dto;
+package com.example.myhealthblock.question.application.port.out.dto;
 
 import com.example.myhealthblock.question.common.BodyPart;
 import com.example.myhealthblock.question.common.Category;
@@ -14,7 +14,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class QuestionEnrollInportRequest {
+public class QuestionEnrollOutputPortRequest {
     int userId;
     List<BodyPart> bodyParts;
     Category category;
