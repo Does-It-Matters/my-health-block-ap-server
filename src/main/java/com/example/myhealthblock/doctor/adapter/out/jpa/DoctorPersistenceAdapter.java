@@ -1,4 +1,4 @@
-package com.example.myhealthblock.doctor.adapter.out.persistence;
+package com.example.myhealthblock.doctor.adapter.out.jpa;
 
 import com.example.myhealthblock.aop.LogExecutionTime;
 import com.example.myhealthblock.aop.LogTarget;

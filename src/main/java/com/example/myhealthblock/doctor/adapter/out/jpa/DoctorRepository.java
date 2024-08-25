@@ -1,4 +1,4 @@
-package com.example.myhealthblock.doctor.adapter.out.persistence;
+package com.example.myhealthblock.doctor.adapter.out.jpa;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
