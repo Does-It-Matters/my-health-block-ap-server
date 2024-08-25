@@ -14,7 +14,6 @@ import com.example.myhealthblock.question.adapter.out.mybatis.bodypart.BodyPartM
 import com.example.myhealthblock.question.adapter.out.mybatis.personaldata.PersonalDataEntity;
 import com.example.myhealthblock.question.adapter.out.mybatis.personaldata.PersonalDataMapper;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -22,7 +21,6 @@ import java.util.stream.Collectors;
 
 @LogExecutionTime(logTarget = LogTarget.ADAPTER)
 @RequiredArgsConstructor
-@Service
 public class QuestionPersistenceAdapter implements QuestionOutputPort {
     private final QuestionMapper questionMapper;
     private final PersonalDataMapper personalDataMapper;

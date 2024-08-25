@@ -15,14 +15,12 @@ import com.example.myhealthblock.question.adapter.out.jpa.personaldata.PersonalD
 
 import com.example.myhealthblock.question.domain.dto.QuestionTitleDTO;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @LogExecutionTime(logTarget = LogTarget.ADAPTER)
 @RequiredArgsConstructor
-@Service
 public class QuestionPersistenceAdapter implements QuestionOutputPort {
     private final QuestionRepository questionRepository;
     private final PersonalDataRepository personalDataRepository;

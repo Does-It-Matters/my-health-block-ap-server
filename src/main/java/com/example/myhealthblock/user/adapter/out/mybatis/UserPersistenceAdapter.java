@@ -3,12 +3,10 @@ package com.example.myhealthblock.user.adapter.out.mybatis;
 import com.example.myhealthblock.user.domain.model.User;
 import com.example.myhealthblock.user.application.port.out.UserOutputPort;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 
 @RequiredArgsConstructor
-@Service
 public class UserPersistenceAdapter implements UserOutputPort {
 
     private final UserMapper userMapper;

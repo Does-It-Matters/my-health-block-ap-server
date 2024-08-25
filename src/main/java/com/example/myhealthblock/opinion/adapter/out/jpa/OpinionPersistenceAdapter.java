@@ -16,7 +16,6 @@ import java.util.List;
 
 @LogExecutionTime(logTarget = LogTarget.ADAPTER)
 @RequiredArgsConstructor
-@Service
 public class OpinionPersistenceAdapter implements OpinionOutputPort {
     private static final Logger logger = LoggerFactory.getLogger(OpinionPersistenceAdapter.class);
 

@@ -14,7 +14,6 @@
 //import com.example.myhealthblock.question.adapter.out.mongodb.personaldata.PersonalDataDocument;
 //import com.example.myhealthblock.question.adapter.out.mongodb.personaldata.PersonalDataRepository;
 //import lombok.RequiredArgsConstructor;
-//import org.springframework.stereotype.Service;
 //
 //import java.time.LocalDateTime;
 //import java.util.List;
@@ -22,7 +21,6 @@
 //
 //@LogExecutionTime(logTarget = LogTarget.ADAPTER)
 //@RequiredArgsConstructor
-//@Service
 //public class QuestionPersistenceAdapter implements QuestionOutputPort {
 //    private final QuestionRepository questionRepository;
 //    private final PersonalDataRepository personalDataRepository;

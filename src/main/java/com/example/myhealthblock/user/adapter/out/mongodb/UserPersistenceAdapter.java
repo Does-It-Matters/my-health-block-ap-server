@@ -5,11 +5,9 @@
 //import com.example.myhealthblock.user.domain.model.User;
 //import com.example.myhealthblock.user.application.port.out.UserOutputPort;
 //import lombok.RequiredArgsConstructor;
-//import org.springframework.stereotype.Service;
 //
 //@LogExecutionTime(logTarget = LogTarget.ADAPTER)
 //@RequiredArgsConstructor
-//@Service
 //public class UserPersistenceAdapter implements UserOutputPort {
 //
 //    private final UserRepository userRepository;
