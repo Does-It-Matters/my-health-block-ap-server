@@ -19,7 +19,7 @@ public class QuestionService implements QuestionInputPort {
 
     @Override
     public String enroll(QuestionEnrollInputPortRequest dto) {
-        QuestionEnrollOutputPortRequest request = mapper.INSTANCE.inportRequestToOutportRequest(dto);
+        QuestionEnrollOutputPortRequest request = mapper.INSTANCE.toOutputPortRequest(dto);
         boolean result = outputPort.create(request);
 
         return result ? "success" : "fail";
