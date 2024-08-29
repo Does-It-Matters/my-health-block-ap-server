@@ -10,6 +10,10 @@ import lombok.Setter;
 
 import java.util.List;
 
+/**
+ * <b> 역할: 컨트롤러 계층에서 서비스 계층으로 데이터를 전달하는 DTO 클래스 </b>
+ * <br>- 질문 등록 시 필요한 정보
+ */
 @Getter
 @Setter
 @AllArgsConstructor
