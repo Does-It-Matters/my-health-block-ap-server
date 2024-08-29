@@ -28,11 +28,10 @@ public class QuestionService implements QuestionInputPort {
      * <b> 역할: 질문 등록 요청 메소드 </b>
      * <p>
      * - 입력 포트로 받은 dto를 출력 포트 형식의 dto로 변경 후 질문 등록 처리<br>
-     * - 싱글톤 패턴을 구현<br>
      * </p>
      *
      * @param dto  질문 등록에 필요한 정보를 가진 dto
-     * @return 질문이 성공적으로 등록되면 {@code success}, 그렇지 않으면 {@code fail}
+     * @return 질문이 성공적으로 등록되면 {@code "success"}, 그렇지 않으면 {@code "fail"}
      */
     @Override
     public String enroll(QuestionEnrollInputPortRequest dto) {
