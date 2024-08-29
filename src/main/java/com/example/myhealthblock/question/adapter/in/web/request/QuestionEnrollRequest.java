@@ -11,6 +11,12 @@ import lombok.Setter;
 
 import java.util.List;
 
+/**
+ * <b> 역할: 질문 등록 요청 바디 클래스 </b>
+ * <p>
+ * - HTTP 요청 바디에 매핑되는 클래스
+ * </p>
+ */
 @Getter
 @Setter
 @AllArgsConstructor
