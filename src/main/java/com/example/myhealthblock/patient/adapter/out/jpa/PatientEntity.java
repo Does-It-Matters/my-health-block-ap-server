@@ -9,6 +9,13 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
 
+/**
+ * <b> 역할: 환자 엔티티 클래스 </b>
+ * <p>
+ * - 데이터베이스의 'patient' 테이블과 매핑 <br>
+ * - JPA와 Hibernate를 통해 데이터베이스와 상호작용 <br>
+ * </p>
+ */
 @Getter
 @Setter
 @Entity(name = "Patient")
