@@ -6,6 +6,9 @@ import lombok.Setter;
 
 import java.util.List;
 
+/**
+ * <b> 역할: Question 도메인 모델 클래스 </b>
+ */
 @Getter
 @Setter
 public class Question {
