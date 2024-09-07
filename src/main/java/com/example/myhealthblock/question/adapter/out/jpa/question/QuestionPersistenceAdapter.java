@@ -127,11 +127,15 @@ public class QuestionPersistenceAdapter implements QuestionOutputPort {
         PersonalDataDTO personal = getPersonalDataDTO(personalDataRepository.findByQuestion(q));
         List<BodyPart> bodyParts = getBodyParts(q);
 
-        return new QuestionDTO(q.getId(), q.getUserId(), q.getTitle(), q.getCategory(), q.getSymptom(), q.getContent(), bodyParts, personal);
+        return new QuestionDTO(getStringQuestionId(q.getId()), q.getUserId(), q.getTitle(), q.getCategory(), q.getSymptom(), q.getContent(), bodyParts, personal);
     }
 
     private QuestionTitleDTO getQuestionTitleDTO(QuestionEntity questionEntity) {
-        return new QuestionTitleDTO(questionEntity.getId(), questionEntity.getTitle());
+        return new QuestionTitleDTO(getStringQuestionId(questionEntity.getId()), questionEntity.getTitle());
+    }
+
+    private String getStringQuestionId(int questionId) {
+        return String.valueOf(questionId);
     }
 
     private PersonalDataDTO getPersonalDataDTO(PersonalDataEntity personal) {
