@@ -10,6 +10,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class QuestionTitleDTO {
-    private int questionId;
+    private String questionId;
     private String title;
 }

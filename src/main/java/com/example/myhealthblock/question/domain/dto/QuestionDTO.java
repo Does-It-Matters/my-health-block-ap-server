@@ -12,7 +12,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 public class QuestionDTO {
-    Integer id;
+    String id;
     int uid;
     String title;
     Category category;
