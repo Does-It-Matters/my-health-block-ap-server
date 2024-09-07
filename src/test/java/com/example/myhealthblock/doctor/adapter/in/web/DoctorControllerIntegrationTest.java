@@ -63,7 +63,7 @@ class DoctorControllerIntegrationTest {
     @Test
     @DisplayName("중복 아이디 가입으로, 의료진 회원가입 실패")
     void signUp_fail() throws Exception {
-        doctorInputPort.signUp(signUpRequest.toInportDTO());
+        doctorInputPort.signUp(signUpRequest.toInputPortDTO());
 
         // When & Then
         mockMvc.perform(post("/api/v3/doctor/sign-up")
@@ -76,7 +76,7 @@ class DoctorControllerIntegrationTest {
     @DisplayName("의료진 프로필 조회 성공")
     void getDoctorProfile_success() throws Exception {
         // 사전 작업: 의료진 프로필을 반환하도록 설정
-        doctorInputPort.signUp(signUpRequest.toInportDTO());
+        doctorInputPort.signUp(signUpRequest.toInputPortDTO());
 
         // When & Then
         mockMvc.perform(get("/api/v3/doctor/{doctorId}", "doctor123")

@@ -11,6 +11,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * <b> 역할: Patient 컨트롤러 클래스 </b>
+ * <p>
+ * - 환자 정보 관리 컨트톨러 <br>
+ * </p>
+ */
 @Tag(name = "Patient", description = "Endpoints for Patient")
 @LogExecutionTime(logTarget = LogTarget.CONTROLLER)
 @RequiredArgsConstructor
