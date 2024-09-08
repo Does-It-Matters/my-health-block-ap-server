@@ -3,6 +3,13 @@ package com.example.myhealthblock.question.common;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
+/**
+ * <b>역할: 신체 부위를 정의하는 열거형</b>
+ * <p>
+ * - 질문에서 사용되는 신체 부위를 정의함 <br>
+ * - {@code text} 필드를 통해 한국어 명칭에 접근 가능 <br>
+ * </p>
+ */
 @Getter
 @RequiredArgsConstructor
 public enum BodyPart {
@@ -26,5 +33,6 @@ public enum BodyPart {
     CALF("종아리"),
     BACK("등");
 
+    /** 신체 부위의 한국어 명칭 */
     private final String text;
 }
