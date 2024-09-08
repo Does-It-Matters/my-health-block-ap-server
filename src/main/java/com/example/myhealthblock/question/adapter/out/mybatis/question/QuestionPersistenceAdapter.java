@@ -121,7 +121,7 @@ public class QuestionPersistenceAdapter implements QuestionOutputPort {
 
     private QuestionTitleDTO[] getQuestionTitleDTOs(List<QuestionEntity> questionEntities) {
         return questionEntities.stream()
-                .map(q -> new QuestionTitleDTO(q.getId(), q.getTitle()))
+                .map(q -> new QuestionTitleDTO(getStringQuestionId(q.getId()), q.getTitle()))
                 .toArray(QuestionTitleDTO[]::new);
     }
 
@@ -131,7 +131,11 @@ public class QuestionPersistenceAdapter implements QuestionOutputPort {
                 .map(BodyPartMappingEntity::getBodyPart)
                 .collect(Collectors.toList());
 
-        return new QuestionDTO(q.getId(), q.getUserId(), q.getTitle(), q.getCategory(), q.getSymptom(), q.getContent(), bodyParts,
+        return new QuestionDTO(getStringQuestionId(q.getId()), q.getUserId(), q.getTitle(), q.getCategory(), q.getSymptom(), q.getContent(), bodyParts,
                 new PersonalDataDTO(personal.getAge(), personal.getGender(), personal.getDisease(), personal.getMedication()));
+    }
+
+    private String getStringQuestionId(int questionId) {
+        return String.valueOf(questionId);
     }
 }
