@@ -58,7 +58,11 @@ public class UserPersistenceAdapter implements UserOutputPort {
             return null;
         }
 
-        return new User(entity.getId(), entity.getUserId(), entity.getPw(), entity.getRole());
+        return new User(getStringUserId(entity.getId()), entity.getUserId(), entity.getPw(), entity.getRole());
+    }
+
+    private String getStringUserId(int userId) {
+        return String.valueOf(userId);
     }
 
     /**
