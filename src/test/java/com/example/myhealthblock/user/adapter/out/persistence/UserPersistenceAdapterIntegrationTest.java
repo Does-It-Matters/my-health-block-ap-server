@@ -1,18 +1,19 @@
 package com.example.myhealthblock.user.adapter.out.persistence;
 
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.example.myhealthblock.user.adapter.out.jpa.UserEntity;
 import com.example.myhealthblock.user.adapter.out.jpa.UserPersistenceAdapter;
 import com.example.myhealthblock.user.adapter.out.jpa.UserRepository;
-import com.example.myhealthblock.user.domain.model.User;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.DisplayName;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.transaction.annotation.Transactional;
-
-import static org.junit.jupiter.api.Assertions.*;
+import com.example.myhealthblock.user.domain.dto.UserDTO;
 
 /**
  * <b> 역할: 사용자 영속성 어댑터 통합 테스트 클래스 </b>
@@ -79,22 +80,23 @@ public class UserPersistenceAdapterIntegrationTest {
     @DisplayName("사용자 조회 통합 테스트")
     public void testGetUserIntegration() {
         // Given
-        String userId = "user123";
+        int userId = 123;
         UserEntity userEntity = new UserEntity();
-        userEntity.setUserId(userId);
+        userEntity.setUserId(String.valueOf(userId));
         userEntity.setPw("password123");
         userEntity.setRole("DOCTOR");
         userRepository.save(userEntity);
 
         // When
-        User user = userPersistenceAdapter.getUser(userId);
+        UserDTO user = userPersistenceAdapter.getUser(userId);
 
         // Then
         assertNotNull(user, "사용자 조회 성공!");
-        assertEquals(userId, user.getUid(), "사용자 ID 확인");
+        assertEquals(String.valueOf(userId), user.getUid(), "사용자 ID 확인");
         assertEquals("password123", user.getPw(), "비밀번호 확인");
         assertEquals("DOCTOR", user.getRole(), "역할 확인");
     }
+
 
     /**
      * <b> 역할: 비밀번호 변경 통합 테스트 </b>
@@ -134,10 +136,10 @@ public class UserPersistenceAdapterIntegrationTest {
     @DisplayName("존재하지 않는 아이디로 조회하여, 사용자 조회 실패 통합 테스트")
     public void testGetUserFailureIntegration() {
         // Given
-        String userId = "nonExistingUser";
+        int userId = 123;
 
         // When
-        User user = userPersistenceAdapter.getUser(userId);
+        UserDTO user = userPersistenceAdapter.getUser(userId);
 
         // Then
         assertNull(user, "존재하지 않는 사용자 조회 실패!");
