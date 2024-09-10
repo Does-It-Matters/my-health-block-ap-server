@@ -2,8 +2,9 @@ package com.example.myhealthblock.user.adapter.out.mongodb;
 
 import com.example.myhealthblock.aop.LogExecutionTime;
 import com.example.myhealthblock.aop.LogTarget;
-import com.example.myhealthblock.user.domain.model.User;
 import com.example.myhealthblock.user.application.port.out.UserOutputPort;
+import com.example.myhealthblock.user.domain.dto.UserDTO;
+
 import lombok.RequiredArgsConstructor;
 
 @LogExecutionTime(logTarget = LogTarget.ADAPTER)
@@ -23,12 +24,12 @@ public class UserPersistenceAdapter implements UserOutputPort {
    }
 
    @Override
-   public User getUser(String id) {
-       UserDocument document = userRepository.findById(id).orElse(null);
-       if (document == null) {
+   public UserDTO getUser(int id) {
+       UserDocument userDocument = userRepository.findById(String.valueOf(id)).orElse(null);
+       if (userDocument == null) {
            return null;
        }
-       return new User(document.getId(), document.getUserId(), document.getPw(), document.getRole());
+       return getUserDTO(userDocument);
    }
 
    @Override
@@ -41,4 +42,8 @@ public class UserPersistenceAdapter implements UserOutputPort {
        }
        return false;
    }
+
+    private UserDTO getUserDTO(UserDocument u) {
+        return new UserDTO(u.getId(), u.getUserId(), u.getPw(), u.getRole());
+    }
 }

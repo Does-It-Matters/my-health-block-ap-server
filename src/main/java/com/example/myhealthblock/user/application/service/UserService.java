@@ -1,13 +1,16 @@
 package com.example.myhealthblock.user.application.service;
 
+import org.springframework.stereotype.Service;
+
 import com.example.myhealthblock.user.application.port.in.UserInputPort;
 import com.example.myhealthblock.user.application.port.in.dto.UserSignInInputPortRequest;
 import com.example.myhealthblock.user.application.port.in.dto.UserSignInInputPortResponse;
 import com.example.myhealthblock.user.application.port.in.dto.UserSignUpInputPortRequest;
 import com.example.myhealthblock.user.application.port.in.dto.UserUpdatePwInputPortRequest;
 import com.example.myhealthblock.user.application.port.out.UserOutputPort;
+import com.example.myhealthblock.user.domain.dto.UserDTO;
 import com.example.myhealthblock.user.domain.model.User;
-import org.springframework.stereotype.Service;
+
 import lombok.RequiredArgsConstructor;
 
 /**
@@ -34,8 +37,8 @@ public class UserService implements UserInputPort {
      */
     @Override
     public boolean signUp(UserSignUpInputPortRequest dto) {
-        User user = outport.getUser(dto.getId());
-        if (user == null)
+        UserDTO userDTO = outport.getUser(Integer.parseInt(dto.getId()));
+        if (userDTO == null)
             return outport.create(dto.getId(), dto.getPw(), dto.getRole());
         return false;
     }
@@ -49,11 +52,12 @@ public class UserService implements UserInputPort {
      * </p>
      *
      * @param dto  로그인에 필요한 정보를 가진 dto
-     * @return 사용자가 로그인 결롸에 따른 dto
+     * @return 사용자가 로그인 결과에 따른 dto
      */
     @Override
     public UserSignInInputPortResponse signIn(UserSignInInputPortRequest dto) {
-        User user = outport.getUser(dto.getId());
+        UserDTO userDTO = outport.getUser(Integer.parseInt(dto.getId()));
+        User user = userDTO.toEntity();
 
         if (user!=null && user.signIn(dto.getPw()))
             return new UserSignInInputPortResponse(user.getRole(), user.getUid());
@@ -83,7 +87,9 @@ public class UserService implements UserInputPort {
      */
     @Override
     public String changePw(String userId, UserUpdatePwInputPortRequest dto) {
-        User user = outport.getUser(userId);
+        UserDTO userDTO = outport.getUser(Integer.parseInt(userId));
+        User user = userDTO.toEntity();
+
         if(user.changePw(dto.getOldPw(), dto.getNewPw())) {
             outport.updatePw(user.getUid(), user.getPw());
             return "success";
