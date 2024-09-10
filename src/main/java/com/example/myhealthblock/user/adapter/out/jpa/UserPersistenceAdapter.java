@@ -2,8 +2,9 @@ package com.example.myhealthblock.user.adapter.out.jpa;
 
 import com.example.myhealthblock.aop.LogExecutionTime;
 import com.example.myhealthblock.aop.LogTarget;
-import com.example.myhealthblock.user.domain.model.User;
 import com.example.myhealthblock.user.application.port.out.UserOutputPort;
+import com.example.myhealthblock.user.domain.dto.UserDTO;
+
 import lombok.RequiredArgsConstructor;
 
 /**
@@ -44,25 +45,21 @@ public class UserPersistenceAdapter implements UserOutputPort {
     /**
      * <b> 역할: 사용자 조회 </b>
      * <p>
-     * - 사용자를 조회하여 {@link User} 객체로 반환 <br>
-     * - {@link User} 객체 대신 DTO로 변경 예정 <br>
+     * - 사용자를 조회하여 {@link UserDTO} 객체로 반환 <br>
+     * - {@link UserDTO} 로 변경 완료 <br>
      * </p>
      *
      * @param id 조회할 사용자의 ID
-     * @return 주어진 ID와 일치하는 {@link User} 객체, 없으면 {@code null}
+     * @return 주어진 ID와 일치하는 {@link UserDTO} 객체, 없으면 {@code null}
      */
     @Override
-    public User getUser(String id) {
-        UserEntity entity = getUserEntity(id);
-        if (entity == null) {
+    public UserDTO getUser(int id) {
+        UserEntity userEntity = getUserEntity(String.valueOf(id));
+        if (userEntity == null) {
             return null;
         }
 
-        return new User(getStringUserId(entity.getId()), entity.getUserId(), entity.getPw(), entity.getRole());
-    }
-
-    private String getStringUserId(int userId) {
-        return String.valueOf(userId);
+        return getUserDTO(userEntity);
     }
 
     /**
@@ -98,5 +95,13 @@ public class UserPersistenceAdapter implements UserOutputPort {
             return true;
         }
         return false;
+    }
+
+    private UserDTO getUserDTO(UserEntity u) {
+        return new UserDTO(getStringUserId(u.getId()), u.getUserId(), u.getPw(), u.getRole());
+    }
+
+    private String getStringUserId(int userId) {
+        return String.valueOf(userId);
     }
 }
