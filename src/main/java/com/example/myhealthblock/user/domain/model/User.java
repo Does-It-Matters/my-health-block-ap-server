@@ -16,7 +16,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class User implements SignInable, PasswordManager {
-    Integer id;
+    String id;
     String uid;
     String pw;
     String role;
