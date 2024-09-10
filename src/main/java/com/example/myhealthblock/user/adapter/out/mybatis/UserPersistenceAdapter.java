@@ -1,10 +1,11 @@
 package com.example.myhealthblock.user.adapter.out.mybatis;
 
-import com.example.myhealthblock.user.domain.model.User;
-import com.example.myhealthblock.user.application.port.out.UserOutputPort;
-import lombok.RequiredArgsConstructor;
-
 import java.time.LocalDateTime;
+
+import com.example.myhealthblock.user.application.port.out.UserOutputPort;
+import com.example.myhealthblock.user.domain.dto.UserDTO;
+
+import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class UserPersistenceAdapter implements UserOutputPort {
@@ -24,16 +25,12 @@ public class UserPersistenceAdapter implements UserOutputPort {
     }
 
     @Override
-    public User getUser(String id) {
-        UserEntity entity = userMapper.findByUserId(id);
-        if (entity == null) {
+    public UserDTO getUser(int id) {
+        UserEntity userEntity = userMapper.findById(id);
+        if (userEntity == null) {
             return null;
         }
-        return new User(getStringUserId(entity.getId()), entity.getUserId(), entity.getPw(), entity.getRole());
-    }
-
-    private String getStringUserId(int userId) {
-        return String.valueOf(userId);
+        return getUserDTO(userEntity);
     }
 
     @Override
@@ -46,5 +43,13 @@ public class UserPersistenceAdapter implements UserOutputPort {
             return true;
         }
         return false;
+    }
+
+    private UserDTO getUserDTO(UserEntity u) {
+        return new UserDTO(getStringUserId(u.getId()), u.getUserId(), u.getPw(), u.getRole());
+    }
+
+    private String getStringUserId(int userId) {
+        return String.valueOf(userId);
     }
 }
