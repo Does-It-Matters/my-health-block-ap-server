@@ -8,7 +8,6 @@ import com.example.myhealthblock.user.application.port.in.dto.UserSignInInputPor
 import com.example.myhealthblock.user.application.port.in.dto.UserSignUpInputPortRequest;
 import com.example.myhealthblock.user.application.port.in.dto.UserUpdatePwInputPortRequest;
 import com.example.myhealthblock.user.application.port.out.UserOutputPort;
-import com.example.myhealthblock.user.domain.dto.UserDTO;
 import com.example.myhealthblock.user.domain.model.User;
 
 import lombok.RequiredArgsConstructor;
@@ -37,8 +36,8 @@ public class UserService implements UserInputPort {
      */
     @Override
     public boolean signUp(UserSignUpInputPortRequest dto) {
-        UserDTO userDTO = outport.getUser(Integer.parseInt(dto.getId()));
-        if (userDTO == null)
+        User user = outport.getUser(dto.getId());
+        if (user == null)
             return outport.create(dto.getId(), dto.getPw(), dto.getRole());
         return false;
     }
@@ -56,8 +55,7 @@ public class UserService implements UserInputPort {
      */
     @Override
     public UserSignInInputPortResponse signIn(UserSignInInputPortRequest dto) {
-        UserDTO userDTO = outport.getUser(Integer.parseInt(dto.getId()));
-        User user = userDTO.toEntity();
+        User user = outport.getUser(dto.getId());
 
         if (user!=null && user.signIn(dto.getPw()))
             return new UserSignInInputPortResponse(user.getRole(), user.getUid());
@@ -87,8 +85,7 @@ public class UserService implements UserInputPort {
      */
     @Override
     public String changePw(String userId, UserUpdatePwInputPortRequest dto) {
-        UserDTO userDTO = outport.getUser(Integer.parseInt(userId));
-        User user = userDTO.toEntity();
+        User user = outport.getUser(userId);
 
         if(user.changePw(dto.getOldPw(), dto.getNewPw())) {
             outport.updatePw(user.getUid(), user.getPw());

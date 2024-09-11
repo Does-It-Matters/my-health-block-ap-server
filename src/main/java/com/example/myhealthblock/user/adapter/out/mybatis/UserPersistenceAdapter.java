@@ -3,7 +3,7 @@ package com.example.myhealthblock.user.adapter.out.mybatis;
 import java.time.LocalDateTime;
 
 import com.example.myhealthblock.user.application.port.out.UserOutputPort;
-import com.example.myhealthblock.user.domain.dto.UserDTO;
+import com.example.myhealthblock.user.domain.model.User;
 
 import lombok.RequiredArgsConstructor;
 
@@ -25,12 +25,12 @@ public class UserPersistenceAdapter implements UserOutputPort {
     }
 
     @Override
-    public UserDTO getUser(int id) {
-        UserEntity userEntity = userMapper.findById(id);
+    public User getUser(String id) {
+        UserEntity userEntity = userMapper.findByUserId(id);
         if (userEntity == null) {
             return null;
         }
-        return getUserDTO(userEntity);
+        return new User(getStringUserId(userEntity.getId()), userEntity.getUserId(), userEntity.getPw(), userEntity.getRole());
     }
 
     @Override
@@ -45,9 +45,9 @@ public class UserPersistenceAdapter implements UserOutputPort {
         return false;
     }
 
-    private UserDTO getUserDTO(UserEntity u) {
-        return new UserDTO(getStringUserId(u.getId()), u.getUserId(), u.getPw(), u.getRole());
-    }
+    // private UserDTO getUserDTO(UserEntity u) {
+    //     return new UserDTO(getStringUserId(u.getId()), u.getUserId(), u.getPw(), u.getRole());
+    // }
 
     private String getStringUserId(int userId) {
         return String.valueOf(userId);

@@ -1,6 +1,6 @@
 package com.example.myhealthblock.user.application.port.out;
 
-import com.example.myhealthblock.user.domain.dto.UserDTO;
+import com.example.myhealthblock.user.domain.model.User;
 
 /**
  * <b> 역할: 사용자 출력 포트 인터페이스 </b>
@@ -31,9 +31,9 @@ public interface UserOutputPort {
      * </p>
      *
      * @param id 조회할 사용자의 ID
-     * @return 주어진 ID와 일치하는 {@link UserDTO} 객체, 없으면 {@code null}
+     * @return 주어진 ID와 일치하는 {@link User} 객체, 없으면 {@code null}
      */
-    UserDTO getUser(int id);
+    User getUser(String id);
 
     /**
      * <b> 역할: 비밀번호 갱신 </b>
