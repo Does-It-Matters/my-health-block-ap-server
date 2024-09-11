@@ -19,6 +19,13 @@ import lombok.RequiredArgsConstructor;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * <b>역할: 질문 관련 데이터 영속성을 처리하는 어댑터 클래스</b>
+ * <p>
+ * - QuestionOutputPort 인터페이스를 구현하여 질문 데이터의 CRUD 작업을 수행 <br>
+ * - 실행 시간 로깅을 위한 AOP 적용 <br>
+ * </p>
+ */
 @LogExecutionTime(logTarget = LogTarget.ADAPTER)
 @RequiredArgsConstructor
 public class QuestionPersistenceAdapter implements QuestionOutputPort {
