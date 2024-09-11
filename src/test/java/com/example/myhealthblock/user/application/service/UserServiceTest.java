@@ -4,7 +4,6 @@ import com.example.myhealthblock.user.application.port.in.dto.UserSignInInputPor
 import com.example.myhealthblock.user.application.port.in.dto.UserSignInInputPortResponse;
 import com.example.myhealthblock.user.application.port.in.dto.UserSignUpInputPortRequest;
 import com.example.myhealthblock.user.application.port.out.UserOutputPort;
-import com.example.myhealthblock.user.domain.dto.UserDTO;
 import com.example.myhealthblock.user.domain.model.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -55,22 +54,22 @@ public class UserServiceTest {
     @DisplayName("회원가입 성공 테스트")
     public void testSignUpSuccess() {
         // Given
-        int id = 1;
+        String id = "newUser";
         UserSignUpInputPortRequest signUpRequest = new UserSignUpInputPortRequest();
-        signUpRequest.setId(String.valueOf(id));
+        signUpRequest.setId(id);
         signUpRequest.setPw("password123");
         signUpRequest.setRole("USER");
 
         // Mock behavior 설정
         when(userOutputPort.getUser(id)).thenReturn(null);
-        when(userOutputPort.create(String.valueOf(id), "password123", "USER")).thenReturn(true);
+        when(userOutputPort.create(id, "password123", "USER")).thenReturn(true);
 
         // When
         boolean result = userService.signUp(signUpRequest);
 
         // Then
         assertTrue(result, "회원가입 성공");
-        verify(userOutputPort).create(String.valueOf(id), "password123", "USER");
+        verify(userOutputPort).create(id, "password123", "USER");
     }
 
     /**
@@ -83,14 +82,14 @@ public class UserServiceTest {
     @DisplayName("이미 존재하는 사용자로 인해 회원가입 실패 테스트")
     public void testSignUpFailure() {
         // Given
-        int id = 1;
+        String id = "existingUser";
         UserSignUpInputPortRequest signUpRequest = new UserSignUpInputPortRequest();
-        signUpRequest.setId(String.valueOf(id));
+        signUpRequest.setId(id);
         signUpRequest.setPw("password123");
         signUpRequest.setRole("USER");
 
         // Mock behavior 설정
-        when(userOutputPort.getUser(id)).thenReturn(new UserDTO("1", String.valueOf(id), "password123", "USER"));
+        when(userOutputPort.getUser(id)).thenReturn(new User("1", id, "password123", "USER"));
 
         // When
         boolean result = userService.signUp(signUpRequest);
@@ -109,11 +108,11 @@ public class UserServiceTest {
     @DisplayName("로그인 성공 테스트")
     public void testSignInSuccess() {
         // Given
-        int id = 1;
-        UserSignInInputPortRequest signInRequest = new UserSignInInputPortRequest(String.valueOf(id), "password123");
+        String id = "user123";
+        UserSignInInputPortRequest signInRequest = new UserSignInInputPortRequest(id, "password123");
 
         // Mock behavior 설정
-        when(userOutputPort.getUser(id)).thenReturn(new UserDTO("1", String.valueOf(id), "password123", "USER"));
+        when(userOutputPort.getUser(id)).thenReturn(new User("1", id, "password123", "USER"));
 
         // When
         UserSignInInputPortResponse response = userService.signIn(signInRequest);
@@ -133,11 +132,11 @@ public class UserServiceTest {
     @DisplayName("로그인 실패 테스트")
     public void testSignInFailure() {
         // Given
-        int id = 1;
-        UserSignInInputPortRequest signInRequest = new UserSignInInputPortRequest(String.valueOf(id), "wrongPassword");
+        String id = "user123";
+        UserSignInInputPortRequest signInRequest = new UserSignInInputPortRequest(id, "wrongPassword");
 
         // Mock behavior 설정
-        when(userOutputPort.getUser(id)).thenReturn(new UserDTO("1", String.valueOf(id), "password123", "USER"));
+        when(userOutputPort.getUser(id)).thenReturn(new User("1", id, "password123", "USER"));
 
         // When
         RuntimeException exception = assertThrows(RuntimeException.class, () -> userService.signIn(signInRequest));

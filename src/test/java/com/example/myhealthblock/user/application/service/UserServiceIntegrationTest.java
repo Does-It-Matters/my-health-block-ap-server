@@ -5,7 +5,6 @@ import com.example.myhealthblock.user.application.port.in.dto.UserSignInInputPor
 import com.example.myhealthblock.user.application.port.in.dto.UserSignUpInputPortRequest;
 import com.example.myhealthblock.user.application.port.in.dto.UserUpdatePwInputPortRequest;
 import com.example.myhealthblock.user.application.port.out.UserOutputPort;
-import com.example.myhealthblock.user.domain.dto.UserDTO;
 import com.example.myhealthblock.user.domain.model.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -54,9 +53,9 @@ public class UserServiceIntegrationTest {
     @DisplayName("회원가입 통합 테스트")
     public void testSignUpIntegration() {
         // Given
-        int id = 1;
+        String id = "integrationUser";
         UserSignUpInputPortRequest signUpRequest = new UserSignUpInputPortRequest();
-        signUpRequest.setId(String.valueOf(id));
+        signUpRequest.setId(id);
         signUpRequest.setPw("password123");
         signUpRequest.setRole("USER");
 
@@ -65,7 +64,7 @@ public class UserServiceIntegrationTest {
 
         // Then
         assertTrue(result, "회원가입 성공");
-        UserDTO createdUser = userOutputPort.getUser(id);
+        User createdUser = userOutputPort.getUser(id);
         assertNotNull(createdUser, "사용자 조회 성공");
         assertEquals("USER", createdUser.getRole(), "사용자 역할 확인");
     }
@@ -108,12 +107,12 @@ public class UserServiceIntegrationTest {
     @DisplayName("비밀번호 변경 통합 테스트")
     public void testChangePwIntegration() {
         // Given
-        int id = 1;
+        String id = "integrationUser";
         String oldPw = "password123";
         String newPw = "newPassword123";
 
         UserSignUpInputPortRequest signUpRequest = new UserSignUpInputPortRequest();
-        signUpRequest.setId(String.valueOf(id));
+        signUpRequest.setId(id);
         signUpRequest.setPw(oldPw);
         signUpRequest.setRole("USER");
         userService.signUp(signUpRequest);
@@ -121,12 +120,11 @@ public class UserServiceIntegrationTest {
         UserUpdatePwInputPortRequest changePwRequest = new UserUpdatePwInputPortRequest(oldPw, newPw);
 
         // When
-        String result = userService.changePw(String.valueOf(id), changePwRequest);
+        String result = userService.changePw(id, changePwRequest);
 
         // Then
         assertEquals("success", result, "비밀번호 변경 성공");
-        UserDTO userDTO = userOutputPort.getUser(id);
-        User user = userDTO.toEntity();
+        User user = userOutputPort.getUser(id);
         assertTrue(user.signIn(newPw), "새 비밀번호로 로그인 성공");
     }
 }

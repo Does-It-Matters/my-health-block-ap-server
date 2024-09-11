@@ -21,7 +21,7 @@ public class UserTest {
      */
     @BeforeEach
     public void setUp() {
-        user = new User(1, "user123", "password123", "DOCTOR");
+        user = new User("1", "user123", "password123", "DOCTOR");
     }
 
     /**

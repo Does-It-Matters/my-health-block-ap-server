@@ -13,7 +13,7 @@ import org.mockito.MockitoAnnotations;
 import com.example.myhealthblock.user.adapter.out.jpa.UserEntity;
 import com.example.myhealthblock.user.adapter.out.jpa.UserPersistenceAdapter;
 import com.example.myhealthblock.user.adapter.out.jpa.UserRepository;
-import com.example.myhealthblock.user.domain.dto.UserDTO;
+import com.example.myhealthblock.user.domain.model.User;
 
 /**
  * <b> 역할: 사용자 영속성 어댑터 단위 테스트 클래스 </b>
@@ -73,12 +73,12 @@ public class UserPersistenceAdapterTest {
     @DisplayName("사용자 조회 실패 테스트 케이스")
     public void testGetUserFailure() {
         // Given
-        int userId = 123;
+        String userId = "user123";
 
-        when(userRepository.findByUserId(String.valueOf(userId))).thenReturn(null);
+        when(userRepository.findByUserId(userId)).thenReturn(null);
 
         // When
-        UserDTO user = userPersistenceAdapter.getUser(userId);
+        User user = userPersistenceAdapter.getUser(userId);
 
         // Then
         assertNull(user, "사용자 조회 실패!");
