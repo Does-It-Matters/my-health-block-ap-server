@@ -1,5 +1,7 @@
 package com.example.myhealthblock.user.application.service;
 
+import org.springframework.stereotype.Service;
+
 import com.example.myhealthblock.user.application.port.in.UserInputPort;
 import com.example.myhealthblock.user.application.port.in.dto.UserSignInInputPortRequest;
 import com.example.myhealthblock.user.application.port.in.dto.UserSignInInputPortResponse;
@@ -7,7 +9,7 @@ import com.example.myhealthblock.user.application.port.in.dto.UserSignUpInputPor
 import com.example.myhealthblock.user.application.port.in.dto.UserUpdatePwInputPortRequest;
 import com.example.myhealthblock.user.application.port.out.UserOutputPort;
 import com.example.myhealthblock.user.domain.model.User;
-import org.springframework.stereotype.Service;
+
 import lombok.RequiredArgsConstructor;
 
 /**
@@ -49,7 +51,7 @@ public class UserService implements UserInputPort {
      * </p>
      *
      * @param dto  로그인에 필요한 정보를 가진 dto
-     * @return 사용자가 로그인 결롸에 따른 dto
+     * @return 사용자가 로그인 결과에 따른 dto
      */
     @Override
     public UserSignInInputPortResponse signIn(UserSignInInputPortRequest dto) {
@@ -84,6 +86,7 @@ public class UserService implements UserInputPort {
     @Override
     public String changePw(String userId, UserUpdatePwInputPortRequest dto) {
         User user = outport.getUser(userId);
+
         if(user.changePw(dto.getOldPw(), dto.getNewPw())) {
             outport.updatePw(user.getUid(), user.getPw());
             return "success";

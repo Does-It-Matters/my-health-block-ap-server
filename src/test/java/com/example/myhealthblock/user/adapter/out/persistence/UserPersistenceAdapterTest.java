@@ -1,17 +1,19 @@
 package com.example.myhealthblock.user.adapter.out.persistence;
 
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+
 import com.example.myhealthblock.user.adapter.out.jpa.UserEntity;
 import com.example.myhealthblock.user.adapter.out.jpa.UserPersistenceAdapter;
 import com.example.myhealthblock.user.adapter.out.jpa.UserRepository;
 import com.example.myhealthblock.user.domain.model.User;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.DisplayName;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-import static org.mockito.Mockito.*;
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * <b> 역할: 사용자 영속성 어댑터 단위 테스트 클래스 </b>
@@ -81,6 +83,7 @@ public class UserPersistenceAdapterTest {
         // Then
         assertNull(user, "사용자 조회 실패!");
     }
+
 
     /**
      * <b> 역할: 사용자 비밀번호 갱신 단위 테스트 </b>

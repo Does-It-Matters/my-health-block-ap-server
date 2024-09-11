@@ -89,7 +89,7 @@ public class UserServiceTest {
         signUpRequest.setRole("USER");
 
         // Mock behavior 설정
-        when(userOutputPort.getUser(id)).thenReturn(new User(1, id, "password123", "USER"));
+        when(userOutputPort.getUser(id)).thenReturn(new User("1", id, "password123", "USER"));
 
         // When
         boolean result = userService.signUp(signUpRequest);
@@ -112,14 +112,14 @@ public class UserServiceTest {
         UserSignInInputPortRequest signInRequest = new UserSignInInputPortRequest(id, "password123");
 
         // Mock behavior 설정
-        when(userOutputPort.getUser(id)).thenReturn(new User(1, id, "password123", "USER"));
+        when(userOutputPort.getUser(id)).thenReturn(new User("1", id, "password123", "USER"));
 
         // When
         UserSignInInputPortResponse response = userService.signIn(signInRequest);
 
         // Then
         assertNotNull(response, "로그인 성공");
-        assertEquals(id, response.getId(), "사용자 ID 확인");
+        assertEquals("USER", response.getRole(), "역할 확인");
     }
 
     /**
@@ -136,12 +136,12 @@ public class UserServiceTest {
         UserSignInInputPortRequest signInRequest = new UserSignInInputPortRequest(id, "wrongPassword");
 
         // Mock behavior 설정
-        when(userOutputPort.getUser(id)).thenReturn(new User(1, id, "password123", "USER"));
+        when(userOutputPort.getUser(id)).thenReturn(new User("1", id, "password123", "USER"));
 
         // When
-        UserSignInInputPortResponse response = userService.signIn(signInRequest);
+        RuntimeException exception = assertThrows(RuntimeException.class, () -> userService.signIn(signInRequest));
 
         // Then
-        assertNull(response, "로그인 실패");
+        assertNotNull(exception, "로그인 실패로 예외 발생");
     }
 }

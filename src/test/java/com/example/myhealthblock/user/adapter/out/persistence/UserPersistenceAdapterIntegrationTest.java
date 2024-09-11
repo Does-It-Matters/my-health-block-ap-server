@@ -1,18 +1,19 @@
 package com.example.myhealthblock.user.adapter.out.persistence;
 
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.example.myhealthblock.user.adapter.out.jpa.UserEntity;
 import com.example.myhealthblock.user.adapter.out.jpa.UserPersistenceAdapter;
 import com.example.myhealthblock.user.adapter.out.jpa.UserRepository;
 import com.example.myhealthblock.user.domain.model.User;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.DisplayName;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.transaction.annotation.Transactional;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * <b> 역할: 사용자 영속성 어댑터 통합 테스트 클래스 </b>
@@ -95,6 +96,7 @@ public class UserPersistenceAdapterIntegrationTest {
         assertEquals("password123", user.getPw(), "비밀번호 확인");
         assertEquals("DOCTOR", user.getRole(), "역할 확인");
     }
+
 
     /**
      * <b> 역할: 비밀번호 변경 통합 테스트 </b>
