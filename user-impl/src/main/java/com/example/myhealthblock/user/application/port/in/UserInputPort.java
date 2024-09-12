@@ -1,7 +1,6 @@
 package com.example.myhealthblock.user.application.port.in;
 
 import com.example.myhealthblock.user.application.port.in.dto.UserSignInInputPortRequest;
-import com.example.myhealthblock.user.application.port.in.dto.UserSignUpInputPortRequest;
 import com.example.myhealthblock.user.application.port.in.dto.UserUpdatePwInputPortRequest;
 import com.example.myhealthblock.user.application.port.in.dto.UserSignInInputPortResponse;
 

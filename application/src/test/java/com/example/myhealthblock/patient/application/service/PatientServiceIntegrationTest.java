@@ -12,8 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.myhealthblock.patient.application.port.in.dto.PatientSignUpInputPortRequest;
 import com.example.myhealthblock.patient.application.port.out.PatientOutputPort;
-import com.example.myhealthblock.user.application.port.in.dto.UserSignUpInputPortRequest;
-import com.example.myhealthblock.user.domain.model.User;
 
 /**
  * <b> 역할: {@link PatientService} 통합 테스트 클래스 </b>

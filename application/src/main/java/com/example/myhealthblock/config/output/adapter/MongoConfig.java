@@ -3,14 +3,10 @@ package com.example.myhealthblock.config.output.adapter;
 import com.example.myhealthblock.doctor.application.port.out.DoctorOutputPort;
 import com.example.myhealthblock.opinion.application.port.out.OpinionOutputPort;
 import com.example.myhealthblock.patient.application.port.out.PatientOutputPort;
-import com.example.myhealthblock.user.application.port.out.UserOutputPort;
-import com.example.myhealthblock.question.application.port.out.QuestionOutputPort;
 
 import com.example.myhealthblock.doctor.adapter.out.mongodb.*;
 import com.example.myhealthblock.patient.adapter.out.mongodb.*;
 import com.example.myhealthblock.opinion.adapter.out.mongodb.*;
-import com.example.myhealthblock.user.adapter.out.mongodb.*;
-import com.example.myhealthblock.question.adapter.out.mongodb.question.*;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
