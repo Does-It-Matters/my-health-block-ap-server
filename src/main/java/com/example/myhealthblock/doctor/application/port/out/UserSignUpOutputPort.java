@@ -1,6 +1,6 @@
 package com.example.myhealthblock.doctor.application.port.out;
 
-import com.example.myhealthblock.doctor.application.port.out.dto.UserSignUpInputPortRequest;
+import com.example.myhealthblock.doctor.application.port.out.dto.DoctorSignUpOutputPortToUserRequest;
 
 /**
  * <b> 역할: User 도메인의 회원 가입 관련 의료진 출력 포트 인터페이스 </b>
@@ -17,5 +17,5 @@ public interface UserSignUpOutputPort {
      * @return 사용자가 성공적으로 생성되면 {@code true}, 그렇지 않으면 {@code false}
      * </p>
      */
-    boolean signUp(UserSignUpInputPortRequest dto);
+    boolean signUp(DoctorSignUpOutputPortToUserRequest dto);
 }

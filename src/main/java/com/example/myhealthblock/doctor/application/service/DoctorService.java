@@ -2,15 +2,15 @@ package com.example.myhealthblock.doctor.application.service;
 
 import com.example.myhealthblock.doctor.application.port.in.DoctorInputPort;
 import com.example.myhealthblock.doctor.application.port.in.dto.DoctorProfileInputPortResponse;
-import com.example.myhealthblock.doctor.application.port.out.DoctorOutputPort;
-import com.example.myhealthblock.doctor.application.port.out.dto.DoctorProfileOutputPortResponse;
-import com.example.myhealthblock.doctor.domain.model.Doctor;
 import com.example.myhealthblock.doctor.application.port.in.dto.DoctorSignUpInputPortRequest;
+import com.example.myhealthblock.doctor.application.port.out.DoctorOutputPort;
+import com.example.myhealthblock.doctor.application.port.out.UserSignUpOutputPort;
+import com.example.myhealthblock.doctor.application.port.out.dto.DoctorProfileOutputPortResponse;
+import com.example.myhealthblock.doctor.application.port.out.dto.DoctorSignUpOutputPortToUserRequest;
+import com.example.myhealthblock.doctor.domain.model.Doctor;
 import com.example.myhealthblock.doctor.application.port.in.dto.DoctorSignUpInputPortResponse;
 import com.example.myhealthblock.doctor.domain.mapper.DoctorMapper;
 import com.example.myhealthblock.exception.UserAlreadyExistsException;
-import com.example.myhealthblock.user.application.port.in.UserSignUp;
-import com.example.myhealthblock.user.application.port.in.dto.UserSignUpInputPortRequest;
 import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
 
@@ -24,7 +24,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 public class DoctorService implements DoctorInputPort {
     private final DoctorOutputPort outputPort;
-    private final UserSignUp userInputPort;
+    private final UserSignUpOutputPort userSignUpOutputPort;
     private final DoctorMapper mapper = DoctorMapper.INSTANCE;
 
     /**
@@ -40,7 +40,11 @@ public class DoctorService implements DoctorInputPort {
      */
     @Override
     public DoctorSignUpInputPortResponse signUp(DoctorSignUpInputPortRequest dto) {
-        requestUserSignUp(dto);
+        DoctorSignUpOutputPortToUserRequest request = new DoctorSignUpOutputPortToUserRequest();
+        request.setId(dto.getId());
+        request.setPw(dto.getPw());
+        request.setRole(dto.getRole());
+        requestUserSignUp(request);
         Doctor doctor = saveDoctorDetail(dto);
         return getInputPortResponse(doctor);
     }
@@ -54,9 +58,9 @@ public class DoctorService implements DoctorInputPort {
      * @param dto 의료진 회원가입 요청 데이터
      * </p>
      */
-    private void requestUserSignUp(DoctorSignUpInputPortRequest dto) {
-        UserSignUpInputPortRequest userSignUpDTO = getUserSignUpDTO(dto);
-        if (!userInputPort.signUp(userSignUpDTO)) {
+    private void requestUserSignUp(DoctorSignUpOutputPortToUserRequest dto) {
+        DoctorSignUpOutputPortToUserRequest userSignUpDTO = getUserSignUpDTO(dto);
+        if (!userSignUpOutputPort.signUp(userSignUpDTO)) {
             throw new UserAlreadyExistsException("A user with this ID already exists.");
         }
     }
@@ -98,8 +102,8 @@ public class DoctorService implements DoctorInputPort {
      * @return 매핑 dto
      * </p>
      */
-    private UserSignUpInputPortRequest getUserSignUpDTO(DoctorSignUpInputPortRequest dto) {
-        UserSignUpInputPortRequest userSignUpDTO = new UserSignUpInputPortRequest();
+    private DoctorSignUpOutputPortToUserRequest getUserSignUpDTO(DoctorSignUpOutputPortToUserRequest dto) {
+        DoctorSignUpOutputPortToUserRequest userSignUpDTO = new DoctorSignUpOutputPortToUserRequest();
         userSignUpDTO.setId(dto.getId());
         userSignUpDTO.setPw(dto.getPw());
         userSignUpDTO.setRole(dto.getRole());
