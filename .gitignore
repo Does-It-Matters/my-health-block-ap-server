@@ -1,4 +1,4 @@
-src/main/generated
+**/src/main/generated
 
 #src/main/java/com/example/myhealthblock/api/healthdata/specific
 src/main/java/com/example/myhealthblock/api/healthdata/specific/EasyCodefClientInfo.java
