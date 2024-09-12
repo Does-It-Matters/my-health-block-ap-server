@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @RequiredArgsConstructor
 @Component
-public class UserSignUpAdapter implements UserSignUpOutputPort {
+public class UserSignUpPatientAdapter implements UserSignUpOutputPort {
     private final UserSignUp userInputPort;
 
     /**
