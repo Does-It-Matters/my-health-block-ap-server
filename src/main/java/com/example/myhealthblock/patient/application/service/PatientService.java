@@ -4,8 +4,8 @@ import com.example.myhealthblock.exception.UserAlreadyExistsException;
 import com.example.myhealthblock.patient.application.port.in.PatientInputPort;
 import com.example.myhealthblock.patient.application.port.in.dto.PatientSignUpInputPortRequest;
 import com.example.myhealthblock.patient.application.port.out.PatientOutputPort;
-import com.example.myhealthblock.user.application.port.in.UserSignUp;
-import com.example.myhealthblock.user.application.port.in.dto.UserSignUpInputPortRequest;
+import com.example.myhealthblock.patient.application.port.out.UserSignUpOutputPort;
+import com.example.myhealthblock.patient.application.port.out.dto.PatientSignUpOutputPortToUserRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class PatientService implements PatientInputPort {
     private final PatientOutputPort outputPort;
-    private final UserSignUp userInputPort;
+    private final UserSignUpOutputPort userSignUpOutputPort;
 
     /**
      * <b> 역할: 환자 회원가입 메소드 </b>
@@ -41,8 +41,8 @@ public class PatientService implements PatientInputPort {
      * @param dto 환자 회원가입 요청 데이터
      */
     private void requestUserSignUp(PatientSignUpInputPortRequest dto) {
-        UserSignUpInputPortRequest userSignUpDTO = getUserSignUpDTO(dto);
-        if (!userInputPort.signUp(userSignUpDTO)) {
+        PatientSignUpOutputPortToUserRequest userSignUpDTO = getUserSignUpDTO(dto);
+        if (!userSignUpOutputPort.signUp(userSignUpDTO)) {
             throw new UserAlreadyExistsException("A user with this ID already exists.");
         }
     }
@@ -53,12 +53,7 @@ public class PatientService implements PatientInputPort {
      * @param dto 환자 회원가입 요청 데이터
      * @return 매핑 dto
      */
-    private UserSignUpInputPortRequest getUserSignUpDTO(PatientSignUpInputPortRequest dto) {
-        UserSignUpInputPortRequest userSignUpDTO = new UserSignUpInputPortRequest();
-        userSignUpDTO.setId(dto.getId());
-        userSignUpDTO.setPw(dto.getPw());
-        userSignUpDTO.setRole(dto.getRole());
-
-        return userSignUpDTO;
+    private PatientSignUpOutputPortToUserRequest getUserSignUpDTO(PatientSignUpInputPortRequest dto) {
+        return new PatientSignUpOutputPortToUserRequest(dto.getId(), dto.getPw(), dto.getRole());
     }
 }
