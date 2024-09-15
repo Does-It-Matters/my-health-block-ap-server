@@ -1,7 +1,5 @@
 package com.example.myhealthblock.question.adapter.out.database.jpa.question;
 
-import com.example.myhealthblock.aop.LogExecutionTime;
-import com.example.myhealthblock.aop.LogTarget;
 import com.example.myhealthblock.question.adapter.out.database.jpa.bodypart.BodyMappingRepository;
 import com.example.myhealthblock.question.application.port.out.QuestionOutputPort;
 import com.example.myhealthblock.question.application.port.out.dto.QuestionEnrollOutputPortRequest;
@@ -26,7 +24,7 @@ import java.util.stream.Collectors;
  * - 실행 시간 로깅을 위한 AOP 적용 <br>
  * </p>
  */
-@LogExecutionTime(logTarget = LogTarget.ADAPTER)
+//@LogExecutionTime(logTarget = LogTarget.ADAPTER)
 @RequiredArgsConstructor
 public class QuestionPersistenceAdapter implements QuestionOutputPort {
     private final QuestionRepository questionRepository;

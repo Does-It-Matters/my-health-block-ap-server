@@ -53,6 +53,7 @@ dependencies {
 
 	implementation project(':question-impl')
 	implementation project(':question-api')
+	implementation project(':question-jpa-adapter')
 
 	implementation project(':opinion-impl')
 	implementation project(':opinion-api')
