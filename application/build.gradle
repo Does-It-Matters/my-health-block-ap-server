@@ -56,6 +56,7 @@ dependencies {
 	implementation project(':question-api')
 	implementation project(':question-jpa-adapter')
 	implementation project(':question-mybatis-adapter')
+	implementation project(':question-mongo-adapter')
 
 	implementation project(':opinion-impl')
 	implementation project(':opinion-api')

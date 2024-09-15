@@ -1,7 +1,5 @@
 package com.example.myhealthblock.question.adapter.out.database.mongodb.question;
 
-import com.example.myhealthblock.aop.LogExecutionTime;
-import com.example.myhealthblock.aop.LogTarget;
 import com.example.myhealthblock.question.adapter.out.database.mongodb.bodypart.BodyPartMappingDocument;
 import com.example.myhealthblock.question.adapter.out.database.mongodb.bodypart.BodyPartMappingRepository;
 import com.example.myhealthblock.question.application.port.out.QuestionOutputPort;
@@ -19,7 +17,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@LogExecutionTime(logTarget = LogTarget.ADAPTER)
+//@LogExecutionTime(logTarget = LogTarget.ADAPTER)
 @RequiredArgsConstructor
 public class QuestionPersistenceAdapter implements QuestionOutputPort {
     private final QuestionRepository questionRepository;
