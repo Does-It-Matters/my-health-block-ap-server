@@ -1,7 +1,5 @@
 package com.example.myhealthblock.user.adapter.out.database.jpa;
 
-import com.example.myhealthblock.aop.LogExecutionTime;
-import com.example.myhealthblock.aop.LogTarget;
 import com.example.myhealthblock.user.application.port.out.UserOutputPort;
 import com.example.myhealthblock.user.domain.model.User;
 
@@ -15,7 +13,7 @@ import lombok.RequiredArgsConstructor;
  * - 사용자 생성, 조회, 비밀번호 변경과 같은 사용자 관리 기능을 제공 <br>
  * </p>
  */
-@LogExecutionTime(logTarget = LogTarget.ADAPTER)
+//@LogExecutionTime(logTarget = LogTarget.ADAPTER)
 @RequiredArgsConstructor
 public class UserPersistenceAdapter implements UserOutputPort {
     private final UserRepository userRepository;
