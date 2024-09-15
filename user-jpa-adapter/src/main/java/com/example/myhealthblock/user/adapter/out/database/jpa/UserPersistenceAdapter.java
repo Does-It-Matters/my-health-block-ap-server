@@ -4,6 +4,7 @@ import com.example.myhealthblock.user.application.port.out.UserOutputPort;
 import com.example.myhealthblock.user.domain.model.User;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 /**
  * <b> 역할: 사용자 영속성 어댑터 클래스 </b>
@@ -15,6 +16,7 @@ import lombok.RequiredArgsConstructor;
  */
 //@LogExecutionTime(logTarget = LogTarget.ADAPTER)
 @RequiredArgsConstructor
+@Component
 public class UserPersistenceAdapter implements UserOutputPort {
     private final UserRepository userRepository;
 

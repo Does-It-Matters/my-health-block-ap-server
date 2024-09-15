@@ -6,8 +6,10 @@ import com.example.myhealthblock.user.application.port.out.UserOutputPort;
 import com.example.myhealthblock.user.domain.model.User;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 @RequiredArgsConstructor
+@Component
 public class UserPersistenceAdapter implements UserOutputPort {
 
     private final UserMapper userMapper;

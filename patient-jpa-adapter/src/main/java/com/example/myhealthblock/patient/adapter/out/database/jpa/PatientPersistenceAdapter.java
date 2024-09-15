@@ -3,6 +3,7 @@ package com.example.myhealthblock.patient.adapter.out.database.jpa;
 import com.example.myhealthblock.patient.application.port.out.PatientOutputPort;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 /**
  * <b> 역할: 환자 영속성 어댑터 클래스 </b>
@@ -14,6 +15,7 @@ import lombok.RequiredArgsConstructor;
  */
 //@LogExecutionTime(logTarget = LogTarget.ADAPTER)
 @RequiredArgsConstructor
+@Component
 public class PatientPersistenceAdapter implements PatientOutputPort {
     private final PatientRepository patientRepository;
 

@@ -4,11 +4,13 @@ import com.example.myhealthblock.opinion.application.port.out.OpinionOutputPort;
 import com.example.myhealthblock.opinion.application.port.out.dto.OpinionEnrollOutputPortRequest;
 import com.example.myhealthblock.opinion.application.port.out.dto.OpinionOutputPortDTO;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 //@LogExecutionTime(logTarget = LogTarget.ADAPTER)
 @RequiredArgsConstructor
+@Component
 public class OpinionPersistenceAdapter implements OpinionOutputPort {
     private final OpinionMapper opinionMapper;
 

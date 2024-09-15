@@ -4,6 +4,7 @@ import com.example.myhealthblock.doctor.application.port.out.DoctorOutputPort;
 import com.example.myhealthblock.doctor.application.port.out.dto.DoctorSignUpOutputPortRequest;
 import com.example.myhealthblock.doctor.application.port.out.dto.DoctorProfileOutputPortResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 /**
  * <b> 역할: 의료진 데이터 처리하는 어댑터 클래스 </b>
@@ -13,6 +14,7 @@ import lombok.RequiredArgsConstructor;
  */
 //@LogExecutionTime(logTarget = LogTarget.ADAPTER)
 @RequiredArgsConstructor
+@Component
 public class DoctorPersistenceAdapter implements DoctorOutputPort {
     private final DoctorRepository doctorRepository;
 

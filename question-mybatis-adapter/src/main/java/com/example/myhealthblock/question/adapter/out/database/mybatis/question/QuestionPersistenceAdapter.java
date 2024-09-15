@@ -12,6 +12,7 @@ import com.example.myhealthblock.question.domain.dto.QuestionDTO;
 import com.example.myhealthblock.question.domain.dto.QuestionTitleDTO;
 import com.example.myhealthblock.question.adapter.out.database.mybatis.bodypart.BodyPartMappingEntity;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -19,6 +20,7 @@ import java.util.stream.Collectors;
 
 //@LogExecutionTime(logTarget = LogTarget.ADAPTER)
 @RequiredArgsConstructor
+@Component
 public class QuestionPersistenceAdapter implements QuestionOutputPort {
     private final QuestionMapper questionMapper;
     private final PersonalDataMapper personalDataMapper;

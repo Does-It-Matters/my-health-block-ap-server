@@ -52,32 +52,32 @@ dependencies {
 	implementation project(':user-impl')
 	implementation project(':user-api')
 	implementation project(':user-jpa-adapter')
-	implementation project(':user-mybatis-adapter')
-	implementation project(':user-mongo-adapter')
+//	implementation project(':user-mybatis-adapter')
+//	implementation project(':user-mongo-adapter')
 
 	implementation project(':question-impl')
 	implementation project(':question-api')
 	implementation project(':question-jpa-adapter')
-	implementation project(':question-mybatis-adapter')
-	implementation project(':question-mongo-adapter')
+//	implementation project(':question-mybatis-adapter')
+//	implementation project(':question-mongo-adapter')
 
 	implementation project(':opinion-impl')
 	implementation project(':opinion-api')
 	implementation project(':opinion-jpa-adapter')
-	implementation project(':opinion-mybatis-adapter')
-	implementation project(':opinion-mongo-adapter')
+//	implementation project(':opinion-mybatis-adapter')
+//	implementation project(':opinion-mongo-adapter')
 
 	implementation project(':patient-impl')
 	implementation project(':patient-api')
 	implementation project(':patient-jpa-adapter')
-	implementation project(':patient-mybatis-adapter')
-	implementation project(':patient-mongo-adapter')
+//	implementation project(':patient-mybatis-adapter')
+//	implementation project(':patient-mongo-adapter')
 
 	implementation project(':doctor-impl')
 	implementation project(':doctor-api')
 	implementation project(':doctor-jpa-adapter')
-	implementation project(':doctor-mybatis-adapter')
-	implementation project(':doctor-mongo-adapter')
+//	implementation project(':doctor-mybatis-adapter')
+//	implementation project(':doctor-mongo-adapter')
 }
 jar{
 	manifest{
