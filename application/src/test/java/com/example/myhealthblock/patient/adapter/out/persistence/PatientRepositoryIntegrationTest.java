@@ -7,8 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
-import com.example.myhealthblock.patient.adapter.out.jpa.PatientEntity;
-import com.example.myhealthblock.patient.adapter.out.jpa.PatientRepository;
+import com.example.myhealthblock.patient.adapter.out.database.jpa.PatientEntity;
+import com.example.myhealthblock.patient.adapter.out.database.jpa.PatientRepository;
 
 /**
  * <b> 역할: 환자 영속성 리포지토리 통합 테스트 클래스 </b>

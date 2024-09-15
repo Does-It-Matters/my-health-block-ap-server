@@ -10,9 +10,9 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.myhealthblock.user.adapter.out.jpa.UserEntity;
-import com.example.myhealthblock.user.adapter.out.jpa.UserPersistenceAdapter;
-import com.example.myhealthblock.user.adapter.out.jpa.UserRepository;
+import com.example.myhealthblock.user.adapter.out.database.jpa.UserEntity;
+import com.example.myhealthblock.user.adapter.out.database.jpa.UserPersistenceAdapter;
+import com.example.myhealthblock.user.adapter.out.database.jpa.UserRepository;
 import com.example.myhealthblock.user.domain.model.User;
 
 /**

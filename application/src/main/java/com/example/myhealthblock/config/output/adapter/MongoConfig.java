@@ -1,7 +1,13 @@
 package com.example.myhealthblock.config.output.adapter;
 
+import com.example.myhealthblock.doctor.adapter.out.database.mongodb.DoctorPersistenceAdapter;
+import com.example.myhealthblock.doctor.adapter.out.database.mongodb.DoctorRepository;
 import com.example.myhealthblock.doctor.application.port.out.DoctorOutputPort;
+import com.example.myhealthblock.opinion.adapter.out.database.mongodb.OpinionPersistenceAdapter;
+import com.example.myhealthblock.opinion.adapter.out.database.mongodb.OpinionRepository;
 import com.example.myhealthblock.opinion.application.port.out.OpinionOutputPort;
+import com.example.myhealthblock.patient.adapter.out.database.mongodb.PatientPersistenceAdapter;
+import com.example.myhealthblock.patient.adapter.out.database.mongodb.PatientRepository;
 import com.example.myhealthblock.patient.application.port.out.PatientOutputPort;
 
 import com.example.myhealthblock.doctor.adapter.out.mongodb.*;

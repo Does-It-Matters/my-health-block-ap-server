@@ -1,18 +1,27 @@
 package com.example.myhealthblock.config.output.adapter;
 
+import com.example.myhealthblock.doctor.adapter.out.database.mybatis.DoctorMapper;
+import com.example.myhealthblock.doctor.adapter.out.database.mybatis.DoctorPersistenceAdapter;
 import com.example.myhealthblock.doctor.application.port.out.DoctorOutputPort;
+import com.example.myhealthblock.opinion.adapter.out.database.mybatis.OpinionMapper;
+import com.example.myhealthblock.opinion.adapter.out.database.mybatis.OpinionPersistenceAdapter;
 import com.example.myhealthblock.opinion.application.port.out.OpinionOutputPort;
+import com.example.myhealthblock.patient.adapter.out.database.mybatis.PatientMapper;
+import com.example.myhealthblock.patient.adapter.out.database.mybatis.PatientPersistenceAdapter;
 import com.example.myhealthblock.patient.application.port.out.PatientOutputPort;
+import com.example.myhealthblock.question.adapter.out.database.mybatis.bodypart.BodyPartMappingMapper;
+import com.example.myhealthblock.question.adapter.out.database.mybatis.personaldata.PersonalDataMapper;
+import com.example.myhealthblock.question.adapter.out.database.mybatis.question.QuestionMapper;
+import com.example.myhealthblock.question.adapter.out.database.mybatis.question.QuestionPersistenceAdapter;
 import com.example.myhealthblock.question.application.port.out.QuestionOutputPort;
+import com.example.myhealthblock.user.adapter.out.database.mybatis.UserMapper;
+import com.example.myhealthblock.user.adapter.out.database.mybatis.UserPersistenceAdapter;
 import com.example.myhealthblock.user.application.port.out.UserOutputPort;
 
 import com.example.myhealthblock.doctor.adapter.out.mybatis.*;
 import com.example.myhealthblock.opinion.adapter.out.mybatis.*;
 import com.example.myhealthblock.patient.adapter.out.mybatis.*;
 import com.example.myhealthblock.user.adapter.out.mybatis.*;
-import com.example.myhealthblock.question.adapter.out.mybatis.bodypart.*;
-import com.example.myhealthblock.question.adapter.out.mybatis.personaldata.*;
-import com.example.myhealthblock.question.adapter.out.mybatis.question.*;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

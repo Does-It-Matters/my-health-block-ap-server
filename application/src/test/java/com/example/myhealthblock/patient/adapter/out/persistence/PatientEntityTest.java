@@ -7,12 +7,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.myhealthblock.patient.adapter.out.jpa.PatientEntity;
-import com.example.myhealthblock.patient.adapter.out.jpa.PatientRepository;
+import com.example.myhealthblock.patient.adapter.out.database.jpa.PatientEntity;
+import com.example.myhealthblock.patient.adapter.out.database.jpa.PatientRepository;
 
 /**
  * <b> 역할: {@link PatientEntity} 클래스의 단위 테스트 클래스 </b>
