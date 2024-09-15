@@ -64,6 +64,7 @@ dependencies {
 	implementation project(':patient-impl')
 	implementation project(':patient-api')
 	implementation project(':patient-jpa-adapter')
+	implementation project(':patient-mybatis-adapter')
 
 	implementation project(':doctor-impl')
 	implementation project(':doctor-api')
