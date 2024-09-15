@@ -1,7 +1,5 @@
 package com.example.myhealthblock.doctor.adapter.out.database.mongodb;
 
-import com.example.myhealthblock.aop.LogExecutionTime;
-import com.example.myhealthblock.aop.LogTarget;
 import com.example.myhealthblock.doctor.application.port.out.DoctorOutputPort;
 import com.example.myhealthblock.doctor.application.port.out.dto.DoctorSignUpOutputPortRequest;
 import com.example.myhealthblock.doctor.application.port.out.dto.DoctorProfileOutputPortResponse;
@@ -13,7 +11,7 @@ import lombok.RequiredArgsConstructor;
  *
  * @see DoctorRepository
  */
-@LogExecutionTime(logTarget = LogTarget.ADAPTER)
+//@LogExecutionTime(logTarget = LogTarget.ADAPTER)
 @RequiredArgsConstructor
 public class DoctorPersistenceAdapter implements DoctorOutputPort {
     private final DoctorRepository doctorRepository;
