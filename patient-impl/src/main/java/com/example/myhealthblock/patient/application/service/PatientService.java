@@ -1,6 +1,5 @@
 package com.example.myhealthblock.patient.application.service;
 
-import com.example.myhealthblock.exception.UserAlreadyExistsException;
 import com.example.myhealthblock.patient.application.port.in.PatientInputPort;
 import com.example.myhealthblock.patient.application.port.in.dto.PatientSignUpInputPortRequest;
 import com.example.myhealthblock.patient.application.port.out.PatientOutputPort;
@@ -43,7 +42,8 @@ public class PatientService implements PatientInputPort {
     private void requestUserSignUp(PatientSignUpInputPortRequest dto) {
         PatientSignUpOutputPortToUserRequest userSignUpDTO = getUserSignUpDTO(dto);
         if (!userSignUpOutputPort.signUp(userSignUpDTO)) {
-            throw new UserAlreadyExistsException("A user with this ID already exists.");
+            throw new RuntimeException();
+//            throw new UserAlreadyExistsException("A user with this ID already exists.");
         }
     }
 

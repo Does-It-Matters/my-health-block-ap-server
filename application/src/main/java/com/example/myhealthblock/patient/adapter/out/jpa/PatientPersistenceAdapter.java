@@ -3,7 +3,6 @@ package com.example.myhealthblock.patient.adapter.out.jpa;
 import com.example.myhealthblock.aop.LogExecutionTime;
 import com.example.myhealthblock.aop.LogTarget;
 import com.example.myhealthblock.patient.application.port.out.PatientOutputPort;
-import com.example.myhealthblock.user.adapter.out.jpa.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 
