@@ -2,3 +2,4 @@ rootProject.name = 'myhealthblock'
 
 include 'application'
 include 'user-impl'
+include 'user-api'
