@@ -61,6 +61,7 @@ dependencies {
 	implementation project(':opinion-api')
 	implementation project(':opinion-jpa-adapter')
 	implementation project(':opinion-mybatis-adapter')
+	implementation project(':opinion-mongo-adapter')
 
 	implementation project(':patient-impl')
 	implementation project(':patient-api')
