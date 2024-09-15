@@ -1,0 +1,83 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.1.11'
+	id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.data:spring-data-mongodb:4.3.1'
+	implementation 'org.springframework.boot:spring-boot-starter-log4j2'
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0'
+	implementation 'mysql:mysql-connector-java:8.0.33'
+	implementation 'com.h2database:h2'
+
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	configurations.all {
+		exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+	}
+
+//	implementation 'org.springframework.boot:spring-boot-starter-security'
+//	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+//	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
+//	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
+
+//	implementation 'org.apache.logging.log4j:log4j-core:2.23.1'
+//	implementation 'org.apache.logging.log4j:log4j-api:2.23.1'
+
+	implementation project(':user-impl')
+	implementation project(':user-api')
+
+	implementation project(':question-impl')
+	implementation project(':question-api')
+
+	implementation project(':opinion-impl')
+	implementation project(':opinion-api')
+
+	implementation project(':patient-impl')
+	implementation project(':patient-api')
+
+	implementation project(':doctor-impl')
+	implementation project(':doctor-api')
+
+//	testImplementation 'org.junit.jupiter:junit-jupiter'
+//	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+jar{
+	manifest{
+		attributes 'Main-Class': 'com.example.myhealthblock.MyhealthblockApplication'
+	}
+}
+bootJar {
+	jar.enabled = true
+}
+tasks.named('bootBuildImage') {
+	builder = 'paketobuildpacks/builder-jammy-base:latest'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

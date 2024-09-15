@@ -1,1 +1,13 @@
 rootProject.name = 'myhealthblock'
+
+include 'application'
+include 'user-impl'
+include 'user-api'
+include 'question-impl'
+include 'opinion-impl'
+include 'patient-impl'
+include 'doctor-impl'
+include 'doctor-api'
+include 'opinion-api'
+include 'patient-api'
+include 'question-api'
