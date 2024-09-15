@@ -24,12 +24,12 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.data:spring-data-mongodb:4.3.1'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa' // MyhealthblockApplication의 EnableJpaAuditing 해결 후 제거 예정
+	implementation 'org.springframework.data:spring-data-mongodb:4.3.1' // 설정 파일을 각 모듈에서 작성 후 제거 예정
 	implementation 'org.springframework.boot:spring-boot-starter-log4j2'
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0'
-	implementation 'mysql:mysql-connector-java:8.0.33'
-	implementation 'com.h2database:h2'
+	implementation 'mysql:mysql-connector-java:8.0.33' // 설정 파일을 각 모듈에서 작성 후 제거 예정
+	implementation 'com.h2database:h2' // 어댑터 모듈에서 다루도록 진행 후 제거 예정
 
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
@@ -44,6 +44,8 @@ dependencies {
 //	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
 //	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
 
+
+//  impl, api 이해를 돕기 위해 남겨둔 log4j 의존성 주석
 //	implementation 'org.apache.logging.log4j:log4j-core:2.23.1'
 //	implementation 'org.apache.logging.log4j:log4j-api:2.23.1'
 
@@ -76,9 +78,6 @@ dependencies {
 	implementation project(':doctor-jpa-adapter')
 	implementation project(':doctor-mybatis-adapter')
 	implementation project(':doctor-mongo-adapter')
-
-//	testImplementation 'org.junit.jupiter:junit-jupiter'
-//	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 jar{
 	manifest{
