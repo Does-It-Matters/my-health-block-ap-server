@@ -1,7 +1,5 @@
 package com.example.myhealthblock.opinion.adapter.out.database.mybatis;
 
-import com.example.myhealthblock.aop.LogExecutionTime;
-import com.example.myhealthblock.aop.LogTarget;
 import com.example.myhealthblock.opinion.application.port.out.OpinionOutputPort;
 import com.example.myhealthblock.opinion.application.port.out.dto.OpinionEnrollOutputPortRequest;
 import com.example.myhealthblock.opinion.application.port.out.dto.OpinionOutputPortDTO;
@@ -9,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
-@LogExecutionTime(logTarget = LogTarget.ADAPTER)
+//@LogExecutionTime(logTarget = LogTarget.ADAPTER)
 @RequiredArgsConstructor
 public class OpinionPersistenceAdapter implements OpinionOutputPort {
     private final OpinionMapper opinionMapper;
