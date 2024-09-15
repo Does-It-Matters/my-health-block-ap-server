@@ -67,6 +67,7 @@ dependencies {
 	implementation project(':doctor-impl')
 	implementation project(':doctor-api')
 	implementation project(':doctor-jpa-adapter')
+	implementation project(':doctor-mybatis-adapter')
 
 //	testImplementation 'org.junit.jupiter:junit-jupiter'
 //	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
