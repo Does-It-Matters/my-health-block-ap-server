@@ -10,7 +10,6 @@ import com.example.myhealthblock.doctor.application.port.out.dto.DoctorSignUpOut
 import com.example.myhealthblock.doctor.domain.model.Doctor;
 import com.example.myhealthblock.doctor.application.port.in.dto.DoctorSignUpInputPortResponse;
 import com.example.myhealthblock.doctor.domain.mapper.DoctorMapper;
-import com.example.myhealthblock.exception.UserAlreadyExistsException;
 import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
 
@@ -61,7 +60,7 @@ public class DoctorService implements DoctorInputPort {
     private void requestUserSignUp(DoctorSignUpOutputPortToUserRequest dto) {
         DoctorSignUpOutputPortToUserRequest userSignUpDTO = getUserSignUpDTO(dto);
         if (!userSignUpOutputPort.signUp(userSignUpDTO)) {
-            throw new UserAlreadyExistsException("A user with this ID already exists.");
+//            throw new UserAlreadyExistsException("A user with this ID already exists.");
         }
     }
 
