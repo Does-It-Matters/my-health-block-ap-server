@@ -28,10 +28,10 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-    implementation project(':opinion-api')
-    implementation project(':opinion-impl') // api와 impl이 제대로 분리되면 삭제해야 할 의존성
+    implementation project(':patient-api')
+    implementation project(':patient-impl') // api와 impl이 제대로 분리되면 삭제해야 할 의존성
 }
-
+    
 tasks.named('test') {
     useJUnitPlatform()
 }

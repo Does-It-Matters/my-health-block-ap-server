@@ -1,7 +1,5 @@
 package com.example.myhealthblock.patient.adapter.out.database.jpa;
 
-import com.example.myhealthblock.aop.LogExecutionTime;
-import com.example.myhealthblock.aop.LogTarget;
 import com.example.myhealthblock.patient.application.port.out.PatientOutputPort;
 
 import lombok.RequiredArgsConstructor;
@@ -14,7 +12,7 @@ import lombok.RequiredArgsConstructor;
  * - 환자 생성과 같은 환자 관리 기능을 제공 <br>
  * </p>
  */
-@LogExecutionTime(logTarget = LogTarget.ADAPTER)
+//@LogExecutionTime(logTarget = LogTarget.ADAPTER)
 @RequiredArgsConstructor
 public class PatientPersistenceAdapter implements PatientOutputPort {
     private final PatientRepository patientRepository;
