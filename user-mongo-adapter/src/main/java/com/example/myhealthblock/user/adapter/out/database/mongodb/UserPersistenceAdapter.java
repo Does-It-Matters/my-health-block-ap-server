@@ -1,13 +1,11 @@
 package com.example.myhealthblock.user.adapter.out.database.mongodb;
 
-import com.example.myhealthblock.aop.LogExecutionTime;
-import com.example.myhealthblock.aop.LogTarget;
 import com.example.myhealthblock.user.application.port.out.UserOutputPort;
 import com.example.myhealthblock.user.domain.model.User;
 
 import lombok.RequiredArgsConstructor;
 
-@LogExecutionTime(logTarget = LogTarget.ADAPTER)
+//@LogExecutionTime(logTarget = LogTarget.ADAPTER)
 @RequiredArgsConstructor
 public class UserPersistenceAdapter implements UserOutputPort {
 
