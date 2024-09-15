@@ -1,6 +1,7 @@
 package com.example.myhealthblock.user.adapter.in.web.request;
 
 import com.example.myhealthblock.user.application.port.in.dto.UserUpdatePwInputPortRequest;
+import com.example.myhealthblock.user.application.port.in.dto.UserUpdatePwInputPortRequestDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,7 +26,7 @@ public class UserUpdatePwRequest {
      * @return 입력 포트에서 전달되는 DTO
      */
     public UserUpdatePwInputPortRequest toInputPortDTO() {
-        return new UserUpdatePwInputPortRequest(
+        return new UserUpdatePwInputPortRequestDTO(
                 oldPw,
                 newPw
         );

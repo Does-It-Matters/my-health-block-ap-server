@@ -1,12 +1,9 @@
 package com.example.myhealthblock.user.application.service;
 
+import com.example.myhealthblock.user.application.port.in.dto.*;
 import org.springframework.stereotype.Service;
 
 import com.example.myhealthblock.user.application.port.in.UserInputPort;
-import com.example.myhealthblock.user.application.port.in.dto.UserSignInInputPortRequest;
-import com.example.myhealthblock.user.application.port.in.dto.UserSignInInputPortResponse;
-import com.example.myhealthblock.user.application.port.in.dto.UserSignUpInputPortRequest;
-import com.example.myhealthblock.user.application.port.in.dto.UserUpdatePwInputPortRequest;
 import com.example.myhealthblock.user.application.port.out.UserOutputPort;
 import com.example.myhealthblock.user.domain.model.User;
 
@@ -58,7 +55,7 @@ public class UserService implements UserInputPort {
         User user = outport.getUser(dto.getId());
 
         if (user!=null && user.signIn(dto.getPw()))
-            return new UserSignInInputPortResponse(user.getRole(), user.getUid());
+            return new UserSignInInputPortResponseDTO(user.getRole(), user.getUid());
 
         throw new RuntimeException();
     }

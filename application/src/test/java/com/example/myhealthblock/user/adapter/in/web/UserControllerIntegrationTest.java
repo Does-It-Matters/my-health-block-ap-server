@@ -4,6 +4,7 @@ import com.example.myhealthblock.user.application.port.in.UserInputPort;
 import com.example.myhealthblock.user.application.port.in.dto.UserSignInInputPortResponse;
 import com.example.myhealthblock.user.adapter.in.web.request.UserSignInRequest;
 import com.example.myhealthblock.user.adapter.in.web.request.UserUpdatePwRequest;
+import com.example.myhealthblock.user.application.port.in.dto.UserSignInInputPortResponseDTO;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -42,7 +43,7 @@ public class UserControllerIntegrationTest {
     public void testSignIn() throws Exception {
         // Given
         UserSignInRequest signInRequest = new UserSignInRequest("user123", "password123");
-        UserSignInInputPortResponse signInResponse = new UserSignInInputPortResponse("USER", "user123");
+        UserSignInInputPortResponse signInResponse = new UserSignInInputPortResponseDTO("USER", "user123");
         when(userInputPort.signIn(any())).thenReturn(signInResponse);
 
         // When & Then

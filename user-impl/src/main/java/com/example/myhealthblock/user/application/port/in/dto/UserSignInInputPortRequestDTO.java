@@ -13,7 +13,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserSignInInputPortRequest {
+public class UserSignInInputPortRequestDTO implements UserSignInInputPortRequest {
     private String id;
     private String pw;
 }

@@ -5,12 +5,12 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * <b> 역할: {@link UserSignUpInputPortRequest} 클래스 단위 테스트 클래스 </b>
+ * <b> 역할: {@link UserSignUpInputPortRequestDTO} 클래스 단위 테스트 클래스 </b>
  */
 public class UserSignUpInputPortRequestTest {
 
     /**
-     * <b> 역할: {@link UserSignUpInputPortRequest} 기본 생성자 테스트 메소드 </b>
+     * <b> 역할: {@link UserSignUpInputPortRequestDTO} 기본 생성자 테스트 메소드 </b>
      * <p>
      * - 기본 생성자 사용 시 필드들이 초기화되지 않았는지 확인 <br>
      * </p>
@@ -18,14 +18,14 @@ public class UserSignUpInputPortRequestTest {
     @Test
     @DisplayName("기본 생성자 테스트")
     public void testNoArgsConstructor() {
-        UserSignUpInputPortRequest dto = new UserSignUpInputPortRequest();
+        UserSignUpInputPortRequest dto = new UserSignUpInputPortRequestDTO();
         assertNull(dto.getId(), "ID 필드는 null이어야 합니다.");
         assertNull(dto.getPw(), "PW 필드는 null이어야 합니다.");
         assertNull(dto.getRole(), "Role 필드는 null이어야 합니다.");
     }
 
     /**
-     * <b> 역할: {@link UserSignUpInputPortRequest} 필드의 Getter 및 Setter 테스트 메소드 </b>
+     * <b> 역할: {@link UserSignUpInputPortRequestDTO} 필드의 Getter 및 Setter 테스트 메소드 </b>
      * <p>
      * - Setter를 사용하여 필드 값을 설정한 후, Getter를 통해 올바르게 반환되는지 확인 <br>
      * </p>
@@ -33,7 +33,7 @@ public class UserSignUpInputPortRequestTest {
     @Test
     @DisplayName("Getter 및 Setter 테스트")
     public void testSettersAndGetters() {
-        UserSignUpInputPortRequest dto = new UserSignUpInputPortRequest();
+        UserSignUpInputPortRequest dto = new UserSignUpInputPortRequestDTO();
         dto.setId("user123");
         dto.setPw("password123");
         dto.setRole("DOCTOR");

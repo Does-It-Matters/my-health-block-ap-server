@@ -1,9 +1,6 @@
 package com.example.myhealthblock.user.application.service;
 
-import com.example.myhealthblock.user.application.port.in.dto.UserSignInInputPortRequest;
-import com.example.myhealthblock.user.application.port.in.dto.UserSignInInputPortResponse;
-import com.example.myhealthblock.user.application.port.in.dto.UserSignUpInputPortRequest;
-import com.example.myhealthblock.user.application.port.in.dto.UserUpdatePwInputPortRequest;
+import com.example.myhealthblock.user.application.port.in.dto.*;
 import com.example.myhealthblock.user.application.port.out.UserOutputPort;
 import com.example.myhealthblock.user.domain.model.User;
 import org.junit.jupiter.api.BeforeEach;
@@ -54,7 +51,7 @@ public class UserServiceIntegrationTest {
     public void testSignUpIntegration() {
         // Given
         String id = "integrationUser";
-        UserSignUpInputPortRequest signUpRequest = new UserSignUpInputPortRequest();
+        UserSignUpInputPortRequest signUpRequest = new UserSignUpInputPortRequestDTO();
         signUpRequest.setId(id);
         signUpRequest.setPw("password123");
         signUpRequest.setRole("USER");
@@ -80,9 +77,9 @@ public class UserServiceIntegrationTest {
     public void testSignInIntegration() {
         // Given
         String id = "integrationUser";
-        UserSignInInputPortRequest signInRequest = new UserSignInInputPortRequest(id, "password123");
+        UserSignInInputPortRequest signInRequest = new UserSignInInputPortRequestDTO(id, "password123");
 
-        UserSignUpInputPortRequest signUpRequest = new UserSignUpInputPortRequest();
+        UserSignUpInputPortRequest signUpRequest = new UserSignUpInputPortRequestDTO();
         signUpRequest.setId(id);
         signUpRequest.setPw("password123");
         signUpRequest.setRole("USER");
@@ -111,13 +108,13 @@ public class UserServiceIntegrationTest {
         String oldPw = "password123";
         String newPw = "newPassword123";
 
-        UserSignUpInputPortRequest signUpRequest = new UserSignUpInputPortRequest();
+        UserSignUpInputPortRequest signUpRequest = new UserSignUpInputPortRequestDTO();
         signUpRequest.setId(id);
         signUpRequest.setPw(oldPw);
         signUpRequest.setRole("USER");
         userService.signUp(signUpRequest);
 
-        UserUpdatePwInputPortRequest changePwRequest = new UserUpdatePwInputPortRequest(oldPw, newPw);
+        UserUpdatePwInputPortRequest changePwRequest = new UserUpdatePwInputPortRequestDTO(oldPw, newPw);
 
         // When
         String result = userService.changePw(id, changePwRequest);

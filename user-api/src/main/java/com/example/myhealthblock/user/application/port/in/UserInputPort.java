@@ -18,7 +18,7 @@ public interface UserInputPort extends UserSignUp {
      * <p>
      *
      * @param dto  로그인에 필요한 정보를 가진 dto
-     * @return 사용자가 로그인 결롸에 따른 dto
+     * @return 사용자가 로그인 결과에 따른 dto
      * </p>
      */
     UserSignInInputPortResponse signIn(UserSignInInputPortRequest dto);

@@ -4,6 +4,7 @@ import com.example.myhealthblock.doctor.application.port.out.UserSignUpOutputPor
 import com.example.myhealthblock.doctor.application.port.out.dto.DoctorSignUpOutputPortToUserRequest;
 import com.example.myhealthblock.user.application.port.in.UserSignUp;
 import com.example.myhealthblock.user.application.port.in.dto.UserSignUpInputPortRequest;
+import com.example.myhealthblock.user.application.port.in.dto.UserSignUpInputPortRequestDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -26,7 +27,7 @@ public class UserSignUpAdapter implements UserSignUpOutputPort {
     }
 
     private UserSignUpInputPortRequest getRequest(DoctorSignUpOutputPortToUserRequest dto) {
-        UserSignUpInputPortRequest request = new UserSignUpInputPortRequest();
+        UserSignUpInputPortRequest request = new UserSignUpInputPortRequestDTO();
         request.setId(dto.getId());
         request.setPw(dto.getPw());
         request.setRole(dto.getRole());

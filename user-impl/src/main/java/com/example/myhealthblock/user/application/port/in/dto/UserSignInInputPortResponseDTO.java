@@ -13,7 +13,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserSignInInputPortResponse {
+public class UserSignInInputPortResponseDTO implements UserSignInInputPortResponse {
     private String role;
     private String id;
 }

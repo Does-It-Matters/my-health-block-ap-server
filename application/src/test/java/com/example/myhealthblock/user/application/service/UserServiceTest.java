@@ -1,8 +1,6 @@
 package com.example.myhealthblock.user.application.service;
 
-import com.example.myhealthblock.user.application.port.in.dto.UserSignInInputPortRequest;
-import com.example.myhealthblock.user.application.port.in.dto.UserSignInInputPortResponse;
-import com.example.myhealthblock.user.application.port.in.dto.UserSignUpInputPortRequest;
+import com.example.myhealthblock.user.application.port.in.dto.*;
 import com.example.myhealthblock.user.application.port.out.UserOutputPort;
 import com.example.myhealthblock.user.domain.model.User;
 import org.junit.jupiter.api.BeforeEach;
@@ -55,7 +53,7 @@ public class UserServiceTest {
     public void testSignUpSuccess() {
         // Given
         String id = "newUser";
-        UserSignUpInputPortRequest signUpRequest = new UserSignUpInputPortRequest();
+        UserSignUpInputPortRequest signUpRequest = new UserSignUpInputPortRequestDTO();
         signUpRequest.setId(id);
         signUpRequest.setPw("password123");
         signUpRequest.setRole("USER");
@@ -83,7 +81,7 @@ public class UserServiceTest {
     public void testSignUpFailure() {
         // Given
         String id = "existingUser";
-        UserSignUpInputPortRequest signUpRequest = new UserSignUpInputPortRequest();
+        UserSignUpInputPortRequest signUpRequest = new UserSignUpInputPortRequestDTO();
         signUpRequest.setId(id);
         signUpRequest.setPw("password123");
         signUpRequest.setRole("USER");
@@ -109,7 +107,7 @@ public class UserServiceTest {
     public void testSignInSuccess() {
         // Given
         String id = "user123";
-        UserSignInInputPortRequest signInRequest = new UserSignInInputPortRequest(id, "password123");
+        UserSignInInputPortRequest signInRequest = new UserSignInInputPortRequestDTO(id, "password123");
 
         // Mock behavior 설정
         when(userOutputPort.getUser(id)).thenReturn(new User("1", id, "password123", "USER"));
@@ -133,7 +131,7 @@ public class UserServiceTest {
     public void testSignInFailure() {
         // Given
         String id = "user123";
-        UserSignInInputPortRequest signInRequest = new UserSignInInputPortRequest(id, "wrongPassword");
+        UserSignInInputPortRequest signInRequest = new UserSignInInputPortRequestDTO(id, "wrongPassword");
 
         // Mock behavior 설정
         when(userOutputPort.getUser(id)).thenReturn(new User("1", id, "password123", "USER"));

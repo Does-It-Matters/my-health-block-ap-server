@@ -13,7 +13,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserUpdatePwInputPortRequest {
+public class UserUpdatePwInputPortRequestDTO implements UserUpdatePwInputPortRequest {
     private String oldPw;
     private String newPw;
 }
