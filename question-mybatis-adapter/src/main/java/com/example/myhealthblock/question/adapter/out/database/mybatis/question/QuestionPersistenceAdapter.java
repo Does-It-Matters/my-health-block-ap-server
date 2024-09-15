@@ -1,7 +1,5 @@
 package com.example.myhealthblock.question.adapter.out.database.mybatis.question;
 
-import com.example.myhealthblock.aop.LogExecutionTime;
-import com.example.myhealthblock.aop.LogTarget;
 import com.example.myhealthblock.question.adapter.out.database.mybatis.bodypart.BodyPartMappingMapper;
 import com.example.myhealthblock.question.adapter.out.database.mybatis.personaldata.PersonalDataEntity;
 import com.example.myhealthblock.question.adapter.out.database.mybatis.personaldata.PersonalDataMapper;
@@ -19,7 +17,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@LogExecutionTime(logTarget = LogTarget.ADAPTER)
+//@LogExecutionTime(logTarget = LogTarget.ADAPTER)
 @RequiredArgsConstructor
 public class QuestionPersistenceAdapter implements QuestionOutputPort {
     private final QuestionMapper questionMapper;
