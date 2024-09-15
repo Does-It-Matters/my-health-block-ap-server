@@ -10,10 +10,6 @@ import com.example.myhealthblock.patient.adapter.out.database.mongodb.PatientPer
 import com.example.myhealthblock.patient.adapter.out.database.mongodb.PatientRepository;
 import com.example.myhealthblock.patient.application.port.out.PatientOutputPort;
 
-import com.example.myhealthblock.doctor.adapter.out.mongodb.*;
-import com.example.myhealthblock.patient.adapter.out.mongodb.*;
-import com.example.myhealthblock.opinion.adapter.out.mongodb.*;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;

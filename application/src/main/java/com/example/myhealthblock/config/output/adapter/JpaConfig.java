@@ -18,10 +18,6 @@ import com.example.myhealthblock.user.adapter.out.database.jpa.UserPersistenceAd
 import com.example.myhealthblock.user.adapter.out.database.jpa.UserRepository;
 import com.example.myhealthblock.user.application.port.out.UserOutputPort;
 
-import com.example.myhealthblock.doctor.adapter.out.jpa.*;
-import com.example.myhealthblock.opinion.adapter.out.jpa.*;
-import com.example.myhealthblock.patient.adapter.out.jpa.*;
-import com.example.myhealthblock.user.adapter.out.jpa.*;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

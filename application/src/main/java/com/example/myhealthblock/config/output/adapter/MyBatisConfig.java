@@ -18,11 +18,6 @@ import com.example.myhealthblock.user.adapter.out.database.mybatis.UserMapper;
 import com.example.myhealthblock.user.adapter.out.database.mybatis.UserPersistenceAdapter;
 import com.example.myhealthblock.user.application.port.out.UserOutputPort;
 
-import com.example.myhealthblock.doctor.adapter.out.mybatis.*;
-import com.example.myhealthblock.opinion.adapter.out.mybatis.*;
-import com.example.myhealthblock.patient.adapter.out.mybatis.*;
-import com.example.myhealthblock.user.adapter.out.mybatis.*;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
