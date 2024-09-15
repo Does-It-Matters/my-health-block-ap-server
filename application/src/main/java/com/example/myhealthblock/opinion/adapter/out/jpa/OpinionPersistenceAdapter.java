@@ -6,7 +6,6 @@ import com.example.myhealthblock.opinion.application.port.out.OpinionOutputPort;
 import com.example.myhealthblock.opinion.application.port.out.dto.OpinionEnrollOutputPortRequest;
 import com.example.myhealthblock.opinion.application.port.out.dto.OpinionOutputPortDTO;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
