@@ -24,13 +24,12 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 
-	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.data:spring-data-mongodb:4.3.1'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa' // MyhealthblockApplication의 EnableJpaAuditing 해결 후 제거 예정
+	implementation 'org.springframework.data:spring-data-mongodb:4.3.1' // 설정 파일을 각 모듈에서 작성 후 제거 예정
 	implementation 'org.springframework.boot:spring-boot-starter-log4j2'
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0'
-	implementation 'mysql:mysql-connector-java:8.0.33'
-	implementation 'com.h2database:h2'
+	implementation 'mysql:mysql-connector-java:8.0.33' // 설정 파일을 각 모듈에서 작성 후 제거 예정
+	implementation 'com.h2database:h2' // 어댑터 모듈에서 다루도록 진행 후 제거 예정
 
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
@@ -45,26 +44,40 @@ dependencies {
 //	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
 //	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
 
+
+//  impl, api 이해를 돕기 위해 남겨둔 log4j 의존성 주석
 //	implementation 'org.apache.logging.log4j:log4j-core:2.23.1'
 //	implementation 'org.apache.logging.log4j:log4j-api:2.23.1'
 
 	implementation project(':user-impl')
 	implementation project(':user-api')
+	implementation project(':user-jpa-adapter')
+//	implementation project(':user-mybatis-adapter')
+//	implementation project(':user-mongo-adapter')
 
 	implementation project(':question-impl')
 	implementation project(':question-api')
+	implementation project(':question-jpa-adapter')
+//	implementation project(':question-mybatis-adapter')
+//	implementation project(':question-mongo-adapter')
 
 	implementation project(':opinion-impl')
 	implementation project(':opinion-api')
+	implementation project(':opinion-jpa-adapter')
+//	implementation project(':opinion-mybatis-adapter')
+//	implementation project(':opinion-mongo-adapter')
 
 	implementation project(':patient-impl')
 	implementation project(':patient-api')
+	implementation project(':patient-jpa-adapter')
+//	implementation project(':patient-mybatis-adapter')
+//	implementation project(':patient-mongo-adapter')
 
 	implementation project(':doctor-impl')
 	implementation project(':doctor-api')
-
-//	testImplementation 'org.junit.jupiter:junit-jupiter'
-//	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	implementation project(':doctor-jpa-adapter')
+//	implementation project(':doctor-mybatis-adapter')
+//	implementation project(':doctor-mongo-adapter')
 }
 jar{
 	manifest{

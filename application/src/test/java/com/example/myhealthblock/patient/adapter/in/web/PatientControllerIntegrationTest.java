@@ -2,7 +2,7 @@ package com.example.myhealthblock.patient.adapter.in.web;
 
 import com.example.myhealthblock.patient.adapter.in.web.request.PatientSignUpRequest;
 import com.example.myhealthblock.patient.application.port.in.PatientInputPort;
-import com.example.myhealthblock.patient.adapter.out.jpa.PatientRepository;
+import com.example.myhealthblock.patient.adapter.out.database.jpa.PatientRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

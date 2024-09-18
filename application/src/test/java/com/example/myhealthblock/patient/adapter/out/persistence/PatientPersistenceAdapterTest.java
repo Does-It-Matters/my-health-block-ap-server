@@ -11,9 +11,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import com.example.myhealthblock.patient.adapter.out.jpa.PatientEntity;
-import com.example.myhealthblock.patient.adapter.out.jpa.PatientPersistenceAdapter;
-import com.example.myhealthblock.patient.adapter.out.jpa.PatientRepository;
+import com.example.myhealthblock.patient.adapter.out.database.jpa.PatientEntity;
+import com.example.myhealthblock.patient.adapter.out.database.jpa.PatientPersistenceAdapter;
+import com.example.myhealthblock.patient.adapter.out.database.jpa.PatientRepository;
 
 /**
  * <b> 역할: 환자 영속성 어댑터 단위 테스트 클래스 </b>

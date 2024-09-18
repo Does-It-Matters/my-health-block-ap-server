@@ -1,13 +1,13 @@
-<mapper namespace="com.example.myhealthblock.doctor.adapter.out.mybatis.DoctorMapper">
+<mapper namespace="com.example.myhealthblock.doctor.adapter.out.database.mybatis.DoctorMapper">
 
     <!-- Insert a new doctor -->
-    <insert id="insertDoctor" parameterType="com.example.myhealthblock.doctor.adapter.out.mybatis.DoctorEntity">
+    <insert id="insertDoctor" parameterType="com.example.myhealthblock.doctor.adapter.out.database.mybatis.DoctorEntity">
         INSERT INTO doctor (userId, name, field, hospital, introduction, createDate, lastEditDate)
         VALUES (#{userId}, #{name}, #{field}, #{hospital}, #{introduction}, #{createDate}, #{lastEditDate})
     </insert>
 
     <!-- Select a doctor by userId -->
-    <select id="selectDoctorByUserId" parameterType="String" resultType="com.example.myhealthblock.doctor.adapter.out.mybatis.DoctorEntity">
+    <select id="selectDoctorByUserId" parameterType="String" resultType="com.example.myhealthblock.doctor.adapter.out.database.mybatis.DoctorEntity">
         SELECT * FROM doctor WHERE userId = #{userId}
     </select>
 

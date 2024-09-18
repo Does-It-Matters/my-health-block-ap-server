@@ -10,9 +10,9 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.myhealthblock.patient.adapter.out.jpa.PatientEntity;
-import com.example.myhealthblock.patient.adapter.out.jpa.PatientPersistenceAdapter;
-import com.example.myhealthblock.patient.adapter.out.jpa.PatientRepository;
+import com.example.myhealthblock.patient.adapter.out.database.jpa.PatientEntity;
+import com.example.myhealthblock.patient.adapter.out.database.jpa.PatientPersistenceAdapter;
+import com.example.myhealthblock.patient.adapter.out.database.jpa.PatientRepository;
 
 /**
  * <b> 역할: 환자 영속성 어댑터 통합 테스트 클래스 </b>
