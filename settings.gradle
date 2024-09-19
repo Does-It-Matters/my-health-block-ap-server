@@ -1,1 +1,33 @@
 rootProject.name = 'myhealthblock'
+
+include 'application'
+
+include 'user-impl'
+include 'user-api'
+include 'user-jpa-adapter'
+include 'user-mybatis-adapter'
+include 'user-mongo-adapter'
+
+include 'question-impl'
+include 'question-api'
+include 'question-jpa-adapter'
+include 'question-mybatis-adapter'
+include 'question-mongo-adapter'
+
+include 'opinion-impl'
+include 'opinion-api'
+include 'opinion-jpa-adapter'
+include 'opinion-mybatis-adapter'
+include 'opinion-mongo-adapter'
+
+include 'patient-impl'
+include 'patient-api'
+include 'patient-jpa-adapter'
+include 'patient-mybatis-adapter'
+include 'patient-mongo-adapter'
+
+include 'doctor-impl'
+include 'doctor-api'
+include 'doctor-jpa-adapter'
+include 'doctor-mybatis-adapter'
+include 'doctor-mongo-adapter'
