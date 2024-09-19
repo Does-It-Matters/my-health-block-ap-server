@@ -1,12 +1,14 @@
 package com.example.myhealthblock.patient.application.service;
 
+import org.springframework.stereotype.Service;
+
 import com.example.myhealthblock.patient.application.port.in.PatientInputPort;
 import com.example.myhealthblock.patient.application.port.in.dto.PatientSignUpInputPortRequest;
 import com.example.myhealthblock.patient.application.port.out.PatientOutputPort;
 import com.example.myhealthblock.patient.application.port.out.UserSignUpOutputPort;
 import com.example.myhealthblock.patient.application.port.out.dto.PatientSignUpOutputPortToUserRequest;
+
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
 /**
  * <b> 역할: 환자 회원 관리 비즈니스 로직을 처리하는 서비스 클래스 </b>

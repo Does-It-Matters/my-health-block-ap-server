@@ -8,5 +8,4 @@ package com.example.myhealthblock.patient.application.port.in;
  * </p>
  */
 public interface PatientInputPort extends PatientSignUp {
-
 }
