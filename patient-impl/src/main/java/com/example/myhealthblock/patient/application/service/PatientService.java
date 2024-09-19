@@ -6,7 +6,7 @@ import com.example.myhealthblock.patient.application.port.in.PatientInputPort;
 import com.example.myhealthblock.patient.application.port.in.dto.PatientSignUpInputPortRequest;
 import com.example.myhealthblock.patient.application.port.out.PatientOutputPort;
 import com.example.myhealthblock.patient.application.port.out.UserSignUpOutputPort;
-import com.example.myhealthblock.patient.application.port.out.dto.PatientSignUpOutputPortToUserRequest;
+import com.example.myhealthblock.patient.application.port.out.dto.PatientSignUpOutputPortToUserRequestDTO;
 
 import lombok.RequiredArgsConstructor;
 
@@ -42,7 +42,7 @@ public class PatientService implements PatientInputPort {
      * @param dto 환자 회원가입 요청 데이터
      */
     private void requestUserSignUp(PatientSignUpInputPortRequest dto) {
-        PatientSignUpOutputPortToUserRequest userSignUpDTO = getUserSignUpDTO(dto);
+        PatientSignUpOutputPortToUserRequestDTO userSignUpDTO = getUserSignUpDTO(dto);
         if (!userSignUpOutputPort.signUp(userSignUpDTO)) {
             throw new RuntimeException();
 //            throw new UserAlreadyExistsException("A user with this ID already exists.");
@@ -55,7 +55,7 @@ public class PatientService implements PatientInputPort {
      * @param dto 환자 회원가입 요청 데이터
      * @return 매핑 dto
      */
-    private PatientSignUpOutputPortToUserRequest getUserSignUpDTO(PatientSignUpInputPortRequest dto) {
-        return new PatientSignUpOutputPortToUserRequest(dto.getId(), dto.getPw(), dto.getRole());
+    private PatientSignUpOutputPortToUserRequestDTO getUserSignUpDTO(PatientSignUpInputPortRequest dto) {
+        return new PatientSignUpOutputPortToUserRequestDTO(dto.getId(), dto.getPw(), dto.getRole());
     }
 }
