@@ -1,6 +1,7 @@
 package com.example.myhealthblock.doctor.adapter.out.database.mongodb;
 
 import com.example.myhealthblock.doctor.application.port.out.DoctorOutputPort;
+import com.example.myhealthblock.doctor.application.port.out.dto.DoctorProfileOutputPortResponseDTO;
 import com.example.myhealthblock.doctor.application.port.out.dto.DoctorSignUpOutputPortRequest;
 import com.example.myhealthblock.doctor.application.port.out.dto.DoctorProfileOutputPortResponse;
 import lombok.RequiredArgsConstructor;
@@ -48,7 +49,7 @@ public class DoctorPersistenceAdapter implements DoctorOutputPort {
     public DoctorProfileOutputPortResponse getDoctorProfile(String doctorId) {
         DoctorDocument doctor = getDoctorDocument(doctorId);
 
-        return new DoctorProfileOutputPortResponse(
+        return new DoctorProfileOutputPortResponseDTO(
                 doctor.getName(),
                 doctor.getField(),
                 doctor.getHospital(),

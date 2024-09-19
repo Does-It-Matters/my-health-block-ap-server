@@ -9,7 +9,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class DoctorSignUpOutputPortToUserRequest {
+public class DoctorSignUpOutputPortToUserRequestDTO implements DoctorSignUpOutputPortToUserRequest {
     private String id;
     private String pw;
     private String role;
