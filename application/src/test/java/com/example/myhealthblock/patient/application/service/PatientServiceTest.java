@@ -10,7 +10,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import com.example.myhealthblock.patient.application.port.in.dto.PatientSignUpInputPortRequest;
+import com.example.myhealthblock.patient.application.port.in.dto.PatientSignUpInputPortRequestDTO;
 import com.example.myhealthblock.patient.application.port.out.PatientOutputPort;
 import com.example.myhealthblock.patient.domain.model.Patient;
 
@@ -54,7 +54,7 @@ public class PatientServiceTest {
 	public void testSignUpSuccess() {
 		// Given
 		String id = "newPatient";
-		PatientSignUpInputPortRequest signUpRequest = new PatientSignUpInputPortRequest();
+		PatientSignUpInputPortRequestDTO signUpRequest = new PatientSignUpInputPortRequestDTO();
 		signUpRequest.setId(id);
 
 		// Mock behavior 설정
@@ -79,7 +79,7 @@ public class PatientServiceTest {
 	public void testSignUpFailure() {
 		// Given
 		String id = "existingPatient";
-		PatientSignUpInputPortRequest signUpRequest = new PatientSignUpInputPortRequest();
+		PatientSignUpInputPortRequestDTO signUpRequest = new PatientSignUpInputPortRequestDTO();
 		signUpRequest.setId(id);
 		signUpRequest.setPw("password123");
 		signUpRequest.setRole("PATIENT");
