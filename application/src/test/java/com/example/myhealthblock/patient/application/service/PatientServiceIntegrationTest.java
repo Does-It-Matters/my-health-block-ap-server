@@ -10,7 +10,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.myhealthblock.patient.application.port.in.dto.PatientSignUpInputPortRequest;
+import com.example.myhealthblock.patient.application.port.in.dto.PatientSignUpInputPortRequestDTO;
 import com.example.myhealthblock.patient.application.port.out.PatientOutputPort;
 
 /**
@@ -52,7 +52,7 @@ public class PatientServiceIntegrationTest {
 	public void testSignUpIntegration() {
 		// Given
 		String id = "integrationPatient";
-		PatientSignUpInputPortRequest signUpRequest = new PatientSignUpInputPortRequest();
+		PatientSignUpInputPortRequestDTO signUpRequest = new PatientSignUpInputPortRequestDTO();
 		signUpRequest.setId(id);
 		signUpRequest.setPw("password123");
 		signUpRequest.setRole("PATIENT");

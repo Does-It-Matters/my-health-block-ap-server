@@ -1,12 +1,14 @@
 package com.example.myhealthblock.patient.application.service;
 
+import org.springframework.stereotype.Service;
+
 import com.example.myhealthblock.patient.application.port.in.PatientInputPort;
 import com.example.myhealthblock.patient.application.port.in.dto.PatientSignUpInputPortRequest;
 import com.example.myhealthblock.patient.application.port.out.PatientOutputPort;
 import com.example.myhealthblock.patient.application.port.out.UserSignUpOutputPort;
-import com.example.myhealthblock.patient.application.port.out.dto.PatientSignUpOutputPortToUserRequest;
+import com.example.myhealthblock.patient.application.port.out.dto.PatientSignUpOutputPortToUserRequestDTO;
+
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
 /**
  * <b> 역할: 환자 회원 관리 비즈니스 로직을 처리하는 서비스 클래스 </b>
@@ -40,7 +42,7 @@ public class PatientService implements PatientInputPort {
      * @param dto 환자 회원가입 요청 데이터
      */
     private void requestUserSignUp(PatientSignUpInputPortRequest dto) {
-        PatientSignUpOutputPortToUserRequest userSignUpDTO = getUserSignUpDTO(dto);
+        PatientSignUpOutputPortToUserRequestDTO userSignUpDTO = getUserSignUpDTO(dto);
         if (!userSignUpOutputPort.signUp(userSignUpDTO)) {
             throw new RuntimeException();
 //            throw new UserAlreadyExistsException("A user with this ID already exists.");
@@ -53,7 +55,7 @@ public class PatientService implements PatientInputPort {
      * @param dto 환자 회원가입 요청 데이터
      * @return 매핑 dto
      */
-    private PatientSignUpOutputPortToUserRequest getUserSignUpDTO(PatientSignUpInputPortRequest dto) {
-        return new PatientSignUpOutputPortToUserRequest(dto.getId(), dto.getPw(), dto.getRole());
+    private PatientSignUpOutputPortToUserRequestDTO getUserSignUpDTO(PatientSignUpInputPortRequest dto) {
+        return new PatientSignUpOutputPortToUserRequestDTO(dto.getId(), dto.getPw(), dto.getRole());
     }
 }
