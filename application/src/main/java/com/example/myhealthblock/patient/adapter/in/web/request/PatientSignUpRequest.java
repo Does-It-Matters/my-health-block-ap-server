@@ -1,6 +1,8 @@
 package com.example.myhealthblock.patient.adapter.in.web.request;
 
 import com.example.myhealthblock.patient.application.port.in.dto.PatientSignUpInputPortRequest;
+import com.example.myhealthblock.patient.application.port.in.dto.PatientSignUpInputPortRequestDTO;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,6 +18,10 @@ public class PatientSignUpRequest {
      * @return 입력 포트에서 전달되는 DTO
      */
     public PatientSignUpInputPortRequest toInputPortDTO() {
-        return new PatientSignUpInputPortRequest(id, pw, role);
+        return new PatientSignUpInputPortRequestDTO(
+            id,
+            pw,
+            role
+        );
     }
 }

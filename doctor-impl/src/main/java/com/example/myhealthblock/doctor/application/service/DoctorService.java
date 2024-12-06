@@ -7,6 +7,7 @@ import com.example.myhealthblock.doctor.application.port.out.DoctorOutputPort;
 import com.example.myhealthblock.doctor.application.port.out.UserSignUpOutputPort;
 import com.example.myhealthblock.doctor.application.port.out.dto.DoctorProfileOutputPortResponse;
 import com.example.myhealthblock.doctor.application.port.out.dto.DoctorSignUpOutputPortToUserRequest;
+import com.example.myhealthblock.doctor.application.port.out.dto.DoctorSignUpOutputPortToUserRequestDTO;
 import com.example.myhealthblock.doctor.domain.model.Doctor;
 import com.example.myhealthblock.doctor.application.port.in.dto.DoctorSignUpInputPortResponse;
 import com.example.myhealthblock.doctor.domain.mapper.DoctorMapper;
@@ -39,7 +40,7 @@ public class DoctorService implements DoctorInputPort {
      */
     @Override
     public DoctorSignUpInputPortResponse signUp(DoctorSignUpInputPortRequest dto) {
-        DoctorSignUpOutputPortToUserRequest request = new DoctorSignUpOutputPortToUserRequest();
+        DoctorSignUpOutputPortToUserRequest request = new DoctorSignUpOutputPortToUserRequestDTO();
         request.setId(dto.getId());
         request.setPw(dto.getPw());
         request.setRole(dto.getRole());
@@ -102,7 +103,7 @@ public class DoctorService implements DoctorInputPort {
      * </p>
      */
     private DoctorSignUpOutputPortToUserRequest getUserSignUpDTO(DoctorSignUpOutputPortToUserRequest dto) {
-        DoctorSignUpOutputPortToUserRequest userSignUpDTO = new DoctorSignUpOutputPortToUserRequest();
+        DoctorSignUpOutputPortToUserRequest userSignUpDTO = new DoctorSignUpOutputPortToUserRequestDTO();
         userSignUpDTO.setId(dto.getId());
         userSignUpDTO.setPw(dto.getPw());
         userSignUpDTO.setRole(dto.getRole());

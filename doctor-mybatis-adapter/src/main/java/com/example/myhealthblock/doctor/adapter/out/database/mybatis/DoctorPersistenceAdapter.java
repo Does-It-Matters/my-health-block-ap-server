@@ -2,6 +2,7 @@ package com.example.myhealthblock.doctor.adapter.out.database.mybatis;
 
 import com.example.myhealthblock.doctor.application.port.out.DoctorOutputPort;
 import com.example.myhealthblock.doctor.application.port.out.dto.DoctorProfileOutputPortResponse;
+import com.example.myhealthblock.doctor.application.port.out.dto.DoctorProfileOutputPortResponseDTO;
 import com.example.myhealthblock.doctor.application.port.out.dto.DoctorSignUpOutputPortRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -42,7 +43,7 @@ public class DoctorPersistenceAdapter implements DoctorOutputPort {
     public DoctorProfileOutputPortResponse getDoctorProfile(String doctorId) {
         DoctorEntity doctor = getDoctorEntity(doctorId);
 
-        return new DoctorProfileOutputPortResponse(doctor.getName(), doctor.getField(), doctor.getHospital(), doctor.getIntroduction());
+        return new DoctorProfileOutputPortResponseDTO(doctor.getName(), doctor.getField(), doctor.getHospital(), doctor.getIntroduction());
     }
 
     /**
